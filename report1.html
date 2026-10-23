@@ -1,0 +1,2472 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NBA 2026-27 Analytics · 賽季分隊戰報與獎金儀表板</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <style>
+        :root {
+            --bg-outer: #e2e8f0;
+            --bg-app: #f8fafc;
+            --bg-card: #ffffff;
+            --border: #e2e8f0;
+            --text-main: #0f172a;
+            --text-sub: #64748b;
+            --primary: #2563eb;
+            --primary-soft: #dbeafe;
+            --pos: #10b981;
+            --pos-soft: #dcfce7;
+            --neg: #ef4444;
+            --neg-soft: #fee2e2;
+            --purple: #8b5cf6;
+            --purple-soft: #f3e8ff;
+            --amber: #f59e0b;
+            --amber-soft: #fef3c7;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: "Inter", "Microsoft JhengHei", "PingFang TC", -apple-system, sans-serif;
+            background: var(--bg-outer);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        /* App Shell (完全比照參考圖的白色圓角視窗 + 左側導覽列) */
+        .app-window {
+            max-width: 1440px;
+            margin: 0 auto;
+            background: var(--bg-app);
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(15, 23, 42, 0.05);
+            display: flex;
+            min-height: calc(100vh - 40px);
+            overflow: hidden;
+        }
+        /* Sidebar */
+        .sidebar {
+            width: 240px;
+            background: var(--bg-card);
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            padding: 24px 16px;
+            flex-shrink: 0;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0 10px 24px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--text-main);
+        }
+        .brand-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: var(--primary);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+        .nav-list {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            flex: 1;
+        }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 11px 14px;
+            border-radius: 10px;
+            color: var(--text-sub);
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: 600;
+            transition: all 0.15s;
+            cursor: pointer;
+        }
+        .nav-item:hover {
+            background: #f1f5f9;
+            color: var(--text-main);
+        }
+        .nav-item.active {
+            background: var(--primary);
+            color: #ffffff;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+        }
+        .promo-box {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 14px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+        .promo-title {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+        }
+        .promo-sub {
+            font-size: 0.78rem;
+            color: #3b82f6;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+        .promo-btn {
+            display: block;
+            text-align: center;
+            background: var(--primary);
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 700;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: opacity 0.15s;
+        }
+        .promo-btn:hover { opacity: 0.92; }
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-top: 14px;
+            border-top: 1px solid var(--border);
+        }
+        .user-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.9rem;
+        }
+        .user-meta .u-name { font-size: 0.88rem; font-weight: 700; }
+        .user-meta .u-role { font-size: 0.75rem; color: var(--text-sub); }
+
+        /* Main Content */
+        .main-area {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+        /* Topbar */
+        .topbar {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            padding: 18px 28px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+        .topbar-title h1 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+        .topbar-title p {
+            font-size: 0.84rem;
+            color: var(--text-sub);
+            margin-top: 2px;
+        }
+        .topbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .search-box {
+            position: relative;
+            width: 260px;
+        }
+        .search-box input {
+            width: 100%;
+            padding: 9px 14px 9px 34px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            background: #f8fafc;
+            font-size: 0.86rem;
+            color: var(--text-main);
+            outline: none;
+            transition: border-color 0.15s;
+        }
+        .search-box input:focus {
+            border-color: var(--primary);
+            background: #fff;
+        }
+        .search-box::before {
+            content: "🔍";
+            position: absolute;
+            left: 11px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.82rem;
+            opacity: 0.6;
+        }
+        .date-pill {
+            background: #f1f5f9;
+            border: 1px solid var(--border);
+            padding: 7px 12px;
+            border-radius: 10px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-sub);
+        }
+
+        /* Dashboard Content Grid */
+        .content {
+            padding: 24px 28px 48px;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+        }
+
+        /* Row 1: 4 KPI Cards */
+        .kpi-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+        .kpi-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
+            position: relative;
+        }
+        .kpi-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            flex-shrink: 0;
+        }
+        .kpi-icon.blue { background: var(--primary-soft); color: var(--primary); }
+        .kpi-icon.green { background: var(--pos-soft); color: var(--pos); }
+        .kpi-icon.purple { background: var(--purple-soft); color: var(--purple); }
+        .kpi-icon.amber { background: var(--amber-soft); color: var(--amber); }
+        .kpi-body { flex: 1; min-width: 0; }
+        .kpi-label {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-sub);
+        }
+        .kpi-val {
+            font-size: 1.55rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin: 4px 0 6px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .kpi-trend {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--pos);
+        }
+        .kpi-dots {
+            color: #94a3b8;
+            font-weight: 800;
+            font-size: 1rem;
+        }
+
+        /* Row 2: Line Chart (2/3) + Donut Chart (1/3) */
+        .charts-row-main {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 18px;
+        }
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px 22px;
+            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.03);
+        }
+        .card-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .card-title {
+            font-size: 1.02rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+        .card-subtitle {
+            font-size: 0.78rem;
+            color: var(--text-sub);
+            margin-top: 2px;
+        }
+        .card-select {
+            border: 1px solid var(--border);
+            background: #f8fafc;
+            color: var(--text-main);
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            outline: none;
+            cursor: pointer;
+        }
+        .chart-box {
+            position: relative;
+            height: 260px;
+            width: 100%;
+        }
+
+        /* Donut layout */
+        .donut-wrap {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            height: 260px;
+        }
+        .donut-canvas-box {
+            position: relative;
+            width: 175px;
+            height: 175px;
+            flex-shrink: 0;
+            margin: 0 auto;
+        }
+        .donut-center {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+        .donut-center small {
+            font-size: 0.75rem;
+            color: var(--text-sub);
+            font-weight: 600;
+        }
+        .donut-center b {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+        .donut-legend {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .legend-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.84rem;
+        }
+        .legend-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .legend-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .legend-name {
+            color: var(--text-sub);
+            font-weight: 600;
+        }
+        .legend-right b {
+            color: var(--text-main);
+            margin-right: 4px;
+        }
+
+        /* Row 3: 3 Columns (Weekly Performance / User by Devices / Top Performing Teams) */
+        .charts-row-sub {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 18px;
+        }
+        .bar-box {
+            position: relative;
+            height: 230px;
+            width: 100%;
+        }
+        .device-list {
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+            margin-top: 6px;
+        }
+        .device-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .device-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.84rem;
+            flex-shrink: 0;
+        }
+        .device-body { flex: 1; }
+        .device-top {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            margin-bottom: 5px;
+        }
+        .device-name { font-weight: 700; color: var(--text-main); }
+        .device-name small { color: var(--text-sub); font-weight: 500; }
+        .device-pct { font-weight: 700; color: var(--text-sub); }
+        .device-track {
+            height: 7px;
+            background: #e2e8f0;
+            border-radius: 999px;
+            overflow: hidden;
+        }
+        .device-fill {
+            height: 100%;
+            border-radius: 999px;
+        }
+
+        /* Top Performing Teams Table */
+        .tp-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.84rem;
+        }
+        .tp-table th {
+            text-align: left;
+            padding: 8px 10px;
+            background: #f8fafc;
+            color: var(--text-sub);
+            font-size: 0.76rem;
+            font-weight: 700;
+            border-bottom: 1px solid var(--border);
+        }
+        .tp-table td {
+            padding: 8px 10px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .tp-team {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .tp-team img { width: 22px; height: 22px; object-fit: contain; }
+        .tp-name { font-weight: 700; color: var(--text-main); line-height: 1.2; }
+        .tp-owner { font-size: 0.7rem; color: var(--text-sub); }
+        .tp-wl { font-weight: 600; color: var(--text-sub); white-space: nowrap; }
+        .tp-growth { font-weight: 800; text-align: right; white-space: nowrap; }
+        .growth-pos, .pos-txt { color: var(--pos); }
+        .growth-neg, .neg-txt { color: var(--neg); }
+        .muted-txt { color: var(--text-sub); }
+
+        /* Full Standings Table */
+        .table-scroll { overflow-x: auto; }
+        .full-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.88rem;
+        }
+        .full-table th {
+            text-align: left;
+            padding: 12px 14px;
+            background: #f8fafc;
+            color: var(--text-sub);
+            font-size: 0.78rem;
+            font-weight: 700;
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+        }
+        .full-table td {
+            padding: 13px 14px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .full-table tr:hover td { background: #f8fafc; }
+        .rk-col { font-size: 1.15rem; font-weight: 800; width: 48px; text-align: center; }
+        .p-info { display: flex; align-items: center; gap: 10px; white-space: nowrap; }
+        .p-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            color: #fff;
+            font-weight: 800;
+            font-size: 0.86rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .p-avatar.xs { width: 22px; height: 22px; font-size: 0.72rem; border-radius: 6px; }
+        .p-title { font-weight: 800; color: var(--text-main); }
+        .p-sub { font-size: 0.74rem; color: var(--text-sub); }
+        .mini-pct { min-width: 100px; }
+        .mini-pct span { font-size: 0.8rem; font-weight: 700; }
+        .mini-bar { height: 6px; background: #e2e8f0; border-radius: 999px; margin-top: 4px; overflow: hidden; }
+        .mini-bar div { height: 100%; border-radius: 999px; }
+        .money-col { font-size: 1.05rem; font-weight: 800; white-space: nowrap; }
+        .pills-wrap { display: flex; flex-wrap: wrap; gap: 6px; min-width: 340px; }
+        .team-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 4px 8px;
+            font-size: 0.78rem;
+            white-space: nowrap;
+        }
+        .team-pill img { width: 17px; height: 17px; object-fit: contain; }
+
+        /* Matchups Grid */
+        .tabs-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 16px;
+        }
+        .tab-btn {
+            border: 1px solid var(--border);
+            background: #f8fafc;
+            color: var(--text-sub);
+            padding: 6px 13px;
+            border-radius: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+        .tab-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .tab-btn.active {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+        }
+        .matches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 16px;
+        }
+        .match-card {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 14px 16px;
+            background: #ffffff;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: box-shadow 0.15s, transform 0.15s;
+        }
+        .match-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+        }
+        .m-head {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.76rem;
+            color: var(--text-sub);
+            font-weight: 600;
+        }
+        .m-body {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+        }
+        .m-team {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            flex: 1;
+            padding: 8px 10px;
+            border-radius: 10px;
+            background: #f8fafc;
+            border: 1px solid transparent;
+        }
+        .m-team.right { justify-content: flex-end; }
+        .m-team.win {
+            background: #f0fdf4;
+            border-color: #bbf7d0;
+        }
+        .m-team img { width: 36px; height: 36px; object-fit: contain; flex-shrink: 0; }
+        .m-meta { display: flex; flex-direction: column; gap: 3px; }
+        .m-meta.right { align-items: flex-end; text-align: right; }
+        .m-tname { font-weight: 800; font-size: 0.9rem; color: var(--text-main); }
+        .m-tname small { font-weight: 500; font-size: 0.72rem; color: var(--text-sub); }
+        .m-owner {
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 1px 7px;
+            border-radius: 999px;
+            width: fit-content;
+        }
+        .m-score { font-size: 1.35rem; font-weight: 800; margin-left: auto; color: var(--text-main); }
+        .m-team.right .m-score { margin-left: 0; margin-right: auto; }
+        .m-vs { font-size: 0.72rem; font-weight: 800; color: #94a3b8; }
+        .g-foot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding-top: 8px;
+            border-top: 1px dashed var(--border);
+            font-size: 0.8rem;
+        }
+        .g-badges { display: flex; gap: 6px; }
+        .badge-pos {
+            background: var(--pos-soft);
+            color: var(--pos);
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 6px;
+        }
+        .badge-neg {
+            background: var(--neg-soft);
+            color: var(--neg);
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 6px;
+        }
+
+        /* Matrix */
+        .mx-table th, .mx-table td {
+            text-align: center;
+            padding: 10px 8px;
+            border: 1px solid var(--border);
+        }
+        .mx-head { text-align: left !important; white-space: nowrap; background: #f8fafc; }
+        .mx-self { background: #f1f5f9; color: #94a3b8; }
+        .mx-pos { background: #f0fdf4; color: var(--pos); }
+        .mx-neg { background: #fef2f2; color: var(--neg); }
+        .mx-zero { color: #94a3b8; }
+        .mx-v { font-weight: 800; font-size: 0.92rem; }
+        .mx-s { font-size: 0.7rem; color: var(--text-sub); }
+
+        /* Roster 6 Cards */
+        .roster-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 18px;
+        }
+        .r-card {
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 16px;
+            background: #fff;
+        }
+        .r-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 12px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        .r-total { font-size: 1.05rem; font-weight: 800; }
+        .r-list { display: flex; flex-direction: column; gap: 8px; }
+        .r-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 10px;
+            border-radius: 10px;
+            background: #f8fafc;
+            border: 1px solid #f1f5f9;
+        }
+        .r-left { display: flex; align-items: center; gap: 10px; }
+        .r-left img { width: 28px; height: 28px; object-fit: contain; }
+        .r-tname { font-weight: 700; font-size: 0.88rem; }
+        .r-tname small { color: var(--text-sub); font-weight: 400; font-size: 0.74rem; }
+        .r-conf { font-size: 0.68rem; font-weight: 700; padding: 1px 6px; border-radius: 4px; }
+        .r-conf.east { background: #dbeafe; color: #1d4ed8; }
+        .r-conf.west { background: #ffedd5; color: #c2410c; }
+        .r-right { text-align: right; font-size: 0.82rem; }
+        .r-wl { font-weight: 700; }
+        .r-money { font-weight: 800; font-size: 0.78rem; }
+
+        @media (max-width: 1180px) {
+            .kpi-row { grid-template-columns: repeat(2, 1fr); }
+            .charts-row-main, .charts-row-sub { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 860px) {
+            body { padding: 0; }
+            .app-window { border-radius: 0; flex-direction: column; }
+            .sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--border); padding: 16px; }
+            .nav-list { flex-direction: row; overflow-x: auto; padding-bottom: 4px; }
+            .nav-item { white-space: nowrap; }
+            .promo-box, .user-profile { display: none; }
+            .kpi-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-window">
+        <!-- 左側導覽欄 (Workspace 風格) -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">🏀</div>
+                <span>NBA 2026-27</span>
+            </div>
+            <nav class="nav-list">
+                <a class="nav-item active" onclick="scrollToSec('sec-analytics', this)">📊 數據總覽 Analytics</a>
+                <a class="nav-item" onclick="scrollToSec('sec-standings', this)">🏆 戰績排行榜 Standings</a>
+                <a class="nav-item" onclick="scrollToSec('sec-matchups', this)">🔥 每日對戰 Matchups</a>
+                <a class="nav-item" onclick="scrollToSec('sec-matrix', this)">🤝 對戰損益矩陣 Matrix</a>
+                <a class="nav-item" onclick="scrollToSec('sec-teams', this)">📋 30支球隊分隊 Teams</a>
+            </nav>
+            <div class="promo-box">
+                <div class="promo-title">💵 賽季計價規則</div>
+                <div class="promo-sub">每 1 分差 = NT$ 5 元<br>內戰計 1勝1敗、金額 0 元</div>
+                <a class="promo-btn" href="https://christw228-afk.github.io/NBA2026/" target="_blank">切換原深色版報表</a>
+            </div>
+            <div class="user-profile">
+                <div class="user-avatar">NBA</div>
+                <div class="user-meta">
+                    <div class="u-name">6 人分隊聯盟</div>
+                    <div class="u-role">一人 5 隊 · 共 30 隊</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- 右側主畫面 -->
+        <div class="main-area">
+            <!-- Topbar -->
+            <header class="topbar">
+                <div class="topbar-title">
+                    <h1>Analytics · NBA 2026-27 分隊獎金與數據分析</h1>
+                    <p>統計期間：2026-10-21（開季）至 2026-10-23 ｜ 最後更新：2026-10-23 12:39:16</p>
+                </div>
+                <div class="topbar-actions">
+                    <div class="search-box">
+                        <input type="text" id="searchInput" placeholder="搜尋球隊、玩家或日期..." oninput="searchMatches(this.value)">
+                    </div>
+                    <div class="date-pill">📅 截止日：2026-10-23</div>
+                </div>
+            </header>
+
+            <main class="content" id="sec-analytics">
+                <!-- 第一排：4 張 KPI 卡片 -->
+                <div class="kpi-row">
+                    <div class="kpi-card">
+                        <div class="kpi-icon blue">💲</div>
+                        <div class="kpi-body">
+                            <div class="kpi-label">目前賞金領先王 (Top Leader)</div>
+                            <div class="kpi-val">MATT (+$275)</div>
+                            <div class="kpi-trend">↑ 3勝 2敗 · 淨勝 +55 分</div>
+                        </div>
+                        <div class="kpi-dots">⋮</div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon green">👥</div>
+                        <div class="kpi-body">
+                            <div class="kpi-label">總流通獎金池 (Total Prize Pool)</div>
+                            <div class="kpi-val">NT$ 920</div>
+                            <div class="kpi-trend">↑ 累計 16 場例行賽完賽</div>
+                        </div>
+                        <div class="kpi-dots">⋮</div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon purple">📈</div>
+                        <div class="kpi-body">
+                            <div class="kpi-label">最高勝率玩家 (Best Win Rate)</div>
+                            <div class="kpi-val">83.3%</div>
+                            <div class="kpi-trend">↑ ERIC (5勝 1敗)</div>
+                        </div>
+                        <div class="kpi-dots">⋮</div>
+                    </div>
+
+                    <div class="kpi-card">
+                        <div class="kpi-icon amber">⚡</div>
+                        <div class="kpi-body">
+                            <div class="kpi-label">單場最高賞金 (Max Single Game)</div>
+                            <div class="kpi-val">NT$ 0</div>
+                            <div class="kpi-trend">↑ 最大分差 43分 (暴龍 勝 公牛)</div>
+                        </div>
+                        <div class="kpi-dots">⋮</div>
+                    </div>
+                </div>
+
+                <!-- 第二排：折線走勢圖 (左 2/3) + 環狀勝場佔比圖 (右 1/3) -->
+                <div class="charts-row-main">
+                    <div class="card">
+                        <div class="card-head">
+                            <div>
+                                <div class="card-title">每日累計獎金走勢分析 (Cumulative Prize Trend)</div>
+                                <div class="card-subtitle">追蹤開季至今每日各玩家累計台幣淨損益變化</div>
+                            </div>
+                            <select class="card-select" id="linePlayerSelect" onchange="updateLineChart(this.value)">
+                                <option value="ALL">全部玩家走勢比較</option><option value="M">MATT (M) 單獨走勢</option><option value="E">ERIC (E) 單獨走勢</option><option value="C">CHRIS (C) 單獨走勢</option><option value="D">DUNCAN (D) 單獨走勢</option><option value="L">LEO (L) 單獨走勢</option><option value="F">FISHER (F) 單獨走勢</option>
+                            </select>
+                        </div>
+                        <div class="chart-box">
+                            <canvas id="trendLineChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-head">
+                            <div>
+                                <div class="card-title">各玩家勝場佔比 (Wins Share)</div>
+                                <div class="card-subtitle">6 位玩家旗下球隊總勝場數分佈</div>
+                            </div>
+                        </div>
+                        <div class="donut-wrap">
+                            <div class="donut-canvas-box">
+                                <canvas id="winsDonutChart"></canvas>
+                                <div class="donut-center">
+                                    <small>總完賽</small>
+                                    <b>16 場</b>
+                                </div>
+                            </div>
+                            <div class="donut-legend">
+                                
+            <div class="legend-item">
+                <div class="legend-left">
+                    <span class="legend-dot" style="background:#06b6d4"></span>
+                    <span class="legend-name">MATT (3勝)</span>
+                </div>
+                <div class="legend-right">
+                    <b>19%</b>
+                    <small class="pos-txt">(+$275)</small>
+                </div>
+            </div>
+            
+            <div class="legend-item">
+                <div class="legend-left">
+                    <span class="legend-dot" style="background:#8b5cf6"></span>
+                    <span class="legend-name">ERIC (5勝)</span>
+                </div>
+                <div class="legend-right">
+                    <b>31%</b>
+                    <small class="pos-txt">(+$205)</small>
+                </div>
+            </div>
+            
+            <div class="legend-item">
+                <div class="legend-left">
+                    <span class="legend-dot" style="background:#f59e0b"></span>
+                    <span class="legend-name">CHRIS (3勝)</span>
+                </div>
+                <div class="legend-right">
+                    <b>19%</b>
+                    <small class="pos-txt">(+$40)</small>
+                </div>
+            </div>
+            
+            <div class="legend-item">
+                <div class="legend-left">
+                    <span class="legend-dot" style="background:#2563eb"></span>
+                    <span class="legend-name">DUNCAN (3勝)</span>
+                </div>
+                <div class="legend-right">
+                    <b>19%</b>
+                    <small class="pos-txt">(+$25)</small>
+                </div>
+            </div>
+            
+            <div class="legend-item">
+                <div class="legend-left">
+                    <span class="legend-dot" style="background:#10b981"></span>
+                    <span class="legend-name">LEO (2勝)</span>
+                </div>
+                <div class="legend-right">
+                    <b>12%</b>
+                    <small class="neg-txt">($-25)</small>
+                </div>
+            </div>
+            
+            <div class="legend-item">
+                <div class="legend-left">
+                    <span class="legend-dot" style="background:#ec4899"></span>
+                    <span class="legend-name">FISHER (0勝)</span>
+                </div>
+                <div class="legend-right">
+                    <b>0%</b>
+                    <small class="neg-txt">($-520)</small>
+                </div>
+            </div>
+            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 第三排：直條圖 (左) + 玩家勝率進度條 (中) + 最佳表現球隊榜 (右) -->
+                <div class="charts-row-sub">
+                    <div class="card">
+                        <div class="card-head">
+                            <div>
+                                <div class="card-title">各玩家累計淨損益 (Net Profit)</div>
+                                <div class="card-subtitle">目前累計贏得或虧損之台幣金額</div>
+                            </div>
+                        </div>
+                        <div class="bar-box">
+                            <canvas id="profitBarChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-head">
+                            <div>
+                                <div class="card-title">各玩家勝率排行 (Win Rate by Player)</div>
+                                <div class="card-subtitle">依旗下 5 支球隊綜合勝率排序</div>
+                            </div>
+                        </div>
+                        <div class="device-list">
+                            
+            <div class="device-row">
+                <div class="device-icon" style="background:#8b5cf615;color:#8b5cf6">E</div>
+                <div class="device-body">
+                    <div class="device-top">
+                        <span class="device-name">ERIC <small>(5勝 1敗)</small></span>
+                        <span class="device-pct">83.3%</span>
+                    </div>
+                    <div class="device-track">
+                        <div class="device-fill" style="width:83.3%;background:#8b5cf6"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="device-row">
+                <div class="device-icon" style="background:#06b6d415;color:#06b6d4">M</div>
+                <div class="device-body">
+                    <div class="device-top">
+                        <span class="device-name">MATT <small>(3勝 2敗)</small></span>
+                        <span class="device-pct">60.0%</span>
+                    </div>
+                    <div class="device-track">
+                        <div class="device-fill" style="width:60.0%;background:#06b6d4"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="device-row">
+                <div class="device-icon" style="background:#f59e0b15;color:#f59e0b">C</div>
+                <div class="device-body">
+                    <div class="device-top">
+                        <span class="device-name">CHRIS <small>(3勝 2敗)</small></span>
+                        <span class="device-pct">60.0%</span>
+                    </div>
+                    <div class="device-track">
+                        <div class="device-fill" style="width:60.0%;background:#f59e0b"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="device-row">
+                <div class="device-icon" style="background:#2563eb15;color:#2563eb">D</div>
+                <div class="device-body">
+                    <div class="device-top">
+                        <span class="device-name">DUNCAN <small>(3勝 3敗)</small></span>
+                        <span class="device-pct">50.0%</span>
+                    </div>
+                    <div class="device-track">
+                        <div class="device-fill" style="width:50.0%;background:#2563eb"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="device-row">
+                <div class="device-icon" style="background:#10b98115;color:#10b981">L</div>
+                <div class="device-body">
+                    <div class="device-top">
+                        <span class="device-name">LEO <small>(2勝 3敗)</small></span>
+                        <span class="device-pct">40.0%</span>
+                    </div>
+                    <div class="device-track">
+                        <div class="device-fill" style="width:40.0%;background:#10b981"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="device-row">
+                <div class="device-icon" style="background:#ec489915;color:#ec4899">F</div>
+                <div class="device-body">
+                    <div class="device-top">
+                        <span class="device-name">FISHER <small>(0勝 5敗)</small></span>
+                        <span class="device-pct">0.0%</span>
+                    </div>
+                    <div class="device-track">
+                        <div class="device-fill" style="width:4.0%;background:#ec4899"></div>
+                    </div>
+                </div>
+            </div>
+            
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-head">
+                            <div>
+                                <div class="card-title">最佳表現球隊 (Top Performing Teams)</div>
+                                <div class="card-subtitle">為主人賺進最多獎金的前 6 名球隊</div>
+                            </div>
+                        </div>
+                        <table class="tp-table">
+                            <thead>
+                                <tr>
+                                    <th>球隊 (所屬玩家)</th>
+                                    <th>戰績</th>
+                                    <th style="text-align:right">貢獻獎金</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+            <tr>
+                <td>
+                    <div class="tp-team">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/por.png" alt="拓荒者" onerror="this.style.display='none'">
+                        <div>
+                            <div class="tp-name">拓荒者</div>
+                            <div class="tp-owner">MATT (M)</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="tp-wl">1勝 0敗</td>
+                <td class="tp-growth growth-pos">↑ +$205</td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <div class="tp-team">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/min.png" alt="灰狼" onerror="this.style.display='none'">
+                        <div>
+                            <div class="tp-name">灰狼</div>
+                            <div class="tp-owner">DUNCAN (D)</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="tp-wl">1勝 0敗</td>
+                <td class="tp-growth growth-pos">↑ +$125</td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <div class="tp-team">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/lac.png" alt="快艇" onerror="this.style.display='none'">
+                        <div>
+                            <div class="tp-name">快艇</div>
+                            <div class="tp-owner">ERIC (E)</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="tp-wl">1勝 0敗</td>
+                <td class="tp-growth growth-pos">↑ +$125</td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <div class="tp-team">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/mem.png" alt="灰熊" onerror="this.style.display='none'">
+                        <div>
+                            <div class="tp-name">灰熊</div>
+                            <div class="tp-owner">LEO (L)</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="tp-wl">1勝 0敗</td>
+                <td class="tp-growth growth-pos">↑ +$100</td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <div class="tp-team">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/hou.png" alt="火箭" onerror="this.style.display='none'">
+                        <div>
+                            <div class="tp-name">火箭</div>
+                            <div class="tp-owner">MATT (M)</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="tp-wl">1勝 0敗</td>
+                <td class="tp-growth growth-pos">↑ +$90</td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <div class="tp-team">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/okc.png" alt="雷霆" onerror="this.style.display='none'">
+                        <div>
+                            <div class="tp-name">雷霆</div>
+                            <div class="tp-owner">DUNCAN (D)</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="tp-wl">2勝 0敗</td>
+                <td class="tp-growth growth-pos">↑ +$60</td>
+            </tr>
+            
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 第四排：6 人完整排行榜與旗下 5 隊明細 -->
+                <div class="card" id="sec-standings">
+                    <div class="card-head">
+                        <div>
+                            <div class="card-title">🏆 賽季累計戰績 & 損益完整排行榜</div>
+                            <div class="card-subtitle">包含每位玩家之勝敗場數、勝率、淨勝分差、累計金額與旗下 5 支球隊戰績</div>
+                        </div>
+                    </div>
+                    <div class="table-scroll">
+                        <table class="full-table">
+                            <thead>
+                                <tr>
+                                    <th>名次</th>
+                                    <th>玩家</th>
+                                    <th>累計戰績</th>
+                                    <th>勝率</th>
+                                    <th>淨勝分差</th>
+                                    <th>累計總損益</th>
+                                    <th>旗下 5 支球隊表現（勝-敗 / 貢獻金額）</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+            <tr>
+                <td class="rk-col">🥇</td>
+                <td>
+                    <div class="p-info">
+                        <span class="p-avatar" style="background:#06b6d4">M</span>
+                        <div>
+                            <div class="p-title">MATT</div>
+                            <div class="p-sub">內戰 0 場</div>
+                        </div>
+                    </div>
+                </td>
+                <td><b>3</b> 勝 <b>2</b> 敗</td>
+                <td>
+                    <div class="mini-pct">
+                        <span>60.0%</span>
+                        <div class="mini-bar"><div style="width:60.0%;background:#06b6d4"></div></div>
+                    </div>
+                </td>
+                <td>+55 分</td>
+                <td class="money-col pos-txt">+NT$ 275</td>
+                <td><div class="pills-wrap"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/bos.png" alt="塞爾提克">塞爾提克 <b>0-1</b> <span class="neg-txt">($-40)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/cha.png" alt="黃蜂">黃蜂 <b>1-0</b> <span class="pos-txt">(+$35)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/por.png" alt="拓荒者">拓荒者 <b>1-0</b> <span class="pos-txt">(+$205)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/hou.png" alt="火箭">火箭 <b>1-0</b> <span class="pos-txt">(+$90)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/no.png" alt="鵜鶘">鵜鶘 <b>0-1</b> <span class="neg-txt">($-15)</span></span></div></td>
+            </tr>
+            
+            <tr>
+                <td class="rk-col">🥈</td>
+                <td>
+                    <div class="p-info">
+                        <span class="p-avatar" style="background:#8b5cf6">E</span>
+                        <div>
+                            <div class="p-title">ERIC</div>
+                            <div class="p-sub">內戰 1 場</div>
+                        </div>
+                    </div>
+                </td>
+                <td><b>5</b> 勝 <b>1</b> 敗</td>
+                <td>
+                    <div class="mini-pct">
+                        <span>83.3%</span>
+                        <div class="mini-bar"><div style="width:83.3%;background:#8b5cf6"></div></div>
+                    </div>
+                </td>
+                <td>+41 分</td>
+                <td class="money-col pos-txt">+NT$ 205</td>
+                <td><div class="pills-wrap"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/phi.png" alt="76人">76人 <b>2-0</b> <span class="pos-txt">(+$30)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/cle.png" alt="騎士">騎士 <b>0-1</b> <span class="muted-txt">($0)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/ind.png" alt="溜馬">溜馬 <b>1-0</b> <span class="pos-txt">(+$15)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/atl.png" alt="老鷹">老鷹 <b>1-0</b> <span class="pos-txt">(+$35)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/lac.png" alt="快艇">快艇 <b>1-0</b> <span class="pos-txt">(+$125)</span></span></div></td>
+            </tr>
+            
+            <tr>
+                <td class="rk-col">🥉</td>
+                <td>
+                    <div class="p-info">
+                        <span class="p-avatar" style="background:#f59e0b">C</span>
+                        <div>
+                            <div class="p-title">CHRIS</div>
+                            <div class="p-sub">內戰 1 場</div>
+                        </div>
+                    </div>
+                </td>
+                <td><b>3</b> 勝 <b>2</b> 敗</td>
+                <td>
+                    <div class="mini-pct">
+                        <span>60.0%</span>
+                        <div class="mini-bar"><div style="width:60.0%;background:#f59e0b"></div></div>
+                    </div>
+                </td>
+                <td>+8 分</td>
+                <td class="money-col pos-txt">+NT$ 40</td>
+                <td><div class="pills-wrap"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/tor.png" alt="暴龍">暴龍 <b>1-0</b> <span class="muted-txt">($0)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/chi.png" alt="公牛">公牛 <b>0-1</b> <span class="muted-txt">($0)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/det.png" alt="活塞">活塞 <b>1-0</b> <span class="pos-txt">(+$40)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/wsh.png" alt="巫師">巫師 <b>1-0</b> <span class="pos-txt">(+$60)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/sa.png" alt="馬刺">馬刺 <b>0-1</b> <span class="neg-txt">($-60)</span></span></div></td>
+            </tr>
+            
+            <tr>
+                <td class="rk-col">#4</td>
+                <td>
+                    <div class="p-info">
+                        <span class="p-avatar" style="background:#2563eb">D</span>
+                        <div>
+                            <div class="p-title">DUNCAN</div>
+                            <div class="p-sub">內戰 1 場</div>
+                        </div>
+                    </div>
+                </td>
+                <td><b>3</b> 勝 <b>3</b> 敗</td>
+                <td>
+                    <div class="mini-pct">
+                        <span>50.0%</span>
+                        <div class="mini-bar"><div style="width:50.0%;background:#2563eb"></div></div>
+                    </div>
+                </td>
+                <td>+5 分</td>
+                <td class="money-col pos-txt">+NT$ 25</td>
+                <td><div class="pills-wrap"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/mil.png" alt="公鹿">公鹿 <b>0-1</b> <span class="neg-txt">($-60)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/den.png" alt="金塊">金塊 <b>0-1</b> <span class="muted-txt">($0)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/min.png" alt="灰狼">灰狼 <b>1-0</b> <span class="pos-txt">(+$125)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/okc.png" alt="雷霆">雷霆 <b>2-0</b> <span class="pos-txt">(+$60)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/utah.png" alt="爵士">爵士 <b>0-1</b> <span class="neg-txt">($-100)</span></span></div></td>
+            </tr>
+            
+            <tr>
+                <td class="rk-col">#5</td>
+                <td>
+                    <div class="p-info">
+                        <span class="p-avatar" style="background:#10b981">L</span>
+                        <div>
+                            <div class="p-title">LEO</div>
+                            <div class="p-sub">內戰 1 場</div>
+                        </div>
+                    </div>
+                </td>
+                <td><b>2</b> 勝 <b>3</b> 敗</td>
+                <td>
+                    <div class="mini-pct">
+                        <span>40.0%</span>
+                        <div class="mini-bar"><div style="width:40.0%;background:#10b981"></div></div>
+                    </div>
+                </td>
+                <td>-5 分</td>
+                <td class="money-col neg-txt">NT$ -25</td>
+                <td><div class="pills-wrap"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/bkn.png" alt="籃網">籃網 <b>0-1</b> <span class="neg-txt">($-35)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/gs.png" alt="勇士">勇士 <b>0-1</b> <span class="muted-txt">($0)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/lal.png" alt="湖人">湖人 <b>1-0</b> <span class="muted-txt">($0)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/dal.png" alt="獨行俠">獨行俠 <b>0-1</b> <span class="neg-txt">($-90)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/mem.png" alt="灰熊">灰熊 <b>1-0</b> <span class="pos-txt">(+$100)</span></span></div></td>
+            </tr>
+            
+            <tr>
+                <td class="rk-col">#6</td>
+                <td>
+                    <div class="p-info">
+                        <span class="p-avatar" style="background:#ec4899">F</span>
+                        <div>
+                            <div class="p-title">FISHER</div>
+                            <div class="p-sub">內戰 0 場</div>
+                        </div>
+                    </div>
+                </td>
+                <td><b>0</b> 勝 <b>5</b> 敗</td>
+                <td>
+                    <div class="mini-pct">
+                        <span>0.0%</span>
+                        <div class="mini-bar"><div style="width:0.0%;background:#ec4899"></div></div>
+                    </div>
+                </td>
+                <td>-104 分</td>
+                <td class="money-col neg-txt">NT$ -520</td>
+                <td><div class="pills-wrap"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/ny.png" alt="尼克">尼克 <b>0-1</b> <span class="neg-txt">($-30)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/mia.png" alt="熱火">熱火 <b>0-1</b> <span class="neg-txt">($-125)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/orl.png" alt="魔術">魔術 <b>0-1</b> <span class="neg-txt">($-35)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/phx.png" alt="太陽">太陽 <b>0-1</b> <span class="neg-txt">($-205)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/sac.png" alt="國王">國王 <b>0-1</b> <span class="neg-txt">($-125)</span></span></div></td>
+            </tr>
+            
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 第五排：每日對戰比分明細 -->
+                <div class="card" id="sec-matchups">
+                    <div class="card-head">
+                        <div>
+                            <div class="card-title">🔥 每日對戰比分與獎金明細</div>
+                            <div class="card-subtitle">點擊日期按鈕或使用右上角搜尋框可快速過濾比賽</div>
+                        </div>
+                    </div>
+                    <div class="tabs-bar">
+                        <button class="tab-btn active" onclick="filterGames('ALL', this)">全部日期 (16)</button><button class="tab-btn" onclick="filterGames('2026-10-23', this)">2026-10-23 (2場)</button><button class="tab-btn" onclick="filterGames('2026-10-22', this)">2026-10-22 (11場)</button><button class="tab-btn" onclick="filterGames('2026-10-21', this)">2026-10-21 (3場)</button>
+                    </div>
+                    <div class="matches-grid" id="matchesGrid">
+                        
+            <div class="match-card" data-date="2026-10-23" data-search="2026-10-23 金塊 nuggets duncan 雷霆 thunder duncan">
+                <div class="m-head">
+                    <span>📅 台灣 2026-10-23（美東 2026-10-22）</span>
+                    <span>分差 12 分 × $5</span>
+                </div>
+                <div class="m-body">
+                    <div class="m-team ">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/den.png" alt="金塊">
+                        <div class="m-meta">
+                            <div class="m-tname">金塊 <small>Nuggets</small></div>
+                            <span class="m-owner" style="background:#2563eb15;color:#2563eb">D · DUNCAN</span>
+                        </div>
+                        <div class="m-score">84</div>
+                    </div>
+                    <div class="m-vs">VS</div>
+                    <div class="m-team right win">
+                        <div class="m-score">96</div>
+                        <div class="m-meta right">
+                            <div class="m-tname"><small>Thunder</small> 雷霆</div>
+                            <span class="m-owner" style="background:#2563eb15;color:#2563eb">D · DUNCAN</span>
+                        </div>
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/okc.png" alt="雷霆">
+                    </div>
+                </div>
+                <div class="g-foot civil">🤝 <b>DUNCAN 內戰</b>（雷霆 贏 12 分）➔ 記 1勝1敗 / <b>NT$ 0</b></div>
+            </div>
+            
+            <div class="match-card" data-date="2026-10-23" data-search="2026-10-23 騎士 cavaliers eric 76人 76ers eric">
+                <div class="m-head">
+                    <span>📅 台灣 2026-10-23（美東 2026-10-22）</span>
+                    <span>分差 8 分 × $5</span>
+                </div>
+                <div class="m-body">
+                    <div class="m-team ">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/cle.png" alt="騎士">
+                        <div class="m-meta">
+                            <div class="m-tname">騎士 <small>Cavaliers</small></div>
+                            <span class="m-owner" style="background:#8b5cf615;color:#8b5cf6">E · ERIC</span>
+                        </div>
+                        <div class="m-score">106</div>
+                    </div>
+                    <div class="m-vs">VS</div>
+                    <div class="m-team right win">
+                        <div class="m-score">114</div>
+                        <div class="m-meta right">
+                            <div class="m-tname"><small>76ers</small> 76人</div>
+                            <span class="m-owner" style="background:#8b5cf615;color:#8b5cf6">E · ERIC</span>
+                        </div>
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/phi.png" alt="76人">
+                    </div>
+                </div>
+                <div class="g-foot civil">🤝 <b>ERIC 內戰</b>（76人 贏 8 分）➔ 記 1勝1敗 / <b>NT$ 0</b></div>
+            </div>
+            
+            <div class="match-card" data-date="2026-10-22" data-search="2026-10-22 國王 kings fisher 快艇 clippers eric">
+                <div class="m-head">
+                    <span>📅 台灣 2026-10-22（美東 2026-10-21）</span>
+                    <span>分差 25 分 × $5</span>
+                </div>
+                <div class="m-body">
+                    <div class="m-team ">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/sac.png" alt="國王">
+                        <div class="m-meta">
+                            <div class="m-tname">國王 <small>Kings</small></div>
+                            <span class="m-owner" style="background:#ec489915;color:#ec4899">F · FISHER</span>
+                        </div>
+                        <div class="m-score">96</div>
+                    </div>
+                    <div class="m-vs">VS</div>
+                    <div class="m-team right win">
+                        <div class="m-score">121</div>
+                        <div class="m-meta right">
+                            <div class="m-tname"><small>Clippers</small> 快艇</div>
+                            <span class="m-owner" style="background:#8b5cf615;color:#8b5cf6">E · ERIC</span>
+                        </div>
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/lac.png" alt="快艇">
+                    </div>
+                </div>
+                <div class="g-foot"><span>🏆 <b>ERIC</b> (快艇) 贏 <b>25</b> 分</span><div class="g-badges"><span class="badge-pos">ERIC +$125</span><span class="badge-neg">FISHER -$125</span></div></div>
+            </div>
+            
+            <div class="match-card" data-date="2026-10-22" data-search="2026-10-22 太陽 suns fisher 拓荒者 trail blazers matt">
+                <div class="m-head">
+                    <span>📅 台灣 2026-10-22（美東 2026-10-21）</span>
+                    <span>分差 41 分 × $5</span>
+                </div>
+                <div class="m-body">
+                    <div class="m-team ">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/phx.png" alt="太陽">
+                        <div class="m-meta">
+                            <div class="m-tname">太陽 <small>Suns</small></div>
+                            <span class="m-owner" style="background:#ec489915;color:#ec4899">F · FISHER</span>
+                        </div>
+                        <div class="m-score">83</div>
+                    </div>
+                    <div class="m-vs">VS</div>
+                    <div class="m-team right win">
+                        <div class="m-score">124</div>
+                        <div class="m-meta right">
+                            <div class="m-tname"><small>Trail Blazers</small> 拓荒者</div>
+                            <span class="m-owner" style="background:#06b6d415;color:#06b6d4">M · MATT</span>
+                        </div>
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/por.png" alt="拓荒者">
+                    </div>
+                </div>
+                <div class="g-foot"><span>🏆 <b>MATT</b> (拓荒者) 贏 <b>41</b> 分</span><div class="g-badges"><span class="badge-pos">MATT +$205</span><span class="badge-neg">FISHER -$205</span></div></div>
+            </div>
+            
+            <div class="match-card" data-date="2026-10-22" data-search="2026-10-22 獨行俠 mavericks leo 火箭 rockets matt">
+                <div class="m-head">
+                    <span>📅 台灣 2026-10-22（美東 2026-10-21）</span>
+                    <span>分差 18 分 × $5</span>
+                </div>
+                <div class="m-body">
+                    <div class="m-team ">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/dal.png" alt="獨行俠">
+                        <div class="m-meta">
+                            <div class="m-tname">獨行俠 <small>Mavericks</small></div>
+                            <span class="m-owner" style="background:#10b98115;color:#10b981">L · LEO</span>
+                        </div>
+                        <div class="m-score">110</div>
+                    </div>
+                    <div class="m-vs">VS</div>
+                    <div class="m-team right win">
+                        <div class="m-score">128</div>
+                        <div class="m-meta right">
+                            <div class="m-tname"><small>Rockets</small> 火箭</div>
+                            <span class="m-owner" style="background:#06b6d415;color:#06b6d4">M · MATT</span>
+                        </div>
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/hou.png" alt="火箭">
+                    </div>
+                </div>
+                <div class="g-foot"><span>🏆 <b>MATT</b> (火箭) 贏 <b>18</b> 分</span><div class="g-badges"><span class="badge-pos">MATT +$90</span><span class="badge-neg">LEO -$90</span></div></div>
+            </div>
+            
+            <div class="match-card" data-date="2026-10-22" data-search="2026-10-22 溜馬 pacers eric 鵜鶘 pelicans matt">
+                <div class="m-head">
+                    <span>📅 台灣 2026-10-22（美東 2026-10-21）</span>
+                    <span>分差 3 分 × $5</span>
+                </div>
+                <div class="m-body">
+                    <div class="m-team win">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/ind.png" alt="溜馬">
+                        <div class="m-meta">
+                            <div class="m-tname">溜馬 <small>Pacers</small></div>
+                            <span class="m-owner" style="background:#8b5cf615;color:#8b5cf6">E · ERIC</span>
+                        </div>
+                        <div class="m-score">123</div>
+                    </div>
+                    <div class="m-vs">VS</div>
+                    <div class="m-team right ">
+                        <div class="m-score">120</div>
+                        <div class="m-meta right">
+                            <div class="m-tname"><small>Pelicans</small> 鵜鶘</div>
+                            <span class="m-owner" style="background:#06b6d415;color:#06b6d4">M · MATT</span>
+                        </div>
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/no.png" alt="鵜鶘">
+                    </div>
+                </div>
+                <div class="g-foot"><span>🏆 <b>ERIC</b> (溜馬) 贏 <b>3</b> 分</span><div class="g-badges"><span class="badge-pos">ERIC +$15</span><span class="badge-neg">MATT -$15</span></div></div>
+            </div>
+            
+            <div class="match-card" data-date="2026-10-22" data-search="2026-10-22 爵士 jazz duncan 灰熊 grizzlies leo">
+                <div class="m-head">
+                    <span>📅 台灣 2026-10-22（美東 2026-10-21）</span>
+                    <span>分差 20 分 × $5</span>
+                </div>
+                <div class="m-body">
+                    <div class="m-team ">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/utah.png" alt="爵士">
+                        <div class="m-meta">
+                            <div class="m-tname">爵士 <small>Jazz</small></div>
+                            <span class="m-owner" style="background:#2563eb15;color:#2563eb">D · DUNCAN</span>
+                        </div>
+                        <div class="m-score">103</div>
+                    </div>
+                    <div class="m-vs">VS</div>
+                    <div class="m-team right win">
+                        <div class="m-score">123</div>
+                        <div class="m-meta right">
+                            <div class="m-tname"><small>Grizzlies</small> 灰熊</div>
+                            <span class="m-owner" style="background:#10b98115;color:#10b981">L · LEO</span>
+                        </div>
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/mem.png" alt="灰熊">
+                    </div>
+                </div>
+                <div class="g-foot"><span>🏆 <b>LEO</b> (灰熊) 贏 <b>20</b> 分</span><div class="g-badges"><span class="badge-pos">LEO +$100</span><span class="badge-neg">DUNCAN -$100</span></div></div>
+            </div>
+            
+            <div class="match-card" data-date="2026-10-22" data-search="2026-10-22 公牛 bulls chris 暴龍 raptors chris">
+                <div class="m-head">
+                    <span>📅 台灣 2026-10-22（美東 2026-10-21）</span>
+                    <span>分差 43 分 × $5</span>
+                </div>
+                <div class="m-body">
+                    <div class="m-team ">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/chi.png" alt="公牛">
+                        <div class="m-meta">
+                            <div class="m-tname">公牛 <small>Bulls</small></div>
+                            <span class="m-owner" style="background:#f59e0b15;color:#f59e0b">C · CHRIS</span>
+                        </div>
+                        <div class="m-score">92</div>
+                    </div>
+                    <div class="m-vs">VS</div>
+                    <div class="m-team right win">
+                        <div class="m-score">135</div>
+                        <div class="m-meta right">
+                            <div class="m-tname"><small>Raptors</small> 暴龍</div>
+                            <span class="m-owner" style="background:#f59e0b15;color:#f59e0b">C · CHRIS</span>
+                        </div>
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/tor.png" alt="暴龍">
+                    </div>
+                </div>
+                <div class="g-foot civil">🤝 <b>CHRIS 內戰</b>（暴龍 贏 43 分）➔ 記 1勝1敗 / <b>NT$ 0</b></div>
+            </div>
+            
+            <div class="match-card" data-date="2026-10-22" data-search="2026-10-22 黃蜂 hornets matt 籃網 nets leo">
+                <div class="m-head">
+                    <span>📅 台灣 2026-10-22（美東 2026-10-21）</span>
+                    <span>分差 7 分 × $5</span>
+                </div>
+                <div class="m-body">
+                    <div class="m-team win">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/cha.png" alt="黃蜂">
+                        <div class="m-meta">
+                            <div class="m-tname">黃蜂 <small>Hornets</small></div>
+                            <span class="m-owner" style="background:#06b6d415;color:#06b6d4">M · MATT</span>
+                        </div>
+                        <div class="m-score">110</div>
+                    </div>
+                    <div class="m-vs">VS</div>
+                    <div class="m-team right ">
+                        <div class="m-score">103</div>
+                        <div class="m-meta right">
+                            <div class="m-tname"><small>Nets</small> 籃網</div>
+                            <span class="m-owner" style="background:#10b98115;color:#10b981">L · LEO</span>
+                        </div>
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/bkn.png" alt="籃網">
+                    </div>
+                </div>
+                <div class="g-foot"><span>🏆 <b>MATT</b> (黃蜂) 贏 <b>7</b> 分</span><div class="g-badges"><span class="badge-pos">MATT +$35</span><span class="badge-neg">LEO -$35</span></div></div>
+            </div>
+            
+            <div class="match-card" data-date="2026-10-22" data-search="2026-10-22 公鹿 bucks duncan 巫師 wizards chris">
+                <div class="m-head">
+                    <span>📅 台灣 2026-10-22（美東 2026-10-21）</span>
+                    <span>分差 12 分 × $5</span>
+                </div>
+                <div class="m-body">
+                    <div class="m-team ">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/mil.png" alt="公鹿">
+                        <div class="m-meta">
+                            <div class="m-tname">公鹿 <small>Bucks</small></div>
+                            <span class="m-owner" style="background:#2563eb15;color:#2563eb">D · DUNCAN</span>
+                        </div>
+                        <div class="m-score">116</div>
+                    </div>
+                    <div class="m-vs">VS</div>
+                    <div class="m-team right win">
+                        <div class="m-score">128</div>
+                        <div class="m-meta right">
+                            <div class="m-tname"><small>Wizards</small> 巫師</div>
+                            <span class="m-owner" style="background:#f59e0b15;color:#f59e0b">C · CHRIS</span>
+                        </div>
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/wsh.png" alt="巫師">
+                    </div>
+                </div>
+                <div class="g-foot"><span>🏆 <b>CHRIS</b> (巫師) 贏 <b>12</b> 分</span><div class="g-badges"><span class="badge-pos">CHRIS +$60</span><span class="badge-neg">DUNCAN -$60</span></div></div>
+            </div>
+            
+            <div class="match-card" data-date="2026-10-22" data-search="2026-10-22 老鷹 hawks eric 魔術 magic fisher">
+                <div class="m-head">
+                    <span>📅 台灣 2026-10-22（美東 2026-10-21）</span>
+                    <span>分差 7 分 × $5</span>
+                </div>
+                <div class="m-body">
+                    <div class="m-team win">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/atl.png" alt="老鷹">
+                        <div class="m-meta">
+                            <div class="m-tname">老鷹 <small>Hawks</small></div>
+                            <span class="m-owner" style="background:#8b5cf615;color:#8b5cf6">E · ERIC</span>
+                        </div>
+                        <div class="m-score">132</div>
+                    </div>
+                    <div class="m-vs">VS</div>
+                    <div class="m-team right ">
+                        <div class="m-score">125</div>
+                        <div class="m-meta right">
+                            <div class="m-tname"><small>Magic</small> 魔術</div>
+                            <span class="m-owner" style="background:#ec489915;color:#ec4899">F · FISHER</span>
+                        </div>
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/orl.png" alt="魔術">
+                    </div>
+                </div>
+                <div class="g-foot"><span>🏆 <b>ERIC</b> (老鷹) 贏 <b>7</b> 分</span><div class="g-badges"><span class="badge-pos">ERIC +$35</span><span class="badge-neg">FISHER -$35</span></div></div>
+            </div>
+            
+            <div class="match-card" data-date="2026-10-22" data-search="2026-10-22 勇士 warriors leo 湖人 lakers leo">
+                <div class="m-head">
+                    <span>📅 台灣 2026-10-22（美東 2026-10-21）</span>
+                    <span>分差 22 分 × $5</span>
+                </div>
+                <div class="m-body">
+                    <div class="m-team ">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/gs.png" alt="勇士">
+                        <div class="m-meta">
+                            <div class="m-tname">勇士 <small>Warriors</small></div>
+                            <span class="m-owner" style="background:#10b98115;color:#10b981">L · LEO</span>
+                        </div>
+                        <div class="m-score">105</div>
+                    </div>
+                    <div class="m-vs">VS</div>
+                    <div class="m-team right win">
+                        <div class="m-score">127</div>
+                        <div class="m-meta right">
+                            <div class="m-tname"><small>Lakers</small> 湖人</div>
+                            <span class="m-owner" style="background:#10b98115;color:#10b981">L · LEO</span>
+                        </div>
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/lal.png" alt="湖人">
+                    </div>
+                </div>
+                <div class="g-foot civil">🤝 <b>LEO 內戰</b>（湖人 贏 22 分）➔ 記 1勝1敗 / <b>NT$ 0</b></div>
+            </div>
+            
+            <div class="match-card" data-date="2026-10-22" data-search="2026-10-22 灰狼 timberwolves duncan 熱火 heat fisher">
+                <div class="m-head">
+                    <span>📅 台灣 2026-10-22（美東 2026-10-21）</span>
+                    <span>分差 25 分 × $5</span>
+                </div>
+                <div class="m-body">
+                    <div class="m-team win">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/min.png" alt="灰狼">
+                        <div class="m-meta">
+                            <div class="m-tname">灰狼 <small>Timberwolves</small></div>
+                            <span class="m-owner" style="background:#2563eb15;color:#2563eb">D · DUNCAN</span>
+                        </div>
+                        <div class="m-score">131</div>
+                    </div>
+                    <div class="m-vs">VS</div>
+                    <div class="m-team right ">
+                        <div class="m-score">106</div>
+                        <div class="m-meta right">
+                            <div class="m-tname"><small>Heat</small> 熱火</div>
+                            <span class="m-owner" style="background:#ec489915;color:#ec4899">F · FISHER</span>
+                        </div>
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/mia.png" alt="熱火">
+                    </div>
+                </div>
+                <div class="g-foot"><span>🏆 <b>DUNCAN</b> (灰狼) 贏 <b>25</b> 分</span><div class="g-badges"><span class="badge-pos">DUNCAN +$125</span><span class="badge-neg">FISHER -$125</span></div></div>
+            </div>
+            
+            <div class="match-card" data-date="2026-10-21" data-search="2026-10-21 雷霆 thunder duncan 馬刺 spurs chris">
+                <div class="m-head">
+                    <span>📅 台灣 2026-10-21（美東 2026-10-20）</span>
+                    <span>分差 12 分 × $5</span>
+                </div>
+                <div class="m-body">
+                    <div class="m-team win">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/okc.png" alt="雷霆">
+                        <div class="m-meta">
+                            <div class="m-tname">雷霆 <small>Thunder</small></div>
+                            <span class="m-owner" style="background:#2563eb15;color:#2563eb">D · DUNCAN</span>
+                        </div>
+                        <div class="m-score">116</div>
+                    </div>
+                    <div class="m-vs">VS</div>
+                    <div class="m-team right ">
+                        <div class="m-score">104</div>
+                        <div class="m-meta right">
+                            <div class="m-tname"><small>Spurs</small> 馬刺</div>
+                            <span class="m-owner" style="background:#f59e0b15;color:#f59e0b">C · CHRIS</span>
+                        </div>
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/sa.png" alt="馬刺">
+                    </div>
+                </div>
+                <div class="g-foot"><span>🏆 <b>DUNCAN</b> (雷霆) 贏 <b>12</b> 分</span><div class="g-badges"><span class="badge-pos">DUNCAN +$60</span><span class="badge-neg">CHRIS -$60</span></div></div>
+            </div>
+            
+            <div class="match-card" data-date="2026-10-21" data-search="2026-10-21 76人 76ers eric 尼克 knicks fisher">
+                <div class="m-head">
+                    <span>📅 台灣 2026-10-21（美東 2026-10-20）</span>
+                    <span>分差 6 分 × $5</span>
+                </div>
+                <div class="m-body">
+                    <div class="m-team win">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/phi.png" alt="76人">
+                        <div class="m-meta">
+                            <div class="m-tname">76人 <small>76ers</small></div>
+                            <span class="m-owner" style="background:#8b5cf615;color:#8b5cf6">E · ERIC</span>
+                        </div>
+                        <div class="m-score">106</div>
+                    </div>
+                    <div class="m-vs">VS</div>
+                    <div class="m-team right ">
+                        <div class="m-score">100</div>
+                        <div class="m-meta right">
+                            <div class="m-tname"><small>Knicks</small> 尼克</div>
+                            <span class="m-owner" style="background:#ec489915;color:#ec4899">F · FISHER</span>
+                        </div>
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/ny.png" alt="尼克">
+                    </div>
+                </div>
+                <div class="g-foot"><span>🏆 <b>ERIC</b> (76人) 贏 <b>6</b> 分</span><div class="g-badges"><span class="badge-pos">ERIC +$30</span><span class="badge-neg">FISHER -$30</span></div></div>
+            </div>
+            
+            <div class="match-card" data-date="2026-10-21" data-search="2026-10-21 塞爾提克 celtics matt 活塞 pistons chris">
+                <div class="m-head">
+                    <span>📅 台灣 2026-10-21（美東 2026-10-20）</span>
+                    <span>分差 8 分 × $5</span>
+                </div>
+                <div class="m-body">
+                    <div class="m-team ">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/bos.png" alt="塞爾提克">
+                        <div class="m-meta">
+                            <div class="m-tname">塞爾提克 <small>Celtics</small></div>
+                            <span class="m-owner" style="background:#06b6d415;color:#06b6d4">M · MATT</span>
+                        </div>
+                        <div class="m-score">113</div>
+                    </div>
+                    <div class="m-vs">VS</div>
+                    <div class="m-team right win">
+                        <div class="m-score">121</div>
+                        <div class="m-meta right">
+                            <div class="m-tname"><small>Pistons</small> 活塞</div>
+                            <span class="m-owner" style="background:#f59e0b15;color:#f59e0b">C · CHRIS</span>
+                        </div>
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/det.png" alt="活塞">
+                    </div>
+                </div>
+                <div class="g-foot"><span>🏆 <b>CHRIS</b> (活塞) 贏 <b>8</b> 分</span><div class="g-badges"><span class="badge-pos">CHRIS +$40</span><span class="badge-neg">MATT -$40</span></div></div>
+            </div>
+            
+                    </div>
+                </div>
+
+                <!-- 第六排：6x6 對戰損益矩陣 -->
+                <div class="card" id="sec-matrix">
+                    <div class="card-head">
+                        <div>
+                            <div class="card-title">🤝 玩家 6x6 對戰損益矩陣</div>
+                            <div class="card-subtitle">左列玩家 對戰 上方玩家 的累計淨輸贏金額與勝敗場數</div>
+                        </div>
+                    </div>
+                    <div class="table-scroll">
+                        <table class="full-table mx-table">
+                            <thead>
+                                <tr>
+                                    <th>玩家 \ 對手</th>
+                                    <th><span class="p-avatar xs" style="background:#06b6d4">M</span> MATT</th><th><span class="p-avatar xs" style="background:#8b5cf6">E</span> ERIC</th><th><span class="p-avatar xs" style="background:#f59e0b">C</span> CHRIS</th><th><span class="p-avatar xs" style="background:#2563eb">D</span> DUNCAN</th><th><span class="p-avatar xs" style="background:#10b981">L</span> LEO</th><th><span class="p-avatar xs" style="background:#ec4899">F</span> FISHER</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td class="mx-head"><span class="p-avatar xs" style="background:#06b6d4">M</span> <b>MATT</b></td><td class="mx-self">—</td><td class="mx-neg"><div class="mx-v">$-15</div><div class="mx-s">0勝 1敗</div></td><td class="mx-neg"><div class="mx-v">$-40</div><div class="mx-s">0勝 1敗</div></td><td class="mx-zero"><div class="mx-v">$0</div><div class="mx-s">0勝 0敗</div></td><td class="mx-pos"><div class="mx-v">+$125</div><div class="mx-s">2勝 0敗</div></td><td class="mx-pos"><div class="mx-v">+$205</div><div class="mx-s">1勝 0敗</div></td></tr><tr><td class="mx-head"><span class="p-avatar xs" style="background:#8b5cf6">E</span> <b>ERIC</b></td><td class="mx-pos"><div class="mx-v">+$15</div><div class="mx-s">1勝 0敗</div></td><td class="mx-self">—</td><td class="mx-zero"><div class="mx-v">$0</div><div class="mx-s">0勝 0敗</div></td><td class="mx-zero"><div class="mx-v">$0</div><div class="mx-s">0勝 0敗</div></td><td class="mx-zero"><div class="mx-v">$0</div><div class="mx-s">0勝 0敗</div></td><td class="mx-pos"><div class="mx-v">+$190</div><div class="mx-s">3勝 0敗</div></td></tr><tr><td class="mx-head"><span class="p-avatar xs" style="background:#f59e0b">C</span> <b>CHRIS</b></td><td class="mx-pos"><div class="mx-v">+$40</div><div class="mx-s">1勝 0敗</div></td><td class="mx-zero"><div class="mx-v">$0</div><div class="mx-s">0勝 0敗</div></td><td class="mx-self">—</td><td class="mx-zero"><div class="mx-v">$0</div><div class="mx-s">1勝 1敗</div></td><td class="mx-zero"><div class="mx-v">$0</div><div class="mx-s">0勝 0敗</div></td><td class="mx-zero"><div class="mx-v">$0</div><div class="mx-s">0勝 0敗</div></td></tr><tr><td class="mx-head"><span class="p-avatar xs" style="background:#2563eb">D</span> <b>DUNCAN</b></td><td class="mx-zero"><div class="mx-v">$0</div><div class="mx-s">0勝 0敗</div></td><td class="mx-zero"><div class="mx-v">$0</div><div class="mx-s">0勝 0敗</div></td><td class="mx-zero"><div class="mx-v">$0</div><div class="mx-s">1勝 1敗</div></td><td class="mx-self">—</td><td class="mx-neg"><div class="mx-v">$-100</div><div class="mx-s">0勝 1敗</div></td><td class="mx-pos"><div class="mx-v">+$125</div><div class="mx-s">1勝 0敗</div></td></tr><tr><td class="mx-head"><span class="p-avatar xs" style="background:#10b981">L</span> <b>LEO</b></td><td class="mx-neg"><div class="mx-v">$-125</div><div class="mx-s">0勝 2敗</div></td><td class="mx-zero"><div class="mx-v">$0</div><div class="mx-s">0勝 0敗</div></td><td class="mx-zero"><div class="mx-v">$0</div><div class="mx-s">0勝 0敗</div></td><td class="mx-pos"><div class="mx-v">+$100</div><div class="mx-s">1勝 0敗</div></td><td class="mx-self">—</td><td class="mx-zero"><div class="mx-v">$0</div><div class="mx-s">0勝 0敗</div></td></tr><tr><td class="mx-head"><span class="p-avatar xs" style="background:#ec4899">F</span> <b>FISHER</b></td><td class="mx-neg"><div class="mx-v">$-205</div><div class="mx-s">0勝 1敗</div></td><td class="mx-neg"><div class="mx-v">$-190</div><div class="mx-s">0勝 3敗</div></td><td class="mx-zero"><div class="mx-v">$0</div><div class="mx-s">0勝 0敗</div></td><td class="mx-neg"><div class="mx-v">$-125</div><div class="mx-s">0勝 1敗</div></td><td class="mx-zero"><div class="mx-v">$0</div><div class="mx-s">0勝 0敗</div></td><td class="mx-self">—</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 第七排：6 人分隊 & 30 支球隊卡片 -->
+                <div class="card" id="sec-teams">
+                    <div class="card-head">
+                        <div>
+                            <div class="card-title">📋 6 人分隊 & 30 支球隊完整卡片</div>
+                            <div class="card-subtitle">一人 5 支球隊之東西區分佈、戰績與獎金貢獻</div>
+                        </div>
+                    </div>
+                    <div class="roster-grid">
+                        
+            <div class="r-card">
+                <div class="r-head">
+                    <div class="p-info">
+                        <span class="p-avatar" style="background:#06b6d4">M</span>
+                        <div>
+                            <div class="p-title">MATT</div>
+                            <div class="p-sub">3勝 2敗 (60.0%)</div>
+                        </div>
+                    </div>
+                    <div class="r-total pos-txt">+NT$ 275</div>
+                </div>
+                <div class="r-list">
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/bos.png" alt="塞爾提克">
+                        <div>
+                            <div class="r-tname">塞爾提克 <small>Celtics</small></div>
+                            <span class="r-conf east">東區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">0勝 1敗</div>
+                        <div class="r-money neg-txt">NT$ -40</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/cha.png" alt="黃蜂">
+                        <div>
+                            <div class="r-tname">黃蜂 <small>Hornets</small></div>
+                            <span class="r-conf east">東區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">1勝 0敗</div>
+                        <div class="r-money pos-txt">+NT$ 35</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/por.png" alt="拓荒者">
+                        <div>
+                            <div class="r-tname">拓荒者 <small>Trail Blazers</small></div>
+                            <span class="r-conf west">西區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">1勝 0敗</div>
+                        <div class="r-money pos-txt">+NT$ 205</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/hou.png" alt="火箭">
+                        <div>
+                            <div class="r-tname">火箭 <small>Rockets</small></div>
+                            <span class="r-conf west">西區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">1勝 0敗</div>
+                        <div class="r-money pos-txt">+NT$ 90</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/no.png" alt="鵜鶘">
+                        <div>
+                            <div class="r-tname">鵜鶘 <small>Pelicans</small></div>
+                            <span class="r-conf west">西區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">0勝 1敗</div>
+                        <div class="r-money neg-txt">NT$ -15</div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            
+            <div class="r-card">
+                <div class="r-head">
+                    <div class="p-info">
+                        <span class="p-avatar" style="background:#8b5cf6">E</span>
+                        <div>
+                            <div class="p-title">ERIC</div>
+                            <div class="p-sub">5勝 1敗 (83.3%)</div>
+                        </div>
+                    </div>
+                    <div class="r-total pos-txt">+NT$ 205</div>
+                </div>
+                <div class="r-list">
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/phi.png" alt="76人">
+                        <div>
+                            <div class="r-tname">76人 <small>76ers</small></div>
+                            <span class="r-conf east">東區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">2勝 0敗</div>
+                        <div class="r-money pos-txt">+NT$ 30</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/cle.png" alt="騎士">
+                        <div>
+                            <div class="r-tname">騎士 <small>Cavaliers</small></div>
+                            <span class="r-conf east">東區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">0勝 1敗</div>
+                        <div class="r-money muted-txt">+NT$ 0</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/ind.png" alt="溜馬">
+                        <div>
+                            <div class="r-tname">溜馬 <small>Pacers</small></div>
+                            <span class="r-conf east">東區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">1勝 0敗</div>
+                        <div class="r-money pos-txt">+NT$ 15</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/atl.png" alt="老鷹">
+                        <div>
+                            <div class="r-tname">老鷹 <small>Hawks</small></div>
+                            <span class="r-conf east">東區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">1勝 0敗</div>
+                        <div class="r-money pos-txt">+NT$ 35</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/lac.png" alt="快艇">
+                        <div>
+                            <div class="r-tname">快艇 <small>Clippers</small></div>
+                            <span class="r-conf west">西區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">1勝 0敗</div>
+                        <div class="r-money pos-txt">+NT$ 125</div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            
+            <div class="r-card">
+                <div class="r-head">
+                    <div class="p-info">
+                        <span class="p-avatar" style="background:#f59e0b">C</span>
+                        <div>
+                            <div class="p-title">CHRIS</div>
+                            <div class="p-sub">3勝 2敗 (60.0%)</div>
+                        </div>
+                    </div>
+                    <div class="r-total pos-txt">+NT$ 40</div>
+                </div>
+                <div class="r-list">
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/tor.png" alt="暴龍">
+                        <div>
+                            <div class="r-tname">暴龍 <small>Raptors</small></div>
+                            <span class="r-conf east">東區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">1勝 0敗</div>
+                        <div class="r-money muted-txt">+NT$ 0</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/chi.png" alt="公牛">
+                        <div>
+                            <div class="r-tname">公牛 <small>Bulls</small></div>
+                            <span class="r-conf east">東區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">0勝 1敗</div>
+                        <div class="r-money muted-txt">+NT$ 0</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/det.png" alt="活塞">
+                        <div>
+                            <div class="r-tname">活塞 <small>Pistons</small></div>
+                            <span class="r-conf east">東區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">1勝 0敗</div>
+                        <div class="r-money pos-txt">+NT$ 40</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/wsh.png" alt="巫師">
+                        <div>
+                            <div class="r-tname">巫師 <small>Wizards</small></div>
+                            <span class="r-conf east">東區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">1勝 0敗</div>
+                        <div class="r-money pos-txt">+NT$ 60</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/sa.png" alt="馬刺">
+                        <div>
+                            <div class="r-tname">馬刺 <small>Spurs</small></div>
+                            <span class="r-conf west">西區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">0勝 1敗</div>
+                        <div class="r-money neg-txt">NT$ -60</div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            
+            <div class="r-card">
+                <div class="r-head">
+                    <div class="p-info">
+                        <span class="p-avatar" style="background:#2563eb">D</span>
+                        <div>
+                            <div class="p-title">DUNCAN</div>
+                            <div class="p-sub">3勝 3敗 (50.0%)</div>
+                        </div>
+                    </div>
+                    <div class="r-total pos-txt">+NT$ 25</div>
+                </div>
+                <div class="r-list">
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/mil.png" alt="公鹿">
+                        <div>
+                            <div class="r-tname">公鹿 <small>Bucks</small></div>
+                            <span class="r-conf east">東區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">0勝 1敗</div>
+                        <div class="r-money neg-txt">NT$ -60</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/den.png" alt="金塊">
+                        <div>
+                            <div class="r-tname">金塊 <small>Nuggets</small></div>
+                            <span class="r-conf west">西區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">0勝 1敗</div>
+                        <div class="r-money muted-txt">+NT$ 0</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/min.png" alt="灰狼">
+                        <div>
+                            <div class="r-tname">灰狼 <small>Timberwolves</small></div>
+                            <span class="r-conf west">西區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">1勝 0敗</div>
+                        <div class="r-money pos-txt">+NT$ 125</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/okc.png" alt="雷霆">
+                        <div>
+                            <div class="r-tname">雷霆 <small>Thunder</small></div>
+                            <span class="r-conf west">西區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">2勝 0敗</div>
+                        <div class="r-money pos-txt">+NT$ 60</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/utah.png" alt="爵士">
+                        <div>
+                            <div class="r-tname">爵士 <small>Jazz</small></div>
+                            <span class="r-conf west">西區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">0勝 1敗</div>
+                        <div class="r-money neg-txt">NT$ -100</div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            
+            <div class="r-card">
+                <div class="r-head">
+                    <div class="p-info">
+                        <span class="p-avatar" style="background:#10b981">L</span>
+                        <div>
+                            <div class="p-title">LEO</div>
+                            <div class="p-sub">2勝 3敗 (40.0%)</div>
+                        </div>
+                    </div>
+                    <div class="r-total neg-txt">NT$ -25</div>
+                </div>
+                <div class="r-list">
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/bkn.png" alt="籃網">
+                        <div>
+                            <div class="r-tname">籃網 <small>Nets</small></div>
+                            <span class="r-conf east">東區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">0勝 1敗</div>
+                        <div class="r-money neg-txt">NT$ -35</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/gs.png" alt="勇士">
+                        <div>
+                            <div class="r-tname">勇士 <small>Warriors</small></div>
+                            <span class="r-conf west">西區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">0勝 1敗</div>
+                        <div class="r-money muted-txt">+NT$ 0</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/lal.png" alt="湖人">
+                        <div>
+                            <div class="r-tname">湖人 <small>Lakers</small></div>
+                            <span class="r-conf west">西區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">1勝 0敗</div>
+                        <div class="r-money muted-txt">+NT$ 0</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/dal.png" alt="獨行俠">
+                        <div>
+                            <div class="r-tname">獨行俠 <small>Mavericks</small></div>
+                            <span class="r-conf west">西區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">0勝 1敗</div>
+                        <div class="r-money neg-txt">NT$ -90</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/mem.png" alt="灰熊">
+                        <div>
+                            <div class="r-tname">灰熊 <small>Grizzlies</small></div>
+                            <span class="r-conf west">西區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">1勝 0敗</div>
+                        <div class="r-money pos-txt">+NT$ 100</div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            
+            <div class="r-card">
+                <div class="r-head">
+                    <div class="p-info">
+                        <span class="p-avatar" style="background:#ec4899">F</span>
+                        <div>
+                            <div class="p-title">FISHER</div>
+                            <div class="p-sub">0勝 5敗 (0.0%)</div>
+                        </div>
+                    </div>
+                    <div class="r-total neg-txt">NT$ -520</div>
+                </div>
+                <div class="r-list">
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/ny.png" alt="尼克">
+                        <div>
+                            <div class="r-tname">尼克 <small>Knicks</small></div>
+                            <span class="r-conf east">東區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">0勝 1敗</div>
+                        <div class="r-money neg-txt">NT$ -30</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/mia.png" alt="熱火">
+                        <div>
+                            <div class="r-tname">熱火 <small>Heat</small></div>
+                            <span class="r-conf east">東區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">0勝 1敗</div>
+                        <div class="r-money neg-txt">NT$ -125</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/orl.png" alt="魔術">
+                        <div>
+                            <div class="r-tname">魔術 <small>Magic</small></div>
+                            <span class="r-conf east">東區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">0勝 1敗</div>
+                        <div class="r-money neg-txt">NT$ -35</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/phx.png" alt="太陽">
+                        <div>
+                            <div class="r-tname">太陽 <small>Suns</small></div>
+                            <span class="r-conf west">西區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">0勝 1敗</div>
+                        <div class="r-money neg-txt">NT$ -205</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/sac.png" alt="國王">
+                        <div>
+                            <div class="r-tname">國王 <small>Kings</small></div>
+                            <span class="r-conf west">西區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">0勝 1敗</div>
+                        <div class="r-money neg-txt">NT$ -125</div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        const chartDates = ["10-21", "10-22", "10-23"];
+        const allDatasets = [{"code": "M", "label": "MATT (M)", "data": [-40, 275, 275], "borderColor": "#06b6d4", "backgroundColor": "#06b6d420"}, {"code": "E", "label": "ERIC (E)", "data": [30, 205, 205], "borderColor": "#8b5cf6", "backgroundColor": "#8b5cf620"}, {"code": "C", "label": "CHRIS (C)", "data": [-20, 40, 40], "borderColor": "#f59e0b", "backgroundColor": "#f59e0b20"}, {"code": "D", "label": "DUNCAN (D)", "data": [60, 25, 25], "borderColor": "#2563eb", "backgroundColor": "#2563eb20"}, {"code": "L", "label": "LEO (L)", "data": [0, -25, -25], "borderColor": "#10b981", "backgroundColor": "#10b98120"}, {"code": "F", "label": "FISHER (F)", "data": [-30, -520, -520], "borderColor": "#ec4899", "backgroundColor": "#ec489920"}];
+        const barLabels = ["MATT", "ERIC", "CHRIS", "DUNCAN", "LEO", "FISHER"];
+        const barValues = [275, 205, 40, 25, -25, -520];
+        const barColors = ["#2563eb", "#2563eb", "#2563eb", "#2563eb", "#f43f5e", "#f43f5e"];
+        const donutLabels = ["MATT", "ERIC", "CHRIS", "DUNCAN", "LEO", "FISHER"];
+        const donutValues = [3, 5, 3, 3, 2, 0];
+        const donutColors = ["#06b6d4", "#8b5cf6", "#f59e0b", "#2563eb", "#10b981", "#ec4899"];
+
+        // 1. 折線走勢圖
+        const lineCtx = document.getElementById('trendLineChart').getContext('2d');
+        let lineChart = new Chart(lineCtx, {
+            type: 'line',
+            data: {
+                labels: chartDates,
+                datasets: allDatasets.map(d => ({
+                    label: d.label,
+                    data: d.data,
+                    borderColor: d.borderColor,
+                    backgroundColor: d.backgroundColor,
+                    borderWidth: 2.5,
+                    pointRadius: 4,
+                    pointHoverRadius: 6,
+                    tension: 0.3,
+                    fill: false
+                }))
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'top', labels: { boxWidth: 10, usePointStyle: true, font: { size: 11 } } },
+                    tooltip: {
+                        callbacks: {
+                            label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y >= 0 ? '+' : ''}NT$ ${ctx.parsed.y}`
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        grid: { color: '#f1f5f9' },
+                        ticks: { callback: v => (v >= 0 ? '+' : '') + '$' + v }
+                    },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+
+        function updateLineChart(code) {
+            if (code === 'ALL') {
+                lineChart.data.datasets = allDatasets.map(d => ({
+                    label: d.label,
+                    data: d.data,
+                    borderColor: d.borderColor,
+                    backgroundColor: d.backgroundColor,
+                    borderWidth: 2.5,
+                    pointRadius: 4,
+                    tension: 0.3,
+                    fill: false
+                }));
+            } else {
+                const target = allDatasets.find(d => d.code === code);
+                if (target) {
+                    const grad = lineCtx.createLinearGradient(0, 0, 0, 240);
+                    grad.addColorStop(0, target.borderColor + '44');
+                    grad.addColorStop(1, target.borderColor + '02');
+                    lineChart.data.datasets = [{
+                        label: target.label,
+                        data: target.data,
+                        borderColor: target.borderColor,
+                        backgroundColor: grad,
+                        borderWidth: 3,
+                        pointRadius: 5,
+                        pointBackgroundColor: '#fff',
+                        pointBorderWidth: 2.5,
+                        tension: 0.3,
+                        fill: true
+                    }];
+                }
+            }
+            lineChart.update();
+        }
+
+        // 2. 環狀圓餅圖 (Donut Chart)
+        new Chart(document.getElementById('winsDonutChart'), {
+            type: 'doughnut',
+            data: {
+                labels: donutLabels,
+                datasets: [{
+                    data: donutValues,
+                    backgroundColor: donutColors,
+                    borderWidth: 2,
+                    borderColor: '#ffffff',
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '68%',
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: ctx => `${ctx.label}: ${ctx.parsed} 勝`
+                        }
+                    }
+                }
+            }
+        });
+
+        // 3. 直條圖 (Bar Chart)
+        new Chart(document.getElementById('profitBarChart'), {
+            type: 'bar',
+            data: {
+                labels: barLabels,
+                datasets: [{
+                    label: '累計淨損益 (NT$)',
+                    data: barValues,
+                    backgroundColor: barColors,
+                    borderRadius: 6,
+                    maxBarThickness: 28
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: ctx => `${ctx.parsed.y >= 0 ? '+' : ''}NT$ ${ctx.parsed.y}`
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        grid: { color: '#f1f5f9' },
+                        ticks: { callback: v => (v >= 0 ? '+' : '') + '$' + v }
+                    },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+
+        // 日期與關鍵字篩選
+        let currentDateFilter = 'ALL';
+        function filterGames(dateStr, btn) {
+            currentDateFilter = dateStr;
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            applyMatchFilters();
+        }
+
+        function searchMatches(q) {
+            applyMatchFilters();
+        }
+
+        function applyMatchFilters() {
+            const q = (document.getElementById('searchInput').value || '').trim().toLowerCase();
+            document.querySelectorAll('.match-card').forEach(card => {
+                const dMatch = (currentDateFilter === 'ALL' || card.getAttribute('data-date') === currentDateFilter);
+                const sMatch = (!q || card.getAttribute('data-search').includes(q));
+                card.style.display = (dMatch && sMatch) ? 'flex' : 'none';
+            });
+        }
+
+        function scrollToSec(id, el) {
+            document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+            el.classList.add('active');
+            const target = document.getElementById(id);
+            if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    </script>
+</body>
+</html>
