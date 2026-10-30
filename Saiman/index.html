@@ -750,13 +750,13 @@
             <header class="topbar">
                 <div class="topbar-title">
                     <h1>Analytics · NBA 2026-27 分隊獎金與數據分析</h1>
-                    <p>統計期間：2026-10-21（開季）至 2026-10-29 ｜ 最後更新：2026-10-29 17:02:47</p>
+                    <p>統計期間：2026-10-21（開季）至 2026-10-30 ｜ 最後更新：2026-10-30 20:29:13</p>
                 </div>
                 <div class="topbar-actions">
                     <div class="search-box">
                         <input type="text" id="searchInput" placeholder="搜尋球隊、玩家或日期..." oninput="searchMatches(this.value)">
                     </div>
-                    <div class="date-pill">📅 截止日：2026-10-29</div>
+                    <div class="date-pill">📅 截止日：2026-10-30</div>
                 </div>
             </header>
 
@@ -767,8 +767,8 @@
                         <div class="kpi-icon blue">💲</div>
                         <div class="kpi-body">
                             <div class="kpi-label">目前賞金領先王 (Top Leader)</div>
-                            <div class="kpi-val">Fat (+$670)</div>
-                            <div class="kpi-trend">↑ 12勝 15敗 · 淨勝 +67 分</div>
+                            <div class="kpi-val">Sixers (+$490)</div>
+                            <div class="kpi-trend">↑ 18勝 11敗 · 淨勝 +49 分</div>
                         </div>
                         <div class="kpi-dots">⋮</div>
                     </div>
@@ -777,8 +777,8 @@
                         <div class="kpi-icon green">👥</div>
                         <div class="kpi-body">
                             <div class="kpi-label">總流通獎金池 (Total Prize Pool)</div>
-                            <div class="kpi-val">NT$ 6,710</div>
-                            <div class="kpi-trend">↑ 累計 68 場例行賽完賽</div>
+                            <div class="kpi-val">NT$ 7,070</div>
+                            <div class="kpi-trend">↑ 累計 71 場例行賽完賽</div>
                         </div>
                         <div class="kpi-dots">⋮</div>
                     </div>
@@ -787,8 +787,8 @@
                         <div class="kpi-icon purple">📈</div>
                         <div class="kpi-body">
                             <div class="kpi-label">最高勝率玩家 (Best Win Rate)</div>
-                            <div class="kpi-val">60.7%</div>
-                            <div class="kpi-trend">↑ Sixers (17勝 11敗)</div>
+                            <div class="kpi-val">62.1%</div>
+                            <div class="kpi-trend">↑ Sixers (18勝 11敗)</div>
                         </div>
                         <div class="kpi-dots">⋮</div>
                     </div>
@@ -813,7 +813,7 @@
                                 <div class="card-subtitle">追蹤開季至今每日各玩家累計台幣淨損益變化</div>
                             </div>
                             <select class="card-select" id="linePlayerSelect" onchange="updateLineChart(this.value)">
-                                <option value="ALL">全部玩家走勢比較</option><option value="F">Fat (F) 單獨走勢</option><option value="6">Sixers (6) 單獨走勢</option><option value="M">茂哥 (M) 單獨走勢</option><option value="Z">志旭 (Z) 單獨走勢</option><option value="S">Saiman (S) 單獨走勢</option>
+                                <option value="ALL">全部玩家走勢比較</option><option value="6">Sixers (6) 單獨走勢</option><option value="F">Fat (F) 單獨走勢</option><option value="Z">志旭 (Z) 單獨走勢</option><option value="M">茂哥 (M) 單獨走勢</option><option value="S">Saiman (S) 單獨走勢</option>
                             </select>
                         </div>
                         <div class="chart-box">
@@ -833,41 +833,30 @@
                                 <canvas id="winsDonutChart"></canvas>
                                 <div class="donut-center">
                                     <small>總完賽</small>
-                                    <b>68 場</b>
+                                    <b>71 場</b>
                                 </div>
                             </div>
                             <div class="donut-legend">
                                 
             <div class="legend-item">
                 <div class="legend-left">
-                    <span class="legend-dot" style="background:#10b981"></span>
-                    <span class="legend-name">Fat (12勝)</span>
-                </div>
-                <div class="legend-right">
-                    <b>18%</b>
-                    <small class="pos-txt">(+$670)</small>
-                </div>
-            </div>
-            
-            <div class="legend-item">
-                <div class="legend-left">
                     <span class="legend-dot" style="background:#ec4899"></span>
-                    <span class="legend-name">Sixers (17勝)</span>
+                    <span class="legend-name">Sixers (18勝)</span>
                 </div>
                 <div class="legend-right">
                     <b>25%</b>
-                    <small class="pos-txt">(+$280)</small>
+                    <small class="pos-txt">(+$490)</small>
                 </div>
             </div>
             
             <div class="legend-item">
                 <div class="legend-left">
-                    <span class="legend-dot" style="background:#f59e0b"></span>
-                    <span class="legend-name">茂哥 (14勝)</span>
+                    <span class="legend-dot" style="background:#10b981"></span>
+                    <span class="legend-name">Fat (13勝)</span>
                 </div>
                 <div class="legend-right">
-                    <b>21%</b>
-                    <small class="pos-txt">(+$80)</small>
+                    <b>18%</b>
+                    <small class="pos-txt">(+$370)</small>
                 </div>
             </div>
             
@@ -877,7 +866,18 @@
                     <span class="legend-name">志旭 (15勝)</span>
                 </div>
                 <div class="legend-right">
-                    <b>22%</b>
+                    <b>21%</b>
+                    <small class="pos-txt">(+$50)</small>
+                </div>
+            </div>
+            
+            <div class="legend-item">
+                <div class="legend-left">
+                    <span class="legend-dot" style="background:#f59e0b"></span>
+                    <span class="legend-name">茂哥 (14勝)</span>
+                </div>
+                <div class="legend-right">
+                    <b>20%</b>
                     <small class="pos-txt">(+$50)</small>
                 </div>
             </div>
@@ -885,11 +885,11 @@
             <div class="legend-item">
                 <div class="legend-left">
                     <span class="legend-dot" style="background:#8b5cf6"></span>
-                    <span class="legend-name">Saiman (10勝)</span>
+                    <span class="legend-name">Saiman (11勝)</span>
                 </div>
                 <div class="legend-right">
                     <b>15%</b>
-                    <small class="neg-txt">($-1080)</small>
+                    <small class="neg-txt">($-960)</small>
                 </div>
             </div>
             
@@ -925,11 +925,11 @@
                 <div class="device-icon" style="background:#ec489915;color:#ec4899">6</div>
                 <div class="device-body">
                     <div class="device-top">
-                        <span class="device-name">Sixers <small>(17勝 11敗)</small></span>
-                        <span class="device-pct">60.7%</span>
+                        <span class="device-name">Sixers <small>(18勝 11敗)</small></span>
+                        <span class="device-pct">62.1%</span>
                     </div>
                     <div class="device-track">
-                        <div class="device-fill" style="width:60.7%;background:#ec4899"></div>
+                        <div class="device-fill" style="width:62.1%;background:#ec4899"></div>
                     </div>
                 </div>
             </div>
@@ -951,11 +951,11 @@
                 <div class="device-icon" style="background:#f59e0b15;color:#f59e0b">M</div>
                 <div class="device-body">
                     <div class="device-top">
-                        <span class="device-name">茂哥 <small>(14勝 13敗)</small></span>
-                        <span class="device-pct">51.9%</span>
+                        <span class="device-name">茂哥 <small>(14勝 14敗)</small></span>
+                        <span class="device-pct">50.0%</span>
                     </div>
                     <div class="device-track">
-                        <div class="device-fill" style="width:51.9%;background:#f59e0b"></div>
+                        <div class="device-fill" style="width:50.0%;background:#f59e0b"></div>
                     </div>
                 </div>
             </div>
@@ -964,11 +964,11 @@
                 <div class="device-icon" style="background:#10b98115;color:#10b981">F</div>
                 <div class="device-body">
                     <div class="device-top">
-                        <span class="device-name">Fat <small>(12勝 15敗)</small></span>
-                        <span class="device-pct">44.4%</span>
+                        <span class="device-name">Fat <small>(13勝 17敗)</small></span>
+                        <span class="device-pct">43.3%</span>
                     </div>
                     <div class="device-track">
-                        <div class="device-fill" style="width:44.4%;background:#10b981"></div>
+                        <div class="device-fill" style="width:43.3%;background:#10b981"></div>
                     </div>
                 </div>
             </div>
@@ -977,11 +977,11 @@
                 <div class="device-icon" style="background:#8b5cf615;color:#8b5cf6">S</div>
                 <div class="device-body">
                     <div class="device-top">
-                        <span class="device-name">Saiman <small>(10勝 16敗)</small></span>
-                        <span class="device-pct">38.5%</span>
+                        <span class="device-name">Saiman <small>(11勝 16敗)</small></span>
+                        <span class="device-pct">40.7%</span>
                     </div>
                     <div class="device-track">
-                        <div class="device-fill" style="width:38.5%;background:#8b5cf6"></div>
+                        <div class="device-fill" style="width:40.7%;background:#8b5cf6"></div>
                     </div>
                 </div>
             </div>
@@ -1037,20 +1037,6 @@
             <tr>
                 <td>
                     <div class="tp-team">
-                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/por.png" alt="拓荒者" onerror="this.style.display='none'">
-                        <div>
-                            <div class="tp-name">拓荒者</div>
-                            <div class="tp-owner">Fat (F)</div>
-                        </div>
-                    </div>
-                </td>
-                <td class="tp-wl">3勝 0敗</td>
-                <td class="tp-growth growth-pos">↑ +$480</td>
-            </tr>
-            
-            <tr>
-                <td>
-                    <div class="tp-team">
                         <img src="https://a.espncdn.com/i/teamlogos/nba/500/mem.png" alt="灰熊" onerror="this.style.display='none'">
                         <div>
                             <div class="tp-name">灰熊</div>
@@ -1058,8 +1044,8 @@
                         </div>
                     </div>
                 </td>
-                <td class="tp-wl">4勝 0敗</td>
-                <td class="tp-growth growth-pos">↑ +$360</td>
+                <td class="tp-wl">5勝 0敗</td>
+                <td class="tp-growth growth-pos">↑ +$570</td>
             </tr>
             
             <tr>
@@ -1088,6 +1074,20 @@
                 </td>
                 <td class="tp-wl">4勝 1敗</td>
                 <td class="tp-growth growth-pos">↑ +$320</td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <div class="tp-team">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/bos.png" alt="塞爾提克" onerror="this.style.display='none'">
+                        <div>
+                            <div class="tp-name">塞爾提克</div>
+                            <div class="tp-owner">Saiman (S)</div>
+                        </div>
+                    </div>
+                </td>
+                <td class="tp-wl">3勝 1敗</td>
+                <td class="tp-growth growth-pos">↑ +$280</td>
             </tr>
             
                             </tbody>
@@ -1122,29 +1122,6 @@
                 <td class="rk-col">🥇</td>
                 <td>
                     <div class="p-info">
-                        <span class="p-avatar" style="background:#10b981">F</span>
-                        <div>
-                            <div class="p-title">Fat</div>
-                            <div class="p-sub">內戰 3 場</div>
-                        </div>
-                    </div>
-                </td>
-                <td><b>12</b> 勝 <b>15</b> 敗</td>
-                <td>
-                    <div class="mini-pct">
-                        <span>44.4%</span>
-                        <div class="mini-bar"><div style="width:44.4%;background:#10b981"></div></div>
-                    </div>
-                </td>
-                <td>+67 分</td>
-                <td class="money-col pos-txt">+NT$ 670</td>
-                <td><div class="pills-wrap"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/sa.png" alt="馬刺">馬刺 <b>3-2</b> <span class="muted-txt">($0)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/min.png" alt="灰狼">灰狼 <b>3-2</b> <span class="pos-txt">(+$630)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/atl.png" alt="老鷹">老鷹 <b>2-3</b> <span class="pos-txt">(+$250)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/por.png" alt="拓荒者">拓荒者 <b>3-0</b> <span class="pos-txt">(+$480)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/utah.png" alt="爵士">爵士 <b>1-4</b> <span class="neg-txt">($-330)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/sac.png" alt="國王">國王 <b>0-4</b> <span class="neg-txt">($-360)</span></span></div></td>
-            </tr>
-            
-            <tr>
-                <td class="rk-col">🥈</td>
-                <td>
-                    <div class="p-info">
                         <span class="p-avatar" style="background:#ec4899">6</span>
                         <div>
                             <div class="p-title">Sixers</div>
@@ -1152,43 +1129,43 @@
                         </div>
                     </div>
                 </td>
-                <td><b>17</b> 勝 <b>11</b> 敗</td>
+                <td><b>18</b> 勝 <b>11</b> 敗</td>
                 <td>
                     <div class="mini-pct">
-                        <span>60.7%</span>
-                        <div class="mini-bar"><div style="width:60.7%;background:#ec4899"></div></div>
+                        <span>62.1%</span>
+                        <div class="mini-bar"><div style="width:62.1%;background:#ec4899"></div></div>
                     </div>
                 </td>
-                <td>+28 分</td>
-                <td class="money-col pos-txt">+NT$ 280</td>
-                <td><div class="pills-wrap"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/den.png" alt="金塊">金塊 <b>2-2</b> <span class="pos-txt">(+$70)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/phi.png" alt="76人">76人 <b>4-1</b> <span class="pos-txt">(+$60)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/lal.png" alt="湖人">湖人 <b>4-1</b> <span class="pos-txt">(+$260)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/gs.png" alt="勇士">勇士 <b>2-3</b> <span class="neg-txt">($-40)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/mil.png" alt="公鹿">公鹿 <b>1-4</b> <span class="neg-txt">($-430)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/mem.png" alt="灰熊">灰熊 <b>4-0</b> <span class="pos-txt">(+$360)</span></span></div></td>
+                <td>+49 分</td>
+                <td class="money-col pos-txt">+NT$ 490</td>
+                <td><div class="pills-wrap"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/den.png" alt="金塊">金塊 <b>2-2</b> <span class="pos-txt">(+$70)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/phi.png" alt="76人">76人 <b>4-1</b> <span class="pos-txt">(+$60)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/lal.png" alt="湖人">湖人 <b>4-1</b> <span class="pos-txt">(+$260)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/gs.png" alt="勇士">勇士 <b>2-3</b> <span class="neg-txt">($-40)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/mil.png" alt="公鹿">公鹿 <b>1-4</b> <span class="neg-txt">($-430)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/mem.png" alt="灰熊">灰熊 <b>5-0</b> <span class="pos-txt">(+$570)</span></span></div></td>
+            </tr>
+            
+            <tr>
+                <td class="rk-col">🥈</td>
+                <td>
+                    <div class="p-info">
+                        <span class="p-avatar" style="background:#10b981">F</span>
+                        <div>
+                            <div class="p-title">Fat</div>
+                            <div class="p-sub">內戰 3 場</div>
+                        </div>
+                    </div>
+                </td>
+                <td><b>13</b> 勝 <b>17</b> 敗</td>
+                <td>
+                    <div class="mini-pct">
+                        <span>43.3%</span>
+                        <div class="mini-bar"><div style="width:43.3%;background:#10b981"></div></div>
+                    </div>
+                </td>
+                <td>+37 分</td>
+                <td class="money-col pos-txt">+NT$ 370</td>
+                <td><div class="pills-wrap"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/sa.png" alt="馬刺">馬刺 <b>3-2</b> <span class="muted-txt">($0)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/min.png" alt="灰狼">灰狼 <b>3-2</b> <span class="pos-txt">(+$630)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/atl.png" alt="老鷹">老鷹 <b>3-3</b> <span class="pos-txt">(+$280)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/por.png" alt="拓荒者">拓荒者 <b>3-1</b> <span class="pos-txt">(+$270)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/utah.png" alt="爵士">爵士 <b>1-4</b> <span class="neg-txt">($-330)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/sac.png" alt="國王">國王 <b>0-5</b> <span class="neg-txt">($-480)</span></span></div></td>
             </tr>
             
             <tr>
                 <td class="rk-col">🥉</td>
-                <td>
-                    <div class="p-info">
-                        <span class="p-avatar" style="background:#f59e0b">M</span>
-                        <div>
-                            <div class="p-title">茂哥</div>
-                            <div class="p-sub">內戰 5 場</div>
-                        </div>
-                    </div>
-                </td>
-                <td><b>14</b> 勝 <b>13</b> 敗</td>
-                <td>
-                    <div class="mini-pct">
-                        <span>51.9%</span>
-                        <div class="mini-bar"><div style="width:51.9%;background:#f59e0b"></div></div>
-                    </div>
-                </td>
-                <td>+8 分</td>
-                <td class="money-col pos-txt">+NT$ 80</td>
-                <td><div class="pills-wrap"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/cle.png" alt="騎士">騎士 <b>3-1</b> <span class="neg-txt">($-60)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/hou.png" alt="火箭">火箭 <b>5-0</b> <span class="pos-txt">(+$710)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/tor.png" alt="暴龍">暴龍 <b>3-1</b> <span class="pos-txt">(+$70)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/wsh.png" alt="巫師">巫師 <b>2-3</b> <span class="pos-txt">(+$50)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/chi.png" alt="公牛">公牛 <b>1-4</b> <span class="neg-txt">($-340)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/bkn.png" alt="籃網">籃網 <b>0-4</b> <span class="neg-txt">($-350)</span></span></div></td>
-            </tr>
-            
-            <tr>
-                <td class="rk-col">#4</td>
                 <td>
                     <div class="p-info">
                         <span class="p-avatar" style="background:#2563eb">Z</span>
@@ -1211,6 +1188,29 @@
             </tr>
             
             <tr>
+                <td class="rk-col">#4</td>
+                <td>
+                    <div class="p-info">
+                        <span class="p-avatar" style="background:#f59e0b">M</span>
+                        <div>
+                            <div class="p-title">茂哥</div>
+                            <div class="p-sub">內戰 5 場</div>
+                        </div>
+                    </div>
+                </td>
+                <td><b>14</b> 勝 <b>14</b> 敗</td>
+                <td>
+                    <div class="mini-pct">
+                        <span>50.0%</span>
+                        <div class="mini-bar"><div style="width:50.0%;background:#f59e0b"></div></div>
+                    </div>
+                </td>
+                <td>+5 分</td>
+                <td class="money-col pos-txt">+NT$ 50</td>
+                <td><div class="pills-wrap"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/cle.png" alt="騎士">騎士 <b>3-2</b> <span class="neg-txt">($-90)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/hou.png" alt="火箭">火箭 <b>5-0</b> <span class="pos-txt">(+$710)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/tor.png" alt="暴龍">暴龍 <b>3-1</b> <span class="pos-txt">(+$70)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/wsh.png" alt="巫師">巫師 <b>2-3</b> <span class="pos-txt">(+$50)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/chi.png" alt="公牛">公牛 <b>1-4</b> <span class="neg-txt">($-340)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/bkn.png" alt="籃網">籃網 <b>0-4</b> <span class="neg-txt">($-350)</span></span></div></td>
+            </tr>
+            
+            <tr>
                 <td class="rk-col">#5</td>
                 <td>
                     <div class="p-info">
@@ -1221,16 +1221,16 @@
                         </div>
                     </div>
                 </td>
-                <td><b>10</b> 勝 <b>16</b> 敗</td>
+                <td><b>11</b> 勝 <b>16</b> 敗</td>
                 <td>
                     <div class="mini-pct">
-                        <span>38.5%</span>
-                        <div class="mini-bar"><div style="width:38.5%;background:#8b5cf6"></div></div>
+                        <span>40.7%</span>
+                        <div class="mini-bar"><div style="width:40.7%;background:#8b5cf6"></div></div>
                     </div>
                 </td>
-                <td>-108 分</td>
-                <td class="money-col neg-txt">NT$ -1,080</td>
-                <td><div class="pills-wrap"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/ny.png" alt="尼克">尼克 <b>2-3</b> <span class="pos-txt">(+$50)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/bos.png" alt="塞爾提克">塞爾提克 <b>3-1</b> <span class="pos-txt">(+$280)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/mia.png" alt="熱火">熱火 <b>1-4</b> <span class="neg-txt">($-340)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/phx.png" alt="太陽">太陽 <b>1-2</b> <span class="neg-txt">($-430)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/cha.png" alt="黃蜂">黃蜂 <b>3-2</b> <span class="neg-txt">($-410)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/no.png" alt="鵜鶘">鵜鶘 <b>0-4</b> <span class="neg-txt">($-230)</span></span></div></td>
+                <td>-96 分</td>
+                <td class="money-col neg-txt">NT$ -960</td>
+                <td><div class="pills-wrap"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/ny.png" alt="尼克">尼克 <b>2-3</b> <span class="pos-txt">(+$50)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/bos.png" alt="塞爾提克">塞爾提克 <b>3-1</b> <span class="pos-txt">(+$280)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/mia.png" alt="熱火">熱火 <b>1-4</b> <span class="neg-txt">($-340)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/phx.png" alt="太陽">太陽 <b>1-2</b> <span class="neg-txt">($-430)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/cha.png" alt="黃蜂">黃蜂 <b>3-2</b> <span class="neg-txt">($-410)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/no.png" alt="鵜鶘">鵜鶘 <b>1-4</b> <span class="neg-txt">($-110)</span></span></div></td>
             </tr>
             
                             </tbody>
@@ -1247,11 +1247,92 @@
                         </div>
                     </div>
                     <div class="tabs-bar">
-                        <button class="tab-btn active" onclick="filterGames('2026-10-29', this)">🔥 最新 · 2026-10-29 (12場)</button><button class="tab-btn" onclick="filterGames('2026-10-28', this)">2026-10-28 (4場)</button><button class="tab-btn" onclick="filterGames('2026-10-27', this)">2026-10-27 (9場)</button><button class="tab-btn" onclick="filterGames('2026-10-26', this)">2026-10-26 (7場)</button><button class="tab-btn" onclick="filterGames('2026-10-25', this)">2026-10-25 (8場)</button><button class="tab-btn" onclick="filterGames('2026-10-24', this)">2026-10-24 (12場)</button><button class="tab-btn" onclick="filterGames('2026-10-23', this)">2026-10-23 (2場)</button><button class="tab-btn" onclick="filterGames('2026-10-22', this)">2026-10-22 (11場)</button><button class="tab-btn" onclick="filterGames('2026-10-21', this)">2026-10-21 (3場)</button><button class="tab-btn" onclick="filterGames('ALL', this)">全部歷史日期 (68場)</button>
+                        <button class="tab-btn active" onclick="filterGames('2026-10-30', this)">🔥 最新 · 2026-10-30 (3場)</button><button class="tab-btn" onclick="filterGames('2026-10-29', this)">2026-10-29 (12場)</button><button class="tab-btn" onclick="filterGames('2026-10-28', this)">2026-10-28 (4場)</button><button class="tab-btn" onclick="filterGames('2026-10-27', this)">2026-10-27 (9場)</button><button class="tab-btn" onclick="filterGames('2026-10-26', this)">2026-10-26 (7場)</button><button class="tab-btn" onclick="filterGames('2026-10-25', this)">2026-10-25 (8場)</button><button class="tab-btn" onclick="filterGames('2026-10-24', this)">2026-10-24 (12場)</button><button class="tab-btn" onclick="filterGames('2026-10-23', this)">2026-10-23 (2場)</button><button class="tab-btn" onclick="filterGames('2026-10-22', this)">2026-10-22 (11場)</button><button class="tab-btn" onclick="filterGames('2026-10-21', this)">2026-10-21 (3場)</button><button class="tab-btn" onclick="filterGames('ALL', this)">全部歷史日期 (71場)</button>
                     </div>
                     <div class="matches-grid" id="matchesGrid">
                         
-            <div class="match-card" style="display:flex" data-date="2026-10-29" data-search="2026-10-29 湖人 lakers sixers 快艇 clippers 志旭">
+            <div class="match-card" style="display:flex" data-date="2026-10-30" data-search="2026-10-30 灰熊 grizzlies sixers 拓荒者 trail blazers fat">
+                <div class="m-head">
+                    <span>📅 台灣 2026-10-30（美東 2026-10-29）</span>
+                    <span>分差 21 分 × $10</span>
+                </div>
+                <div class="m-body">
+                    <div class="m-team win">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/mem.png" alt="灰熊">
+                        <div class="m-meta">
+                            <div class="m-tname">灰熊 <small>Grizzlies</small></div>
+                            <span class="m-owner" style="background:#ec489915;color:#ec4899">6 · Sixers</span>
+                        </div>
+                        <div class="m-score">124</div>
+                    </div>
+                    <div class="m-vs">VS</div>
+                    <div class="m-team right ">
+                        <div class="m-score">103</div>
+                        <div class="m-meta right">
+                            <div class="m-tname"><small>Trail Blazers</small> 拓荒者</div>
+                            <span class="m-owner" style="background:#10b98115;color:#10b981">F · Fat</span>
+                        </div>
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/por.png" alt="拓荒者">
+                    </div>
+                </div>
+                <div class="g-foot"><span>🏆 <b>Sixers</b> (灰熊) 贏 <b>21</b> 分</span><div class="g-badges"><span class="badge-pos">Sixers +$210</span><span class="badge-neg">Fat -$210</span></div></div>
+            </div>
+            
+            <div class="match-card" style="display:flex" data-date="2026-10-30" data-search="2026-10-30 國王 kings fat 鵜鶘 pelicans saiman">
+                <div class="m-head">
+                    <span>📅 台灣 2026-10-30（美東 2026-10-29）</span>
+                    <span>分差 12 分 × $10</span>
+                </div>
+                <div class="m-body">
+                    <div class="m-team ">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/sac.png" alt="國王">
+                        <div class="m-meta">
+                            <div class="m-tname">國王 <small>Kings</small></div>
+                            <span class="m-owner" style="background:#10b98115;color:#10b981">F · Fat</span>
+                        </div>
+                        <div class="m-score">120</div>
+                    </div>
+                    <div class="m-vs">VS</div>
+                    <div class="m-team right win">
+                        <div class="m-score">132</div>
+                        <div class="m-meta right">
+                            <div class="m-tname"><small>Pelicans</small> 鵜鶘</div>
+                            <span class="m-owner" style="background:#8b5cf615;color:#8b5cf6">S · Saiman</span>
+                        </div>
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/no.png" alt="鵜鶘">
+                    </div>
+                </div>
+                <div class="g-foot"><span>🏆 <b>Saiman</b> (鵜鶘) 贏 <b>12</b> 分</span><div class="g-badges"><span class="badge-pos">Saiman +$120</span><span class="badge-neg">Fat -$120</span></div></div>
+            </div>
+            
+            <div class="match-card" style="display:flex" data-date="2026-10-30" data-search="2026-10-30 騎士 cavaliers 茂哥 老鷹 hawks fat">
+                <div class="m-head">
+                    <span>📅 台灣 2026-10-30（美東 2026-10-29）</span>
+                    <span>分差 3 分 × $10</span>
+                </div>
+                <div class="m-body">
+                    <div class="m-team ">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/cle.png" alt="騎士">
+                        <div class="m-meta">
+                            <div class="m-tname">騎士 <small>Cavaliers</small></div>
+                            <span class="m-owner" style="background:#f59e0b15;color:#f59e0b">M · 茂哥</span>
+                        </div>
+                        <div class="m-score">111</div>
+                    </div>
+                    <div class="m-vs">VS</div>
+                    <div class="m-team right win">
+                        <div class="m-score">114</div>
+                        <div class="m-meta right">
+                            <div class="m-tname"><small>Hawks</small> 老鷹</div>
+                            <span class="m-owner" style="background:#10b98115;color:#10b981">F · Fat</span>
+                        </div>
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/atl.png" alt="老鷹">
+                    </div>
+                </div>
+                <div class="g-foot"><span>🏆 <b>Fat</b> (老鷹) 贏 <b>3</b> 分</span><div class="g-badges"><span class="badge-pos">Fat +$30</span><span class="badge-neg">茂哥 -$30</span></div></div>
+            </div>
+            
+            <div class="match-card" style="display:none" data-date="2026-10-29" data-search="2026-10-29 湖人 lakers sixers 快艇 clippers 志旭">
                 <div class="m-head">
                     <span>📅 台灣 2026-10-29（美東 2026-10-28）</span>
                     <span>分差 16 分 × $10</span>
@@ -1278,7 +1359,7 @@
                 <div class="g-foot"><span>🏆 <b>Sixers</b> (湖人) 贏 <b>16</b> 分</span><div class="g-badges"><span class="badge-pos">Sixers +$160</span><span class="badge-neg">志旭 -$160</span></div></div>
             </div>
             
-            <div class="match-card" style="display:flex" data-date="2026-10-29" data-search="2026-10-29 雷霆 thunder 志旭 獨行俠 mavericks 志旭">
+            <div class="match-card" style="display:none" data-date="2026-10-29" data-search="2026-10-29 雷霆 thunder 志旭 獨行俠 mavericks 志旭">
                 <div class="m-head">
                     <span>📅 台灣 2026-10-29（美東 2026-10-28）</span>
                     <span>分差 24 分 × $10</span>
@@ -1305,7 +1386,7 @@
                 <div class="g-foot civil">🤝 <b>志旭 內戰</b>（獨行俠 贏 24 分）➔ 記 1勝1敗 / <b>NT$ 0</b></div>
             </div>
             
-            <div class="match-card" style="display:flex" data-date="2026-10-29" data-search="2026-10-29 馬刺 spurs fat 爵士 jazz fat">
+            <div class="match-card" style="display:none" data-date="2026-10-29" data-search="2026-10-29 馬刺 spurs fat 爵士 jazz fat">
                 <div class="m-head">
                     <span>📅 台灣 2026-10-29（美東 2026-10-28）</span>
                     <span>分差 6 分 × $10</span>
@@ -1332,7 +1413,7 @@
                 <div class="g-foot civil">🤝 <b>Fat 內戰</b>（馬刺 贏 6 分）➔ 記 1勝1敗 / <b>NT$ 0</b></div>
             </div>
             
-            <div class="match-card" style="display:flex" data-date="2026-10-29" data-search="2026-10-29 金塊 nuggets sixers 鵜鶘 pelicans saiman">
+            <div class="match-card" style="display:none" data-date="2026-10-29" data-search="2026-10-29 金塊 nuggets sixers 鵜鶘 pelicans saiman">
                 <div class="m-head">
                     <span>📅 台灣 2026-10-29（美東 2026-10-28）</span>
                     <span>分差 13 分 × $10</span>
@@ -1359,7 +1440,7 @@
                 <div class="g-foot"><span>🏆 <b>Sixers</b> (金塊) 贏 <b>13</b> 分</span><div class="g-badges"><span class="badge-pos">Sixers +$130</span><span class="badge-neg">Saiman -$130</span></div></div>
             </div>
             
-            <div class="match-card" style="display:flex" data-date="2026-10-29" data-search="2026-10-29 勇士 warriors sixers 灰狼 timberwolves fat">
+            <div class="match-card" style="display:none" data-date="2026-10-29" data-search="2026-10-29 勇士 warriors sixers 灰狼 timberwolves fat">
                 <div class="m-head">
                     <span>📅 台灣 2026-10-29（美東 2026-10-28）</span>
                     <span>分差 5 分 × $10</span>
@@ -1386,7 +1467,7 @@
                 <div class="g-foot"><span>🏆 <b>Sixers</b> (勇士) 贏 <b>5</b> 分</span><div class="g-badges"><span class="badge-pos">Sixers +$50</span><span class="badge-neg">Fat -$50</span></div></div>
             </div>
             
-            <div class="match-card" style="display:flex" data-date="2026-10-29" data-search="2026-10-29 火箭 rockets 茂哥 公鹿 bucks sixers">
+            <div class="match-card" style="display:none" data-date="2026-10-29" data-search="2026-10-29 火箭 rockets 茂哥 公鹿 bucks sixers">
                 <div class="m-head">
                     <span>📅 台灣 2026-10-29（美東 2026-10-28）</span>
                     <span>分差 32 分 × $10</span>
@@ -1413,7 +1494,7 @@
                 <div class="g-foot"><span>🏆 <b>茂哥</b> (火箭) 贏 <b>32</b> 分</span><div class="g-badges"><span class="badge-pos">茂哥 +$320</span><span class="badge-neg">Sixers -$320</span></div></div>
             </div>
             
-            <div class="match-card" style="display:flex" data-date="2026-10-29" data-search="2026-10-29 尼克 knicks saiman 公牛 bulls 茂哥">
+            <div class="match-card" style="display:none" data-date="2026-10-29" data-search="2026-10-29 尼克 knicks saiman 公牛 bulls 茂哥">
                 <div class="m-head">
                     <span>📅 台灣 2026-10-29（美東 2026-10-28）</span>
                     <span>分差 6 分 × $10</span>
@@ -1440,7 +1521,7 @@
                 <div class="g-foot"><span>🏆 <b>Saiman</b> (尼克) 贏 <b>6</b> 分</span><div class="g-badges"><span class="badge-pos">Saiman +$60</span><span class="badge-neg">茂哥 -$60</span></div></div>
             </div>
             
-            <div class="match-card" style="display:flex" data-date="2026-10-29" data-search="2026-10-29 魔術 magic 志旭 暴龍 raptors 茂哥">
+            <div class="match-card" style="display:none" data-date="2026-10-29" data-search="2026-10-29 魔術 magic 志旭 暴龍 raptors 茂哥">
                 <div class="m-head">
                     <span>📅 台灣 2026-10-29（美東 2026-10-28）</span>
                     <span>分差 30 分 × $10</span>
@@ -1467,7 +1548,7 @@
                 <div class="g-foot"><span>🏆 <b>茂哥</b> (暴龍) 贏 <b>30</b> 分</span><div class="g-badges"><span class="badge-pos">茂哥 +$300</span><span class="badge-neg">志旭 -$300</span></div></div>
             </div>
             
-            <div class="match-card" style="display:flex" data-date="2026-10-29" data-search="2026-10-29 76人 76ers sixers 溜馬 pacers 志旭">
+            <div class="match-card" style="display:none" data-date="2026-10-29" data-search="2026-10-29 76人 76ers sixers 溜馬 pacers 志旭">
                 <div class="m-head">
                     <span>📅 台灣 2026-10-29（美東 2026-10-28）</span>
                     <span>分差 5 分 × $10</span>
@@ -1494,7 +1575,7 @@
                 <div class="g-foot"><span>🏆 <b>Sixers</b> (76人) 贏 <b>5</b> 分</span><div class="g-badges"><span class="badge-pos">Sixers +$50</span><span class="badge-neg">志旭 -$50</span></div></div>
             </div>
             
-            <div class="match-card" style="display:flex" data-date="2026-10-29" data-search="2026-10-29 黃蜂 hornets saiman 活塞 pistons 志旭">
+            <div class="match-card" style="display:none" data-date="2026-10-29" data-search="2026-10-29 黃蜂 hornets saiman 活塞 pistons 志旭">
                 <div class="m-head">
                     <span>📅 台灣 2026-10-29（美東 2026-10-28）</span>
                     <span>分差 8 分 × $10</span>
@@ -1521,7 +1602,7 @@
                 <div class="g-foot"><span>🏆 <b>志旭</b> (活塞) 贏 <b>8</b> 分</span><div class="g-badges"><span class="badge-pos">志旭 +$80</span><span class="badge-neg">Saiman -$80</span></div></div>
             </div>
             
-            <div class="match-card" style="display:flex" data-date="2026-10-29" data-search="2026-10-29 巫師 wizards 茂哥 騎士 cavaliers 茂哥">
+            <div class="match-card" style="display:none" data-date="2026-10-29" data-search="2026-10-29 巫師 wizards 茂哥 騎士 cavaliers 茂哥">
                 <div class="m-head">
                     <span>📅 台灣 2026-10-29（美東 2026-10-28）</span>
                     <span>分差 10 分 × $10</span>
@@ -1548,7 +1629,7 @@
                 <div class="g-foot civil">🤝 <b>茂哥 內戰</b>（騎士 贏 10 分）➔ 記 1勝1敗 / <b>NT$ 0</b></div>
             </div>
             
-            <div class="match-card" style="display:flex" data-date="2026-10-29" data-search="2026-10-29 熱火 heat saiman 老鷹 hawks fat">
+            <div class="match-card" style="display:none" data-date="2026-10-29" data-search="2026-10-29 熱火 heat saiman 老鷹 hawks fat">
                 <div class="m-head">
                     <span>📅 台灣 2026-10-29（美東 2026-10-28）</span>
                     <span>分差 12 分 × $10</span>
@@ -3103,11 +3184,11 @@
                             <thead>
                                 <tr>
                                     <th>玩家 \ 對手</th>
-                                    <th><span class="p-avatar xs" style="background:#10b981">F</span> Fat</th><th><span class="p-avatar xs" style="background:#ec4899">6</span> Sixers</th><th><span class="p-avatar xs" style="background:#f59e0b">M</span> 茂哥</th><th><span class="p-avatar xs" style="background:#2563eb">Z</span> 志旭</th><th><span class="p-avatar xs" style="background:#8b5cf6">S</span> Saiman</th>
+                                    <th><span class="p-avatar xs" style="background:#ec4899">6</span> Sixers</th><th><span class="p-avatar xs" style="background:#10b981">F</span> Fat</th><th><span class="p-avatar xs" style="background:#2563eb">Z</span> 志旭</th><th><span class="p-avatar xs" style="background:#f59e0b">M</span> 茂哥</th><th><span class="p-avatar xs" style="background:#8b5cf6">S</span> Saiman</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td class="mx-head"><span class="p-avatar xs" style="background:#10b981">F</span> <b>Fat</b></td><td class="mx-self">—</td><td class="mx-neg"><div class="mx-v">$-430</div><div class="mx-s">1勝 5敗</div></td><td class="mx-zero"><div class="mx-v">$0</div><div class="mx-s">1勝 4敗</div></td><td class="mx-pos"><div class="mx-v">+$80</div><div class="mx-s">3勝 2敗</div></td><td class="mx-pos"><div class="mx-v">+$1020</div><div class="mx-s">4勝 1敗</div></td></tr><tr><td class="mx-head"><span class="p-avatar xs" style="background:#ec4899">6</span> <b>Sixers</b></td><td class="mx-pos"><div class="mx-v">+$430</div><div class="mx-s">5勝 1敗</div></td><td class="mx-self">—</td><td class="mx-neg"><div class="mx-v">$-430</div><div class="mx-s">1勝 3敗</div></td><td class="mx-pos"><div class="mx-v">+$120</div><div class="mx-s">4勝 2敗</div></td><td class="mx-pos"><div class="mx-v">+$160</div><div class="mx-s">3勝 1敗</div></td></tr><tr><td class="mx-head"><span class="p-avatar xs" style="background:#f59e0b">M</span> <b>茂哥</b></td><td class="mx-zero"><div class="mx-v">$0</div><div class="mx-s">4勝 1敗</div></td><td class="mx-pos"><div class="mx-v">+$430</div><div class="mx-s">3勝 1敗</div></td><td class="mx-self">—</td><td class="mx-pos"><div class="mx-v">+$210</div><div class="mx-s">2勝 1敗</div></td><td class="mx-neg"><div class="mx-v">$-560</div><div class="mx-s">0勝 5敗</div></td></tr><tr><td class="mx-head"><span class="p-avatar xs" style="background:#2563eb">Z</span> <b>志旭</b></td><td class="mx-neg"><div class="mx-v">$-80</div><div class="mx-s">2勝 3敗</div></td><td class="mx-neg"><div class="mx-v">$-120</div><div class="mx-s">2勝 4敗</div></td><td class="mx-neg"><div class="mx-v">$-210</div><div class="mx-s">1勝 2敗</div></td><td class="mx-self">—</td><td class="mx-pos"><div class="mx-v">+$460</div><div class="mx-s">7勝 1敗</div></td></tr><tr><td class="mx-head"><span class="p-avatar xs" style="background:#8b5cf6">S</span> <b>Saiman</b></td><td class="mx-neg"><div class="mx-v">$-1020</div><div class="mx-s">1勝 4敗</div></td><td class="mx-neg"><div class="mx-v">$-160</div><div class="mx-s">1勝 3敗</div></td><td class="mx-pos"><div class="mx-v">+$560</div><div class="mx-s">5勝 0敗</div></td><td class="mx-neg"><div class="mx-v">$-460</div><div class="mx-s">1勝 7敗</div></td><td class="mx-self">—</td></tr>
+                                <tr><td class="mx-head"><span class="p-avatar xs" style="background:#ec4899">6</span> <b>Sixers</b></td><td class="mx-self">—</td><td class="mx-pos"><div class="mx-v">+$640</div><div class="mx-s">6勝 1敗</div></td><td class="mx-pos"><div class="mx-v">+$120</div><div class="mx-s">4勝 2敗</div></td><td class="mx-neg"><div class="mx-v">$-430</div><div class="mx-s">1勝 3敗</div></td><td class="mx-pos"><div class="mx-v">+$160</div><div class="mx-s">3勝 1敗</div></td></tr><tr><td class="mx-head"><span class="p-avatar xs" style="background:#10b981">F</span> <b>Fat</b></td><td class="mx-neg"><div class="mx-v">$-640</div><div class="mx-s">1勝 6敗</div></td><td class="mx-self">—</td><td class="mx-pos"><div class="mx-v">+$80</div><div class="mx-s">3勝 2敗</div></td><td class="mx-pos"><div class="mx-v">+$30</div><div class="mx-s">2勝 4敗</div></td><td class="mx-pos"><div class="mx-v">+$900</div><div class="mx-s">4勝 2敗</div></td></tr><tr><td class="mx-head"><span class="p-avatar xs" style="background:#2563eb">Z</span> <b>志旭</b></td><td class="mx-neg"><div class="mx-v">$-120</div><div class="mx-s">2勝 4敗</div></td><td class="mx-neg"><div class="mx-v">$-80</div><div class="mx-s">2勝 3敗</div></td><td class="mx-self">—</td><td class="mx-neg"><div class="mx-v">$-210</div><div class="mx-s">1勝 2敗</div></td><td class="mx-pos"><div class="mx-v">+$460</div><div class="mx-s">7勝 1敗</div></td></tr><tr><td class="mx-head"><span class="p-avatar xs" style="background:#f59e0b">M</span> <b>茂哥</b></td><td class="mx-pos"><div class="mx-v">+$430</div><div class="mx-s">3勝 1敗</div></td><td class="mx-neg"><div class="mx-v">$-30</div><div class="mx-s">4勝 2敗</div></td><td class="mx-pos"><div class="mx-v">+$210</div><div class="mx-s">2勝 1敗</div></td><td class="mx-self">—</td><td class="mx-neg"><div class="mx-v">$-560</div><div class="mx-s">0勝 5敗</div></td></tr><tr><td class="mx-head"><span class="p-avatar xs" style="background:#8b5cf6">S</span> <b>Saiman</b></td><td class="mx-neg"><div class="mx-v">$-160</div><div class="mx-s">1勝 3敗</div></td><td class="mx-neg"><div class="mx-v">$-900</div><div class="mx-s">2勝 4敗</div></td><td class="mx-neg"><div class="mx-v">$-460</div><div class="mx-s">1勝 7敗</div></td><td class="mx-pos"><div class="mx-v">+$560</div><div class="mx-s">5勝 0敗</div></td><td class="mx-self">—</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -3126,111 +3207,13 @@
             <div class="r-card">
                 <div class="r-head">
                     <div class="p-info">
-                        <span class="p-avatar" style="background:#10b981">F</span>
-                        <div>
-                            <div class="p-title">Fat</div>
-                            <div class="p-sub">12勝 15敗 (44.4%)</div>
-                        </div>
-                    </div>
-                    <div class="r-total pos-txt">+NT$ 670</div>
-                </div>
-                <div class="r-list">
-                <div class="r-item">
-                    <div class="r-left">
-                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/sa.png" alt="馬刺">
-                        <div>
-                            <div class="r-tname">馬刺 <small>Spurs</small></div>
-                            <span class="r-conf west">西區</span>
-                        </div>
-                    </div>
-                    <div class="r-right">
-                        <div class="r-wl">3勝 2敗</div>
-                        <div class="r-money muted-txt">+NT$ 0</div>
-                    </div>
-                </div>
-                
-                <div class="r-item">
-                    <div class="r-left">
-                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/min.png" alt="灰狼">
-                        <div>
-                            <div class="r-tname">灰狼 <small>Timberwolves</small></div>
-                            <span class="r-conf west">西區</span>
-                        </div>
-                    </div>
-                    <div class="r-right">
-                        <div class="r-wl">3勝 2敗</div>
-                        <div class="r-money pos-txt">+NT$ 630</div>
-                    </div>
-                </div>
-                
-                <div class="r-item">
-                    <div class="r-left">
-                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/atl.png" alt="老鷹">
-                        <div>
-                            <div class="r-tname">老鷹 <small>Hawks</small></div>
-                            <span class="r-conf east">東區</span>
-                        </div>
-                    </div>
-                    <div class="r-right">
-                        <div class="r-wl">2勝 3敗</div>
-                        <div class="r-money pos-txt">+NT$ 250</div>
-                    </div>
-                </div>
-                
-                <div class="r-item">
-                    <div class="r-left">
-                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/por.png" alt="拓荒者">
-                        <div>
-                            <div class="r-tname">拓荒者 <small>Trail Blazers</small></div>
-                            <span class="r-conf west">西區</span>
-                        </div>
-                    </div>
-                    <div class="r-right">
-                        <div class="r-wl">3勝 0敗</div>
-                        <div class="r-money pos-txt">+NT$ 480</div>
-                    </div>
-                </div>
-                
-                <div class="r-item">
-                    <div class="r-left">
-                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/utah.png" alt="爵士">
-                        <div>
-                            <div class="r-tname">爵士 <small>Jazz</small></div>
-                            <span class="r-conf west">西區</span>
-                        </div>
-                    </div>
-                    <div class="r-right">
-                        <div class="r-wl">1勝 4敗</div>
-                        <div class="r-money neg-txt">NT$ -330</div>
-                    </div>
-                </div>
-                
-                <div class="r-item">
-                    <div class="r-left">
-                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/sac.png" alt="國王">
-                        <div>
-                            <div class="r-tname">國王 <small>Kings</small></div>
-                            <span class="r-conf west">西區</span>
-                        </div>
-                    </div>
-                    <div class="r-right">
-                        <div class="r-wl">0勝 4敗</div>
-                        <div class="r-money neg-txt">NT$ -360</div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            
-            <div class="r-card">
-                <div class="r-head">
-                    <div class="p-info">
                         <span class="p-avatar" style="background:#ec4899">6</span>
                         <div>
                             <div class="p-title">Sixers</div>
-                            <div class="p-sub">17勝 11敗 (60.7%)</div>
+                            <div class="p-sub">18勝 11敗 (62.1%)</div>
                         </div>
                     </div>
-                    <div class="r-total pos-txt">+NT$ 280</div>
+                    <div class="r-total pos-txt">+NT$ 490</div>
                 </div>
                 <div class="r-list">
                 <div class="r-item">
@@ -3312,8 +3295,8 @@
                         </div>
                     </div>
                     <div class="r-right">
-                        <div class="r-wl">4勝 0敗</div>
-                        <div class="r-money pos-txt">+NT$ 360</div>
+                        <div class="r-wl">5勝 0敗</div>
+                        <div class="r-money pos-txt">+NT$ 570</div>
                     </div>
                 </div>
                 </div>
@@ -3322,96 +3305,96 @@
             <div class="r-card">
                 <div class="r-head">
                     <div class="p-info">
-                        <span class="p-avatar" style="background:#f59e0b">M</span>
+                        <span class="p-avatar" style="background:#10b981">F</span>
                         <div>
-                            <div class="p-title">茂哥</div>
-                            <div class="p-sub">14勝 13敗 (51.9%)</div>
+                            <div class="p-title">Fat</div>
+                            <div class="p-sub">13勝 17敗 (43.3%)</div>
                         </div>
                     </div>
-                    <div class="r-total pos-txt">+NT$ 80</div>
+                    <div class="r-total pos-txt">+NT$ 370</div>
                 </div>
                 <div class="r-list">
                 <div class="r-item">
                     <div class="r-left">
-                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/cle.png" alt="騎士">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/sa.png" alt="馬刺">
                         <div>
-                            <div class="r-tname">騎士 <small>Cavaliers</small></div>
-                            <span class="r-conf east">東區</span>
-                        </div>
-                    </div>
-                    <div class="r-right">
-                        <div class="r-wl">3勝 1敗</div>
-                        <div class="r-money neg-txt">NT$ -60</div>
-                    </div>
-                </div>
-                
-                <div class="r-item">
-                    <div class="r-left">
-                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/hou.png" alt="火箭">
-                        <div>
-                            <div class="r-tname">火箭 <small>Rockets</small></div>
+                            <div class="r-tname">馬刺 <small>Spurs</small></div>
                             <span class="r-conf west">西區</span>
                         </div>
                     </div>
                     <div class="r-right">
-                        <div class="r-wl">5勝 0敗</div>
-                        <div class="r-money pos-txt">+NT$ 710</div>
+                        <div class="r-wl">3勝 2敗</div>
+                        <div class="r-money muted-txt">+NT$ 0</div>
                     </div>
                 </div>
                 
                 <div class="r-item">
                     <div class="r-left">
-                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/tor.png" alt="暴龍">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/min.png" alt="灰狼">
                         <div>
-                            <div class="r-tname">暴龍 <small>Raptors</small></div>
+                            <div class="r-tname">灰狼 <small>Timberwolves</small></div>
+                            <span class="r-conf west">西區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">3勝 2敗</div>
+                        <div class="r-money pos-txt">+NT$ 630</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/atl.png" alt="老鷹">
+                        <div>
+                            <div class="r-tname">老鷹 <small>Hawks</small></div>
                             <span class="r-conf east">東區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">3勝 3敗</div>
+                        <div class="r-money pos-txt">+NT$ 280</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/por.png" alt="拓荒者">
+                        <div>
+                            <div class="r-tname">拓荒者 <small>Trail Blazers</small></div>
+                            <span class="r-conf west">西區</span>
                         </div>
                     </div>
                     <div class="r-right">
                         <div class="r-wl">3勝 1敗</div>
-                        <div class="r-money pos-txt">+NT$ 70</div>
+                        <div class="r-money pos-txt">+NT$ 270</div>
                     </div>
                 </div>
                 
                 <div class="r-item">
                     <div class="r-left">
-                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/wsh.png" alt="巫師">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/utah.png" alt="爵士">
                         <div>
-                            <div class="r-tname">巫師 <small>Wizards</small></div>
-                            <span class="r-conf east">東區</span>
-                        </div>
-                    </div>
-                    <div class="r-right">
-                        <div class="r-wl">2勝 3敗</div>
-                        <div class="r-money pos-txt">+NT$ 50</div>
-                    </div>
-                </div>
-                
-                <div class="r-item">
-                    <div class="r-left">
-                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/chi.png" alt="公牛">
-                        <div>
-                            <div class="r-tname">公牛 <small>Bulls</small></div>
-                            <span class="r-conf east">東區</span>
+                            <div class="r-tname">爵士 <small>Jazz</small></div>
+                            <span class="r-conf west">西區</span>
                         </div>
                     </div>
                     <div class="r-right">
                         <div class="r-wl">1勝 4敗</div>
-                        <div class="r-money neg-txt">NT$ -340</div>
+                        <div class="r-money neg-txt">NT$ -330</div>
                     </div>
                 </div>
                 
                 <div class="r-item">
                     <div class="r-left">
-                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/bkn.png" alt="籃網">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/sac.png" alt="國王">
                         <div>
-                            <div class="r-tname">籃網 <small>Nets</small></div>
-                            <span class="r-conf east">東區</span>
+                            <div class="r-tname">國王 <small>Kings</small></div>
+                            <span class="r-conf west">西區</span>
                         </div>
                     </div>
                     <div class="r-right">
-                        <div class="r-wl">0勝 4敗</div>
-                        <div class="r-money neg-txt">NT$ -350</div>
+                        <div class="r-wl">0勝 5敗</div>
+                        <div class="r-money neg-txt">NT$ -480</div>
                     </div>
                 </div>
                 </div>
@@ -3518,13 +3501,111 @@
             <div class="r-card">
                 <div class="r-head">
                     <div class="p-info">
+                        <span class="p-avatar" style="background:#f59e0b">M</span>
+                        <div>
+                            <div class="p-title">茂哥</div>
+                            <div class="p-sub">14勝 14敗 (50.0%)</div>
+                        </div>
+                    </div>
+                    <div class="r-total pos-txt">+NT$ 50</div>
+                </div>
+                <div class="r-list">
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/cle.png" alt="騎士">
+                        <div>
+                            <div class="r-tname">騎士 <small>Cavaliers</small></div>
+                            <span class="r-conf east">東區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">3勝 2敗</div>
+                        <div class="r-money neg-txt">NT$ -90</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/hou.png" alt="火箭">
+                        <div>
+                            <div class="r-tname">火箭 <small>Rockets</small></div>
+                            <span class="r-conf west">西區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">5勝 0敗</div>
+                        <div class="r-money pos-txt">+NT$ 710</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/tor.png" alt="暴龍">
+                        <div>
+                            <div class="r-tname">暴龍 <small>Raptors</small></div>
+                            <span class="r-conf east">東區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">3勝 1敗</div>
+                        <div class="r-money pos-txt">+NT$ 70</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/wsh.png" alt="巫師">
+                        <div>
+                            <div class="r-tname">巫師 <small>Wizards</small></div>
+                            <span class="r-conf east">東區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">2勝 3敗</div>
+                        <div class="r-money pos-txt">+NT$ 50</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/chi.png" alt="公牛">
+                        <div>
+                            <div class="r-tname">公牛 <small>Bulls</small></div>
+                            <span class="r-conf east">東區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">1勝 4敗</div>
+                        <div class="r-money neg-txt">NT$ -340</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/bkn.png" alt="籃網">
+                        <div>
+                            <div class="r-tname">籃網 <small>Nets</small></div>
+                            <span class="r-conf east">東區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">0勝 4敗</div>
+                        <div class="r-money neg-txt">NT$ -350</div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            
+            <div class="r-card">
+                <div class="r-head">
+                    <div class="p-info">
                         <span class="p-avatar" style="background:#8b5cf6">S</span>
                         <div>
                             <div class="p-title">Saiman</div>
-                            <div class="p-sub">10勝 16敗 (38.5%)</div>
+                            <div class="p-sub">11勝 16敗 (40.7%)</div>
                         </div>
                     </div>
-                    <div class="r-total neg-txt">NT$ -1,080</div>
+                    <div class="r-total neg-txt">NT$ -960</div>
                 </div>
                 <div class="r-list">
                 <div class="r-item">
@@ -3606,8 +3687,8 @@
                         </div>
                     </div>
                     <div class="r-right">
-                        <div class="r-wl">0勝 4敗</div>
-                        <div class="r-money neg-txt">NT$ -230</div>
+                        <div class="r-wl">1勝 4敗</div>
+                        <div class="r-money neg-txt">NT$ -110</div>
                     </div>
                 </div>
                 </div>
@@ -3620,14 +3701,14 @@
     </div>
 
     <script>
-        const chartDates = ["10-21", "10-22", "10-23", "10-24", "10-25", "10-26", "10-27", "10-28", "10-29"];
-        const allDatasets = [{"code": "F", "label": "Fat (F)", "data": [-120, 160, 160, 820, 910, 940, 770, 840, 670], "borderColor": "#10b981", "backgroundColor": "#10b98120"}, {"code": "6", "label": "Sixers (6)", "data": [60, 140, 100, 110, 80, 150, 280, 210, 280], "borderColor": "#ec4899", "backgroundColor": "#ec489920"}, {"code": "M", "label": "茂哥 (M)", "data": [0, 230, 150, 260, 330, -170, -470, -480, 80], "borderColor": "#f59e0b", "backgroundColor": "#f59e0b20"}, {"code": "Z", "label": "志旭 (Z)", "data": [200, 230, 350, 220, 60, 550, 620, 480, 50], "borderColor": "#2563eb", "backgroundColor": "#2563eb20"}, {"code": "S", "label": "Saiman (S)", "data": [-140, -760, -760, -1410, -1380, -1470, -1200, -1050, -1080], "borderColor": "#8b5cf6", "backgroundColor": "#8b5cf620"}];
-        const barLabels = ["Fat", "Sixers", "茂哥", "志旭", "Saiman"];
-        const barValues = [670, 280, 80, 50, -1080];
+        const chartDates = ["10-21", "10-22", "10-23", "10-24", "10-25", "10-26", "10-27", "10-28", "10-29", "10-30"];
+        const allDatasets = [{"code": "6", "label": "Sixers (6)", "data": [60, 140, 100, 110, 80, 150, 280, 210, 280, 490], "borderColor": "#ec4899", "backgroundColor": "#ec489920"}, {"code": "F", "label": "Fat (F)", "data": [-120, 160, 160, 820, 910, 940, 770, 840, 670, 370], "borderColor": "#10b981", "backgroundColor": "#10b98120"}, {"code": "Z", "label": "志旭 (Z)", "data": [200, 230, 350, 220, 60, 550, 620, 480, 50, 50], "borderColor": "#2563eb", "backgroundColor": "#2563eb20"}, {"code": "M", "label": "茂哥 (M)", "data": [0, 230, 150, 260, 330, -170, -470, -480, 80, 50], "borderColor": "#f59e0b", "backgroundColor": "#f59e0b20"}, {"code": "S", "label": "Saiman (S)", "data": [-140, -760, -760, -1410, -1380, -1470, -1200, -1050, -1080, -960], "borderColor": "#8b5cf6", "backgroundColor": "#8b5cf620"}];
+        const barLabels = ["Sixers", "Fat", "志旭", "茂哥", "Saiman"];
+        const barValues = [490, 370, 50, 50, -960];
         const barColors = ["#2563eb", "#2563eb", "#2563eb", "#2563eb", "#f43f5e"];
-        const donutLabels = ["Fat", "Sixers", "茂哥", "志旭", "Saiman"];
-        const donutValues = [12, 17, 14, 15, 10];
-        const donutColors = ["#10b981", "#ec4899", "#f59e0b", "#2563eb", "#8b5cf6"];
+        const donutLabels = ["Sixers", "Fat", "志旭", "茂哥", "Saiman"];
+        const donutValues = [18, 13, 15, 14, 11];
+        const donutColors = ["#ec4899", "#10b981", "#2563eb", "#f59e0b", "#8b5cf6"];
 
         const lineCtx = document.getElementById('trendLineChart').getContext('2d');
         let lineChart = new Chart(lineCtx, {
@@ -3762,7 +3843,7 @@
             }
         });
 
-        let currentDateFilter = '2026-10-29';
+        let currentDateFilter = '2026-10-30';
         function filterGames(dateStr, btn) {
             currentDateFilter = dateStr;
             document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
