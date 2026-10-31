@@ -403,8 +403,38 @@
         }
         .bar-box {
             position: relative;
-            height: 230px;
+            height: 175px;
             width: 100%;
+        }
+        .np-breakdown {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 4px;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed var(--border);
+            text-align: center;
+        }
+        .np-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1px;
+        }
+        .np-name {
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+        .np-total {
+            font-size: 0.82rem;
+            font-weight: 800;
+        }
+        .np-sub {
+            font-size: 0.66rem;
+            color: var(--text-sub);
+            line-height: 1.25;
+            white-space: nowrap;
         }
         .device-list {
             display: flex;
@@ -751,7 +781,7 @@
             <header class="topbar">
                 <div class="topbar-title">
                     <h1>Analytics · NBA 2026-27 分隊獎金與數據分析</h1>
-                    <p>統計期間：2026-10-21（開季）至 2026-10-31 ｜ 最後更新：2026-10-31 10:29:46</p>
+                    <p>統計期間：2026-10-21（開季）至 2026-10-31 ｜ 最後更新：2026-10-31 10:46:49</p>
                 </div>
                 <div class="topbar-actions">
                     <div class="search-box">
@@ -778,8 +808,8 @@
                         <div class="kpi-icon green">👥</div>
                         <div class="kpi-body">
                             <div class="kpi-label">總流通獎金池 (Total Prize Pool)</div>
-                            <div class="kpi-val">NT$ 4,480</div>
-                            <div class="kpi-trend">↑ 累計 77 場例行賽完賽</div>
+                            <div class="kpi-val">NT$ 4,580</div>
+                            <div class="kpi-trend">↑ 累計 78 場例行賽完賽</div>
                         </div>
                         <div class="kpi-dots">⋮</div>
                     </div>
@@ -811,7 +841,7 @@
                         <div class="card-head">
                             <div>
                                 <div class="card-title">每日累計獎金走勢分析 (Cumulative Prize Trend)</div>
-                                <div class="card-subtitle">追蹤開季至今每日各玩家累計台幣淨損益變化</div>
+                                <div class="card-subtitle">追蹤開季至今每日各玩家累計台幣淨損益變化（季賽 + NBA Cup 總和）</div>
                             </div>
                             <select class="card-select" id="linePlayerSelect" onchange="updateLineChart(this.value)">
                                 <option value="ALL">全部玩家走勢比較</option><option value="M">MATT (M) 單獨走勢</option><option value="L">LEO (L) 單獨走勢</option><option value="C">CHRIS (C) 單獨走勢</option><option value="E">ERIC (E) 單獨走勢</option><option value="D">DUNCAN (D) 單獨走勢</option><option value="F">FISHER (F) 單獨走勢</option>
@@ -834,7 +864,7 @@
                                 <canvas id="winsDonutChart"></canvas>
                                 <div class="donut-center">
                                     <small>總完賽</small>
-                                    <b>77 場</b>
+                                    <b>78 場</b>
                                 </div>
                             </div>
                             <div class="donut-legend">
@@ -879,7 +909,7 @@
                 </div>
                 <div class="legend-right">
                     <b>18%</b>
-                    <small class="pos-txt">(+$120)</small>
+                    <small class="pos-txt">(+$20)</small>
                 </div>
             </div>
             
@@ -889,7 +919,7 @@
                     <span class="legend-name">DUNCAN (12勝)</span>
                 </div>
                 <div class="legend-right">
-                    <b>16%</b>
+                    <b>15%</b>
                     <small class="pos-txt">(+$5)</small>
                 </div>
             </div>
@@ -897,11 +927,11 @@
             <div class="legend-item">
                 <div class="legend-left">
                     <span class="legend-dot" style="background:#ec4899"></span>
-                    <span class="legend-name">FISHER (6勝)</span>
+                    <span class="legend-name">FISHER (7勝)</span>
                 </div>
                 <div class="legend-right">
-                    <b>8%</b>
-                    <small class="neg-txt">($-1060)</small>
+                    <b>9%</b>
+                    <small class="neg-txt">($-960)</small>
                 </div>
             </div>
             
@@ -916,11 +946,56 @@
                         <div class="card-head">
                             <div>
                                 <div class="card-title">各玩家累計淨損益 (Net Profit)</div>
-                                <div class="card-subtitle">目前累計贏得或虧損之台幣金額</div>
+                                <div class="card-subtitle">季賽 + NBA Cup 總和（下方小字顯示季賽與 Cup 個別金額）</div>
                             </div>
                         </div>
                         <div class="bar-box">
                             <canvas id="profitBarChart"></canvas>
+                        </div>
+                        <div class="np-breakdown">
+                            
+            <div class="np-item">
+                <div class="np-name">MATT</div>
+                <div class="np-total pos-txt">+$466</div>
+                <div class="np-sub">季賽 +$445</div>
+                <div class="np-sub">Cup +$21</div>
+            </div>
+            
+            <div class="np-item">
+                <div class="np-name">LEO</div>
+                <div class="np-total pos-txt">+$270</div>
+                <div class="np-sub">季賽 +$270</div>
+                <div class="np-sub">Cup +$0</div>
+            </div>
+            
+            <div class="np-item">
+                <div class="np-name">CHRIS</div>
+                <div class="np-total pos-txt">+$241</div>
+                <div class="np-sub">季賽 +$220</div>
+                <div class="np-sub">Cup +$21</div>
+            </div>
+            
+            <div class="np-item">
+                <div class="np-name">DUNCAN</div>
+                <div class="np-total pos-txt">+$36</div>
+                <div class="np-sub">季賽 +$5</div>
+                <div class="np-sub">Cup +$31</div>
+            </div>
+            
+            <div class="np-item">
+                <div class="np-name">ERIC</div>
+                <div class="np-total neg-txt">$-29</div>
+                <div class="np-sub">季賽 +$20</div>
+                <div class="np-sub">Cup $-49</div>
+            </div>
+            
+            <div class="np-item">
+                <div class="np-name">FISHER</div>
+                <div class="np-total neg-txt">$-984</div>
+                <div class="np-sub">季賽 $-960</div>
+                <div class="np-sub">Cup $-24</div>
+            </div>
+            
                         </div>
                     </div>
 
@@ -976,11 +1051,11 @@
                 <div class="device-icon" style="background:#8b5cf615;color:#8b5cf6">E</div>
                 <div class="device-body">
                     <div class="device-top">
-                        <span class="device-name">ERIC <small>(14勝 13敗)</small></span>
-                        <span class="device-pct">51.9%</span>
+                        <span class="device-name">ERIC <small>(14勝 14敗)</small></span>
+                        <span class="device-pct">50.0%</span>
                     </div>
                     <div class="device-track">
-                        <div class="device-fill" style="width:51.9%;background:#8b5cf6"></div>
+                        <div class="device-fill" style="width:50.0%;background:#8b5cf6"></div>
                     </div>
                 </div>
             </div>
@@ -1002,11 +1077,11 @@
                 <div class="device-icon" style="background:#ec489915;color:#ec4899">F</div>
                 <div class="device-body">
                     <div class="device-top">
-                        <span class="device-name">FISHER <small>(6勝 18敗)</small></span>
-                        <span class="device-pct">25.0%</span>
+                        <span class="device-name">FISHER <small>(7勝 18敗)</small></span>
+                        <span class="device-pct">28.0%</span>
                     </div>
                     <div class="device-track">
-                        <div class="device-fill" style="width:25.0%;background:#ec4899"></div>
+                        <div class="device-fill" style="width:28.0%;background:#ec4899"></div>
                     </div>
                 </div>
             </div>
@@ -1256,7 +1331,7 @@
                     </div>
                 </div>
             </td>
-            <td><span class="muted-txt" style="font-size:0.8rem">已排除 3 場純 COM 對戰</span></td>
+            <td><span class="muted-txt" style="font-size:0.8rem">已排除 4 場純 COM 對戰</span></td>
             <td><b>0</b> 勝 <b>3</b> 敗</td>
             <td>—</td>
             <td class="money-col neg-txt">NT$ -245</td>
@@ -1271,7 +1346,7 @@
 
                     <div class="card-head" style="margin-top:8px;margin-bottom:12px">
                         <div>
-                            <div class="card-title" style="font-size:0.96rem">🔥 NBA Cup 玩家參與場次明細（共 3 場，已排除純 COM 對戰 3 場）</div>
+                            <div class="card-title" style="font-size:0.96rem">🔥 NBA Cup 玩家參與場次明細（共 3 場，已排除純 COM 對戰 4 場）</div>
                         </div>
                     </div>
                     <div class="matches-grid">
@@ -1472,16 +1547,16 @@
                         </div>
                     </div>
                 </td>
-                <td><b>14</b> 勝 <b>13</b> 敗</td>
+                <td><b>14</b> 勝 <b>14</b> 敗</td>
                 <td>
                     <div class="mini-pct">
-                        <span>51.9%</span>
-                        <div class="mini-bar"><div style="width:51.9%;background:#8b5cf6"></div></div>
+                        <span>50.0%</span>
+                        <div class="mini-bar"><div style="width:50.0%;background:#8b5cf6"></div></div>
                     </div>
                 </td>
-                <td>+24 分</td>
-                <td class="money-col pos-txt">+NT$ 120</td>
-                <td><div class="pills-wrap"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/phi.png" alt="76人">76人 <b>5-1</b> <span class="pos-txt">(+$45)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/cle.png" alt="騎士">騎士 <b>3-2</b> <span class="pos-txt">(+$80)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/ind.png" alt="溜馬">溜馬 <b>2-3</b> <span class="pos-txt">(+$30)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/atl.png" alt="老鷹">老鷹 <b>3-3</b> <span class="pos-txt">(+$125)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/lac.png" alt="快艇">快艇 <b>1-4</b> <span class="neg-txt">($-160)</span></span></div></td>
+                <td>+4 分</td>
+                <td class="money-col pos-txt">+NT$ 20</td>
+                <td><div class="pills-wrap"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/phi.png" alt="76人">76人 <b>5-1</b> <span class="pos-txt">(+$45)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/cle.png" alt="騎士">騎士 <b>3-2</b> <span class="pos-txt">(+$80)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/ind.png" alt="溜馬">溜馬 <b>2-4</b> <span class="neg-txt">($-70)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/atl.png" alt="老鷹">老鷹 <b>3-3</b> <span class="pos-txt">(+$125)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/lac.png" alt="快艇">快艇 <b>1-4</b> <span class="neg-txt">($-160)</span></span></div></td>
             </tr>
             
             <tr>
@@ -1518,16 +1593,16 @@
                         </div>
                     </div>
                 </td>
-                <td><b>6</b> 勝 <b>18</b> 敗</td>
+                <td><b>7</b> 勝 <b>18</b> 敗</td>
                 <td>
                     <div class="mini-pct">
-                        <span>25.0%</span>
-                        <div class="mini-bar"><div style="width:25.0%;background:#ec4899"></div></div>
+                        <span>28.0%</span>
+                        <div class="mini-bar"><div style="width:28.0%;background:#ec4899"></div></div>
                     </div>
                 </td>
-                <td>-212 分</td>
-                <td class="money-col neg-txt">NT$ -1,060</td>
-                <td><div class="pills-wrap"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/ny.png" alt="尼克">尼克 <b>2-4</b> <span class="pos-txt">(+$25)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/mia.png" alt="熱火">熱火 <b>1-4</b> <span class="neg-txt">($-195)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/orl.png" alt="魔術">魔術 <b>2-3</b> <span class="neg-txt">($-260)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/phx.png" alt="太陽">太陽 <b>1-2</b> <span class="neg-txt">($-215)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/sac.png" alt="國王">國王 <b>0-5</b> <span class="neg-txt">($-415)</span></span></div></td>
+                <td>-192 分</td>
+                <td class="money-col neg-txt">NT$ -960</td>
+                <td><div class="pills-wrap"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/ny.png" alt="尼克">尼克 <b>2-4</b> <span class="pos-txt">(+$25)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/mia.png" alt="熱火">熱火 <b>2-4</b> <span class="neg-txt">($-95)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/orl.png" alt="魔術">魔術 <b>2-3</b> <span class="neg-txt">($-260)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/phx.png" alt="太陽">太陽 <b>1-2</b> <span class="neg-txt">($-215)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/sac.png" alt="國王">國王 <b>0-5</b> <span class="neg-txt">($-415)</span></span></div></td>
             </tr>
             
                             </tbody>
@@ -1544,7 +1619,7 @@
                         </div>
                     </div>
                     <div class="tabs-bar">
-                        <button class="tab-btn active" onclick="filterGames('2026-10-31', this)">🔥 最新 · 2026-10-31 (6場)</button><button class="tab-btn" onclick="filterGames('2026-10-30', this)">2026-10-30 (3場)</button><button class="tab-btn" onclick="filterGames('2026-10-29', this)">2026-10-29 (12場)</button><button class="tab-btn" onclick="filterGames('2026-10-28', this)">2026-10-28 (4場)</button><button class="tab-btn" onclick="filterGames('2026-10-27', this)">2026-10-27 (9場)</button><button class="tab-btn" onclick="filterGames('2026-10-26', this)">2026-10-26 (7場)</button><button class="tab-btn" onclick="filterGames('2026-10-25', this)">2026-10-25 (8場)</button><button class="tab-btn" onclick="filterGames('2026-10-24', this)">2026-10-24 (12場)</button><button class="tab-btn" onclick="filterGames('2026-10-23', this)">2026-10-23 (2場)</button><button class="tab-btn" onclick="filterGames('2026-10-22', this)">2026-10-22 (11場)</button><button class="tab-btn" onclick="filterGames('2026-10-21', this)">2026-10-21 (3場)</button><button class="tab-btn" onclick="filterGames('ALL', this)">全部歷史日期 (77場)</button>
+                        <button class="tab-btn active" onclick="filterGames('2026-10-31', this)">🔥 最新 · 2026-10-31 (7場)</button><button class="tab-btn" onclick="filterGames('2026-10-30', this)">2026-10-30 (3場)</button><button class="tab-btn" onclick="filterGames('2026-10-29', this)">2026-10-29 (12場)</button><button class="tab-btn" onclick="filterGames('2026-10-28', this)">2026-10-28 (4場)</button><button class="tab-btn" onclick="filterGames('2026-10-27', this)">2026-10-27 (9場)</button><button class="tab-btn" onclick="filterGames('2026-10-26', this)">2026-10-26 (7場)</button><button class="tab-btn" onclick="filterGames('2026-10-25', this)">2026-10-25 (8場)</button><button class="tab-btn" onclick="filterGames('2026-10-24', this)">2026-10-24 (12場)</button><button class="tab-btn" onclick="filterGames('2026-10-23', this)">2026-10-23 (2場)</button><button class="tab-btn" onclick="filterGames('2026-10-22', this)">2026-10-22 (11場)</button><button class="tab-btn" onclick="filterGames('2026-10-21', this)">2026-10-21 (3場)</button><button class="tab-btn" onclick="filterGames('ALL', this)">全部歷史日期 (78場)</button>
                     </div>
                     <div class="matches-grid" id="matchesGrid">
                         
@@ -1573,6 +1648,33 @@
                     </div>
                 </div>
                 <div class="g-foot"><span>🏆 <b>DUNCAN</b> (灰狼) 贏 <b>26</b> 分</span><div class="g-badges"><span class="badge-pos">DUNCAN +$130</span><span class="badge-neg">ERIC -$130</span></div></div>
+            </div>
+            
+            <div class="match-card" style="display:flex" data-date="2026-10-31" data-search="2026-10-31 溜馬 pacers eric 熱火 heat fisher">
+                <div class="m-head">
+                    <span>📅 台灣 2026-10-31（美東 2026-10-30）</span>
+                    <span>分差 20 分 × $5</span>
+                </div>
+                <div class="m-body">
+                    <div class="m-team ">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/ind.png" alt="溜馬">
+                        <div class="m-meta">
+                            <div class="m-tname">溜馬 <small>Pacers</small></div>
+                            <span class="m-owner" style="background:#8b5cf615;color:#8b5cf6">E · ERIC</span>
+                        </div>
+                        <div class="m-score">125</div>
+                    </div>
+                    <div class="m-vs">VS</div>
+                    <div class="m-team right win">
+                        <div class="m-score">145</div>
+                        <div class="m-meta right">
+                            <div class="m-tname"><small>Heat</small> 熱火</div>
+                            <span class="m-owner" style="background:#ec489915;color:#ec4899">F · FISHER</span>
+                        </div>
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/mia.png" alt="熱火">
+                    </div>
+                </div>
+                <div class="g-foot"><span>🏆 <b>FISHER</b> (熱火) 贏 <b>20</b> 分</span><div class="g-badges"><span class="badge-pos">FISHER +$100</span><span class="badge-neg">ERIC -$100</span></div></div>
             </div>
             
             <div class="match-card" style="display:flex" data-date="2026-10-31" data-search="2026-10-31 魔術 magic fisher 暴龍 raptors chris">
@@ -3647,7 +3749,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td class="mx-head"><span class="p-avatar xs" style="background:#06b6d4">M</span> <b>MATT</b></td><td class="mx-self">—</td><td class="mx-pos"><div class="mx-v">+$60</div><div class="mx-s">4勝 1敗</div></td><td class="mx-pos"><div class="mx-v">+$140</div><div class="mx-s">4勝 3敗</div></td><td class="mx-neg"><div class="mx-v">$-165</div><div class="mx-s">2勝 2敗</div></td><td class="mx-pos"><div class="mx-v">+$60</div><div class="mx-s">1勝 3敗</div></td><td class="mx-pos"><div class="mx-v">+$350</div><div class="mx-s">5勝 0敗</div></td></tr><tr><td class="mx-head"><span class="p-avatar xs" style="background:#10b981">L</span> <b>LEO</b></td><td class="mx-neg"><div class="mx-v">$-60</div><div class="mx-s">1勝 4敗</div></td><td class="mx-self">—</td><td class="mx-neg"><div class="mx-v">$-160</div><div class="mx-s">0勝 2敗</div></td><td class="mx-pos"><div class="mx-v">+$45</div><div class="mx-s">3勝 2敗</div></td><td class="mx-pos"><div class="mx-v">+$415</div><div class="mx-s">6勝 0敗</div></td><td class="mx-pos"><div class="mx-v">+$30</div><div class="mx-s">2勝 1敗</div></td></tr><tr><td class="mx-head"><span class="p-avatar xs" style="background:#f59e0b">C</span> <b>CHRIS</b></td><td class="mx-neg"><div class="mx-v">$-140</div><div class="mx-s">3勝 4敗</div></td><td class="mx-pos"><div class="mx-v">+$160</div><div class="mx-s">2勝 0敗</div></td><td class="mx-self">—</td><td class="mx-pos"><div class="mx-v">+$15</div><div class="mx-s">1勝 1敗</div></td><td class="mx-neg"><div class="mx-v">$-50</div><div class="mx-s">3勝 2敗</div></td><td class="mx-pos"><div class="mx-v">+$235</div><div class="mx-s">3勝 3敗</div></td></tr><tr><td class="mx-head"><span class="p-avatar xs" style="background:#8b5cf6">E</span> <b>ERIC</b></td><td class="mx-pos"><div class="mx-v">+$165</div><div class="mx-s">2勝 2敗</div></td><td class="mx-neg"><div class="mx-v">$-45</div><div class="mx-s">2勝 3敗</div></td><td class="mx-neg"><div class="mx-v">$-15</div><div class="mx-s">1勝 1敗</div></td><td class="mx-self">—</td><td class="mx-neg"><div class="mx-v">$-140</div><div class="mx-s">2勝 3敗</div></td><td class="mx-pos"><div class="mx-v">+$155</div><div class="mx-s">4勝 1敗</div></td></tr><tr><td class="mx-head"><span class="p-avatar xs" style="background:#2563eb">D</span> <b>DUNCAN</b></td><td class="mx-neg"><div class="mx-v">$-60</div><div class="mx-s">3勝 1敗</div></td><td class="mx-neg"><div class="mx-v">$-415</div><div class="mx-s">0勝 6敗</div></td><td class="mx-pos"><div class="mx-v">+$50</div><div class="mx-s">2勝 3敗</div></td><td class="mx-pos"><div class="mx-v">+$140</div><div class="mx-s">3勝 2敗</div></td><td class="mx-self">—</td><td class="mx-pos"><div class="mx-v">+$290</div><div class="mx-s">3勝 0敗</div></td></tr><tr><td class="mx-head"><span class="p-avatar xs" style="background:#ec4899">F</span> <b>FISHER</b></td><td class="mx-neg"><div class="mx-v">$-350</div><div class="mx-s">0勝 5敗</div></td><td class="mx-neg"><div class="mx-v">$-30</div><div class="mx-s">1勝 2敗</div></td><td class="mx-neg"><div class="mx-v">$-235</div><div class="mx-s">3勝 3敗</div></td><td class="mx-neg"><div class="mx-v">$-155</div><div class="mx-s">1勝 4敗</div></td><td class="mx-neg"><div class="mx-v">$-290</div><div class="mx-s">0勝 3敗</div></td><td class="mx-self">—</td></tr>
+                                <tr><td class="mx-head"><span class="p-avatar xs" style="background:#06b6d4">M</span> <b>MATT</b></td><td class="mx-self">—</td><td class="mx-pos"><div class="mx-v">+$60</div><div class="mx-s">4勝 1敗</div></td><td class="mx-pos"><div class="mx-v">+$140</div><div class="mx-s">4勝 3敗</div></td><td class="mx-neg"><div class="mx-v">$-165</div><div class="mx-s">2勝 2敗</div></td><td class="mx-pos"><div class="mx-v">+$60</div><div class="mx-s">1勝 3敗</div></td><td class="mx-pos"><div class="mx-v">+$350</div><div class="mx-s">5勝 0敗</div></td></tr><tr><td class="mx-head"><span class="p-avatar xs" style="background:#10b981">L</span> <b>LEO</b></td><td class="mx-neg"><div class="mx-v">$-60</div><div class="mx-s">1勝 4敗</div></td><td class="mx-self">—</td><td class="mx-neg"><div class="mx-v">$-160</div><div class="mx-s">0勝 2敗</div></td><td class="mx-pos"><div class="mx-v">+$45</div><div class="mx-s">3勝 2敗</div></td><td class="mx-pos"><div class="mx-v">+$415</div><div class="mx-s">6勝 0敗</div></td><td class="mx-pos"><div class="mx-v">+$30</div><div class="mx-s">2勝 1敗</div></td></tr><tr><td class="mx-head"><span class="p-avatar xs" style="background:#f59e0b">C</span> <b>CHRIS</b></td><td class="mx-neg"><div class="mx-v">$-140</div><div class="mx-s">3勝 4敗</div></td><td class="mx-pos"><div class="mx-v">+$160</div><div class="mx-s">2勝 0敗</div></td><td class="mx-self">—</td><td class="mx-pos"><div class="mx-v">+$15</div><div class="mx-s">1勝 1敗</div></td><td class="mx-neg"><div class="mx-v">$-50</div><div class="mx-s">3勝 2敗</div></td><td class="mx-pos"><div class="mx-v">+$235</div><div class="mx-s">3勝 3敗</div></td></tr><tr><td class="mx-head"><span class="p-avatar xs" style="background:#8b5cf6">E</span> <b>ERIC</b></td><td class="mx-pos"><div class="mx-v">+$165</div><div class="mx-s">2勝 2敗</div></td><td class="mx-neg"><div class="mx-v">$-45</div><div class="mx-s">2勝 3敗</div></td><td class="mx-neg"><div class="mx-v">$-15</div><div class="mx-s">1勝 1敗</div></td><td class="mx-self">—</td><td class="mx-neg"><div class="mx-v">$-140</div><div class="mx-s">2勝 3敗</div></td><td class="mx-pos"><div class="mx-v">+$55</div><div class="mx-s">4勝 2敗</div></td></tr><tr><td class="mx-head"><span class="p-avatar xs" style="background:#2563eb">D</span> <b>DUNCAN</b></td><td class="mx-neg"><div class="mx-v">$-60</div><div class="mx-s">3勝 1敗</div></td><td class="mx-neg"><div class="mx-v">$-415</div><div class="mx-s">0勝 6敗</div></td><td class="mx-pos"><div class="mx-v">+$50</div><div class="mx-s">2勝 3敗</div></td><td class="mx-pos"><div class="mx-v">+$140</div><div class="mx-s">3勝 2敗</div></td><td class="mx-self">—</td><td class="mx-pos"><div class="mx-v">+$290</div><div class="mx-s">3勝 0敗</div></td></tr><tr><td class="mx-head"><span class="p-avatar xs" style="background:#ec4899">F</span> <b>FISHER</b></td><td class="mx-neg"><div class="mx-v">$-350</div><div class="mx-s">0勝 5敗</div></td><td class="mx-neg"><div class="mx-v">$-30</div><div class="mx-s">1勝 2敗</div></td><td class="mx-neg"><div class="mx-v">$-235</div><div class="mx-s">3勝 3敗</div></td><td class="mx-neg"><div class="mx-v">$-55</div><div class="mx-s">2勝 4敗</div></td><td class="mx-neg"><div class="mx-v">$-290</div><div class="mx-s">0勝 3敗</div></td><td class="mx-self">—</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -3921,10 +4023,10 @@
                         <span class="p-avatar" style="background:#8b5cf6">E</span>
                         <div>
                             <div class="p-title">ERIC</div>
-                            <div class="p-sub">14勝 13敗 (51.9%)</div>
+                            <div class="p-sub">14勝 14敗 (50.0%)</div>
                         </div>
                     </div>
-                    <div class="r-total pos-txt">+NT$ 120</div>
+                    <div class="r-total pos-txt">+NT$ 20</div>
                 </div>
                 <div class="r-list">
                 <div class="r-item">
@@ -3964,8 +4066,8 @@
                         </div>
                     </div>
                     <div class="r-right">
-                        <div class="r-wl">2勝 3敗</div>
-                        <div class="r-money pos-txt">+NT$ 30</div>
+                        <div class="r-wl">2勝 4敗</div>
+                        <div class="r-money neg-txt">NT$ -70</div>
                     </div>
                 </div>
                 
@@ -4089,10 +4191,10 @@
                         <span class="p-avatar" style="background:#ec4899">F</span>
                         <div>
                             <div class="p-title">FISHER</div>
-                            <div class="p-sub">6勝 18敗 (25.0%)</div>
+                            <div class="p-sub">7勝 18敗 (28.0%)</div>
                         </div>
                     </div>
-                    <div class="r-total neg-txt">NT$ -1,060</div>
+                    <div class="r-total neg-txt">NT$ -960</div>
                 </div>
                 <div class="r-list">
                 <div class="r-item">
@@ -4118,8 +4220,8 @@
                         </div>
                     </div>
                     <div class="r-right">
-                        <div class="r-wl">1勝 4敗</div>
-                        <div class="r-money neg-txt">NT$ -195</div>
+                        <div class="r-wl">2勝 4敗</div>
+                        <div class="r-money neg-txt">NT$ -95</div>
                     </div>
                 </div>
                 
@@ -4175,12 +4277,14 @@
 
     <script>
         const chartDates = ["10-21", "10-22", "10-23", "10-24", "10-25", "10-26", "10-27", "10-28", "10-29", "10-30", "10-31"];
-        const allDatasets = [{"code": "M", "label": "MATT (M)", "data": [-40, 275, 275, 115, 145, 145, 405, 445, 500, 455, 445], "borderColor": "#06b6d4", "backgroundColor": "#06b6d420"}, {"code": "L", "label": "LEO (L)", "data": [0, -25, -25, 95, -50, -85, 60, 20, 245, 350, 270], "borderColor": "#10b981", "backgroundColor": "#10b98120"}, {"code": "C", "label": "CHRIS (C)", "data": [-20, 40, 40, 140, 220, 170, -40, 25, 165, 165, 220], "borderColor": "#f59e0b", "backgroundColor": "#f59e0b20"}, {"code": "E", "label": "ERIC (E)", "data": [30, 205, 205, 320, 360, 395, 315, 315, 225, 225, 120], "borderColor": "#8b5cf6", "backgroundColor": "#8b5cf620"}, {"code": "D", "label": "DUNCAN (D)", "data": [60, 25, 25, 105, 80, 185, 145, 145, -125, -125, 5], "borderColor": "#2563eb", "backgroundColor": "#2563eb20"}, {"code": "F", "label": "FISHER (F)", "data": [-30, -520, -520, -775, -755, -810, -885, -950, -1010, -1070, -1060], "borderColor": "#ec4899", "backgroundColor": "#ec489920"}];
-        const barLabels = ["MATT", "LEO", "CHRIS", "ERIC", "DUNCAN", "FISHER"];
-        const barValues = [445, 270, 220, 120, 5, -1060];
-        const barColors = ["#2563eb", "#2563eb", "#2563eb", "#2563eb", "#2563eb", "#f43f5e"];
+        const allDatasets = [{"code": "M", "label": "MATT (M)", "data": [-40, 275, 275, 115, 145, 145, 405, 445, 500, 455, 466], "regData": [-40, 275, 275, 115, 145, 145, 405, 445, 500, 455, 445], "cupData": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 21], "borderColor": "#06b6d4", "backgroundColor": "#06b6d420"}, {"code": "L", "label": "LEO (L)", "data": [0, -25, -25, 95, -50, -85, 60, 20, 245, 350, 270], "regData": [0, -25, -25, 95, -50, -85, 60, 20, 245, 350, 270], "cupData": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], "borderColor": "#10b981", "backgroundColor": "#10b98120"}, {"code": "C", "label": "CHRIS (C)", "data": [-20, 40, 40, 140, 220, 170, -40, 25, 165, 165, 241], "regData": [-20, 40, 40, 140, 220, 170, -40, 25, 165, 165, 220], "cupData": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 21], "borderColor": "#f59e0b", "backgroundColor": "#f59e0b20"}, {"code": "E", "label": "ERIC (E)", "data": [30, 205, 205, 320, 360, 395, 315, 315, 225, 225, -29], "regData": [30, 205, 205, 320, 360, 395, 315, 315, 225, 225, 20], "cupData": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -49], "borderColor": "#8b5cf6", "backgroundColor": "#8b5cf620"}, {"code": "D", "label": "DUNCAN (D)", "data": [60, 25, 25, 105, 80, 185, 145, 145, -125, -125, 36], "regData": [60, 25, 25, 105, 80, 185, 145, 145, -125, -125, 5], "cupData": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 31], "borderColor": "#2563eb", "backgroundColor": "#2563eb20"}, {"code": "F", "label": "FISHER (F)", "data": [-30, -520, -520, -775, -755, -810, -885, -950, -1010, -1070, -984], "regData": [-30, -520, -520, -775, -755, -810, -885, -950, -1010, -1070, -960], "cupData": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -24], "borderColor": "#ec4899", "backgroundColor": "#ec489920"}];
+        const barLabels = ["MATT", "LEO", "CHRIS", "DUNCAN", "ERIC", "FISHER"];
+        const barValues = [466, 270, 241, 36, -29, -984];
+        const barRegValues = [445, 270, 220, 5, 20, -960];
+        const barCupValues = [21, 0, 21, 31, -49, -24];
+        const barColors = ["#2563eb", "#2563eb", "#2563eb", "#2563eb", "#f43f5e", "#f43f5e"];
         const donutLabels = ["MATT", "LEO", "CHRIS", "ERIC", "DUNCAN", "FISHER"];
-        const donutValues = [16, 14, 15, 14, 12, 6];
+        const donutValues = [16, 14, 15, 14, 12, 7];
         const donutColors = ["#06b6d4", "#10b981", "#f59e0b", "#8b5cf6", "#2563eb", "#ec4899"];
 
         const lineCtx = document.getElementById('trendLineChart').getContext('2d');
@@ -4191,6 +4295,8 @@
                 datasets: allDatasets.map(d => ({
                     label: d.label,
                     data: d.data,
+                    regData: d.regData,
+                    cupData: d.cupData,
                     borderColor: d.borderColor,
                     backgroundColor: d.backgroundColor,
                     borderWidth: 2.5,
@@ -4207,7 +4313,16 @@
                     legend: { position: 'top', labels: { boxWidth: 10, usePointStyle: true, font: { size: 11 } } },
                     tooltip: {
                         callbacks: {
-                            label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y >= 0 ? '+' : ''}NT$ ${ctx.parsed.y}`
+                            label: ctx => {
+                                const idx = ctx.dataIndex;
+                                const tot = ctx.parsed.y;
+                                const reg = ctx.dataset.regData ? ctx.dataset.regData[idx] : tot;
+                                const cup = ctx.dataset.cupData ? ctx.dataset.cupData[idx] : 0;
+                                const tSign = tot >= 0 ? '+' : '';
+                                const rSign = reg >= 0 ? '+' : '';
+                                const cSign = cup >= 0 ? '+' : '';
+                                return `${ctx.dataset.label}: ${tSign}NT$ ${tot} (季賽 ${rSign}${reg} ｜ Cup ${cSign}${cup})`;
+                            }
                         }
                     }
                 },
@@ -4226,6 +4341,8 @@
                 lineChart.data.datasets = allDatasets.map(d => ({
                     label: d.label,
                     data: d.data,
+                    regData: d.regData,
+                    cupData: d.cupData,
                     borderColor: d.borderColor,
                     backgroundColor: d.backgroundColor,
                     borderWidth: 2.5,
@@ -4242,6 +4359,8 @@
                     lineChart.data.datasets = [{
                         label: target.label,
                         data: target.data,
+                        regData: target.regData,
+                        cupData: target.cupData,
                         borderColor: target.borderColor,
                         backgroundColor: grad,
                         borderWidth: 3,
@@ -4288,7 +4407,7 @@
             data: {
                 labels: barLabels,
                 datasets: [{
-                    label: '累計淨損益 (NT$)',
+                    label: '季賽 + NBA Cup 總和 (NT$)',
                     data: barValues,
                     backgroundColor: barColors,
                     borderRadius: 6,
@@ -4302,7 +4421,19 @@
                     legend: { display: false },
                     tooltip: {
                         callbacks: {
-                            label: ctx => `${ctx.parsed.y >= 0 ? '+' : ''}NT$ ${ctx.parsed.y}`
+                            label: ctx => {
+                                const idx = ctx.dataIndex;
+                                const tot = ctx.parsed.y;
+                                const reg = barRegValues[idx];
+                                const cup = barCupValues[idx];
+                                const tSign = tot >= 0 ? '+' : '';
+                                const rSign = reg >= 0 ? '+' : '';
+                                const cSign = cup >= 0 ? '+' : '';
+                                return [
+                                    `總和: ${tSign}NT$ ${tot}`,
+                                    `季賽: ${rSign}NT$ ${reg} ｜ NBA Cup: ${cSign}NT$ ${cup}`
+                                ];
+                            }
                         }
                     }
                 },
@@ -4311,7 +4442,10 @@
                         grid: { color: '#f1f5f9' },
                         ticks: { callback: v => (v >= 0 ? '+' : '') + '$' + v }
                     },
-                    x: { grid: { display: false } }
+                    x: {
+                        display: false,
+                        grid: { display: false }
+                    }
                 }
             }
         });
