@@ -489,13 +489,15 @@
         }
         .full-table th {
             text-align: left;
-            padding: 12px 14px;
+            padding: 10px 12px;
             background: #f8fafc;
             color: var(--text-sub);
             font-size: 0.78rem;
             font-weight: 700;
             border-bottom: 1px solid var(--border);
             white-space: nowrap;
+            vertical-align: middle;
+            line-height: 1.35;
         }
         .full-table td {
             padding: 13px 14px;
@@ -867,7 +869,7 @@
             <header class="topbar">
                 <div class="topbar-title">
                     <h1>Analytics · NBA 2026-27 季賽 & 外插合併獎金儀表板</h1>
-                    <p>統計期間：2026-10-21（開季）至 2026-11-03 ｜ 最後更新：2026-11-03 16:18:05</p>
+                    <p>統計期間：2026-10-21（開季）至 2026-11-03 ｜ 最後更新：2026-11-03 16:33:21</p>
                 </div>
                 <div class="topbar-actions">
                     <div class="search-box">
@@ -1231,11 +1233,11 @@
                                 <tr>
                                     <th>名次</th>
                                     <th>玩家</th>
-                                    <th>季賽戰績 (勝率)</th>
-                                    <th>🏀 季賽總分 & 金額</th>
-                                    <th class="sb-col">🎲 外插分數 & 金額</th>
-                                    <th class="total-col">👑 合併總分 & 總金額 (季賽+外插)</th>
-                                    <th>旗下 6 支球隊表現（勝-敗 / 目前勝負分 / 季賽貢獻）</th>
+                                    <th>季賽戰績<br>(勝率)</th>
+                                    <th>🏀 季賽總分<br>金額</th>
+                                    <th class="sb-col">🎲 外插分數<br>金額</th>
+                                    <th class="total-col">👑 合併總分<br>總金額 (季賽+外插)</th>
+                                    <th>旗下 6 支球隊表現<br><span style="font-size:0.7rem;font-weight:normal">（勝-敗 / 目前勝負分 / 季賽貢獻）</span></th>
                                 </tr>
                             </thead>
                             <tbody id="standingsTbody">
@@ -1540,14 +1542,14 @@
                         <table class="full-table" id="sideBetsTable">
                             <thead style="position:sticky;top:0;z-index:5;box-shadow:0 1px 2px rgba(0,0,0,0.06)">
                                 <tr>
-                                    <th style="background:#dc2626;color:#fff;text-align:center;width:48px">#</th>
-                                    <th style="background:#dc2626;color:#fff">左方球隊 (目前勝負分)</th>
-                                    <th style="background:#dc2626;color:#fff">右方球隊 (目前勝負分)</th>
-                                    <th style="background:#dc2626;color:#fff;text-align:center">勝負分差</th>
-                                    <th style="background:#dc2626;color:#fff;text-align:center">勝負金額</th>
-                                    <th style="background:#dc2626;color:#fff">左方下注者 (挺左隊)</th>
-                                    <th style="background:#dc2626;color:#fff">右方下注者 (挺右隊)</th>
-                                    <th style="background:#dc2626;color:#fff">目前外插結算</th>
+                                    <th style="background:#dc2626;color:#fff;text-align:center;width:40px">#</th>
+                                    <th style="background:#dc2626;color:#fff">左方球隊<br><small style="font-weight:normal;opacity:0.9">(目前勝負分)</small></th>
+                                    <th style="background:#dc2626;color:#fff">右方球隊<br><small style="font-weight:normal;opacity:0.9">(目前勝負分)</small></th>
+                                    <th style="background:#dc2626;color:#fff;text-align:center">勝負<br>分差</th>
+                                    <th style="background:#dc2626;color:#fff;text-align:center">勝負<br>金額</th>
+                                    <th style="background:#dc2626;color:#fff">左方下注者<br><small style="font-weight:normal;opacity:0.9">(挺左隊)</small></th>
+                                    <th style="background:#dc2626;color:#fff">右方下注者<br><small style="font-weight:normal;opacity:0.9">(挺右隊)</small></th>
+                                    <th style="background:#dc2626;color:#fff">目前外插<br>結算</th>
                                 </tr>
                             </thead>
                             <tbody>
