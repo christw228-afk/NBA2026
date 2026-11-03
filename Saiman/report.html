@@ -403,8 +403,38 @@
         }
         .bar-box {
             position: relative;
-            height: 230px;
+            height: 175px;
             width: 100%;
+        }
+        .np-breakdown {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 4px;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed var(--border);
+            text-align: center;
+        }
+        .np-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1px;
+        }
+        .np-name {
+            font-size: 0.72rem;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+        .np-total {
+            font-size: 0.82rem;
+            font-weight: 800;
+        }
+        .np-sub {
+            font-size: 0.66rem;
+            color: var(--text-sub);
+            line-height: 1.25;
+            white-space: nowrap;
         }
         .device-list {
             display: flex;
@@ -884,7 +914,7 @@
             <header class="topbar">
                 <div class="topbar-title">
                     <h1>Analytics · NBA 2026-27 季賽 & 外插合併獎金儀表板</h1>
-                    <p>統計期間：2026-10-21（開季）至 2026-11-03 ｜ 最後更新：2026-11-03 16:46:18</p>
+                    <p>統計期間：2026-10-21（開季）至 2026-11-03 ｜ 最後更新：2026-11-03 16:57:55</p>
                 </div>
                 <div class="topbar-actions">
                     <div class="search-box">
@@ -1037,12 +1067,50 @@
                     <div class="card">
                         <div class="card-head">
                             <div>
-                                <div class="card-title">季賽 vs 外插 vs 合併損益比較</div>
-                                <div class="card-subtitle">分開對比各玩家「季賽」、「外插」與「合併總計」金額</div>
+                                <div class="card-title">各玩家累計淨損益 (Net Profit)</div>
+                                <div class="card-subtitle">季賽 + 外插 總和（下方小字顯示季賽與外插個別金額）</div>
                             </div>
                         </div>
                         <div class="bar-box">
                             <canvas id="profitBarChart"></canvas>
+                        </div>
+                        <div class="np-breakdown">
+                            
+            <div class="np-item">
+                <div class="np-name">Fat</div>
+                <div class="np-total pos-txt">+$22,280</div>
+                <div class="np-sub">季賽 +$490</div>
+                <div class="np-sub">外插 +$21,790</div>
+            </div>
+            
+            <div class="np-item">
+                <div class="np-name">茂哥</div>
+                <div class="np-total pos-txt">+$5,000</div>
+                <div class="np-sub">季賽 +$220</div>
+                <div class="np-sub">外插 +$4,780</div>
+            </div>
+            
+            <div class="np-item">
+                <div class="np-name">Sixers</div>
+                <div class="np-total pos-txt">+$2,900</div>
+                <div class="np-sub">季賽 +$1,120</div>
+                <div class="np-sub">外插 +$1,780</div>
+            </div>
+            
+            <div class="np-item">
+                <div class="np-name">Saiman</div>
+                <div class="np-total neg-txt">$-11,090</div>
+                <div class="np-sub">季賽 $-1,210</div>
+                <div class="np-sub">外插 $-9,880</div>
+            </div>
+            
+            <div class="np-item">
+                <div class="np-name">志旭</div>
+                <div class="np-total neg-txt">$-19,090</div>
+                <div class="np-sub">季賽 $-620</div>
+                <div class="np-sub">外插 $-18,470</div>
+            </div>
+            
                         </div>
                     </div>
 
@@ -9749,38 +9817,34 @@
             type: 'bar',
             data: {
                 labels: barLabels,
-                datasets: [
-                    {
-                        label: '季賽損益',
-                        data: barRegValues,
-                        backgroundColor: '#10b981',
-                        borderRadius: 5,
-                        maxBarThickness: 20
-                    },
-                    {
-                        label: '外插損益',
-                        data: barSbValues,
-                        backgroundColor: '#8b5cf6',
-                        borderRadius: 5,
-                        maxBarThickness: 20
-                    },
-                    {
-                        label: '合併總損益',
-                        data: barTotValues,
-                        backgroundColor: '#2563eb',
-                        borderRadius: 5,
-                        maxBarThickness: 20
-                    }
-                ]
+                datasets: [{
+                    label: '季賽 + 外插 總和 (NT$)',
+                    data: barTotValues,
+                    backgroundColor: barTotValues.map(v => v >= 0 ? '#2563eb' : '#f43f5e'),
+                    borderRadius: 6,
+                    maxBarThickness: 28
+                }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: {
-                    legend: { position: 'top', labels: { boxWidth: 10, font: { size: 11 } } },
+                    legend: { display: false },
                     tooltip: {
                         callbacks: {
-                            label: ctx => `${ctx.dataset.label}: ${ctx.parsed.y >= 0 ? '+' : ''}NT$ ${ctx.parsed.y}`
+                            label: ctx => {
+                                const idx = ctx.dataIndex;
+                                const tot = ctx.parsed.y;
+                                const reg = barRegValues[idx];
+                                const sb = barSbValues[idx];
+                                const tSign = tot >= 0 ? '+' : '';
+                                const rSign = reg >= 0 ? '+' : '';
+                                const sSign = sb >= 0 ? '+' : '';
+                                return [
+                                    `合併總和: ${tSign}NT$ ${tot}`,
+                                    `季賽: ${rSign}NT$ ${reg} ｜ 外插: ${sSign}NT$ ${sb}`
+                                ];
+                            }
                         }
                     }
                 },
