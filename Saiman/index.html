@@ -637,19 +637,34 @@
         }
         .sb-amt-pos { color: #0f172a; }
         .sb-amt-neg { color: #dc2626; }
-        .pills-wrap { display: flex; flex-wrap: wrap; gap: 6px; min-width: 340px; }
+        .pills-wrap { display: flex; flex-wrap: wrap; gap: 5px; }
         .team-pill {
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            gap: 4px;
             background: #f8fafc;
             border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 4px 8px;
-            font-size: 0.78rem;
+            border-radius: 6px;
+            padding: 3px 6px;
+            font-size: 0.74rem;
             white-space: nowrap;
         }
-        .team-pill img { width: 17px; height: 17px; object-fit: contain; }
+        .team-pill img { width: 16px; height: 16px; object-fit: contain; }
+        .standings-pills {
+            gap: 3px;
+            max-width: 270px;
+        }
+        .standings-pills .team-pill {
+            padding: 2px 5px;
+            font-size: 0.67rem;
+            gap: 3px;
+            border-radius: 5px;
+            line-height: 1.25;
+        }
+        .standings-pills .team-pill img {
+            width: 13px;
+            height: 13px;
+        }
 
         .tabs-bar {
             display: flex;
@@ -869,7 +884,7 @@
             <header class="topbar">
                 <div class="topbar-title">
                     <h1>Analytics · NBA 2026-27 季賽 & 外插合併獎金儀表板</h1>
-                    <p>統計期間：2026-10-21（開季）至 2026-11-03 ｜ 最後更新：2026-11-03 16:33:21</p>
+                    <p>統計期間：2026-10-21（開季）至 2026-11-03 ｜ 最後更新：2026-11-03 16:37:33</p>
                 </div>
                 <div class="topbar-actions">
                     <div class="search-box">
@@ -1237,7 +1252,7 @@
                                     <th>🏀 季賽總分<br>金額</th>
                                     <th class="sb-col">🎲 外插分數<br>金額</th>
                                     <th class="total-col">👑 合併總分<br>總金額 (季賽+外插)</th>
-                                    <th>旗下 6 支球隊表現<br><span style="font-size:0.7rem;font-weight:normal">（勝-敗 / 目前勝負分 / 季賽貢獻）</span></th>
+                                    <th>旗下 6 隊表現<br><span style="font-size:0.67rem;font-weight:normal">勝-敗 / 勝負分 / 獎金</span></th>
                                 </tr>
                             </thead>
                             <tbody id="standingsTbody">
@@ -1274,7 +1289,7 @@
                     <div class="sc-money-lg pos-txt">+NT$ 19,110</div>
                     <div class="sc-formula">季賽(+49) + 外插(+1862)</div>
                 </td>
-                <td><div class="pills-wrap"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/sa.png" alt="馬刺">馬刺 <b>5-2</b> <span class="muted-txt">(0分 / $0)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/min.png" alt="灰狼">灰狼 <b>5-3</b> <span class="pos-txt">(+101分 / +$1010)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/atl.png" alt="老鷹">老鷹 <b>4-4</b> <span class="pos-txt">(+10分 / +$100)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/por.png" alt="拓荒者">拓荒者 <b>5-1</b> <span class="pos-txt">(+35分 / +$350)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/utah.png" alt="爵士">爵士 <b>1-6</b> <span class="neg-txt">(-33分 / $-330)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/sac.png" alt="國王">國王 <b>1-6</b> <span class="neg-txt">(-64分 / $-640)</span></span></div></td>
+                <td><div class="pills-wrap standings-pills"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/sa.png" alt="馬刺">馬刺 <b>5-2</b> <span class="muted-txt">(0分/$0)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/min.png" alt="灰狼">灰狼 <b>5-3</b> <span class="pos-txt">(+101分/+$1010)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/atl.png" alt="老鷹">老鷹 <b>4-4</b> <span class="pos-txt">(+10分/+$100)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/por.png" alt="拓荒者">拓荒者 <b>5-1</b> <span class="pos-txt">(+35分/+$350)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/utah.png" alt="爵士">爵士 <b>1-6</b> <span class="neg-txt">(-33分/$-330)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/sac.png" alt="國王">國王 <b>1-6</b> <span class="neg-txt">(-64分/$-640)</span></span></div></td>
             </tr>
             
             <tr data-total="3890" data-reg="1120" data-sb="2770">
@@ -1309,7 +1324,7 @@
                     <div class="sc-money-lg pos-txt">+NT$ 3,890</div>
                     <div class="sc-formula">季賽(+112) + 外插(+277)</div>
                 </td>
-                <td><div class="pills-wrap"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/den.png" alt="金塊">金塊 <b>3-3</b> <span class="pos-txt">(+6分 / +$60)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/phi.png" alt="76人">76人 <b>7-1</b> <span class="pos-txt">(+35分 / +$350)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/lal.png" alt="湖人">湖人 <b>6-2</b> <span class="pos-txt">(+53分 / +$530)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/gs.png" alt="勇士">勇士 <b>5-3</b> <span class="pos-txt">(+11分 / +$110)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/mil.png" alt="公鹿">公鹿 <b>1-6</b> <span class="neg-txt">(-80分 / $-800)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/mem.png" alt="灰熊">灰熊 <b>6-1</b> <span class="pos-txt">(+87分 / +$870)</span></span></div></td>
+                <td><div class="pills-wrap standings-pills"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/den.png" alt="金塊">金塊 <b>3-3</b> <span class="pos-txt">(+6分/+$60)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/phi.png" alt="76人">76人 <b>7-1</b> <span class="pos-txt">(+35分/+$350)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/lal.png" alt="湖人">湖人 <b>6-2</b> <span class="pos-txt">(+53分/+$530)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/gs.png" alt="勇士">勇士 <b>5-3</b> <span class="pos-txt">(+11分/+$110)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/mil.png" alt="公鹿">公鹿 <b>1-6</b> <span class="neg-txt">(-80分/$-800)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/mem.png" alt="灰熊">灰熊 <b>6-1</b> <span class="pos-txt">(+87分/+$870)</span></span></div></td>
             </tr>
             
             <tr data-total="1750" data-reg="220" data-sb="1530">
@@ -1344,7 +1359,7 @@
                     <div class="sc-money-lg pos-txt">+NT$ 1,750</div>
                     <div class="sc-formula">季賽(+22) + 外插(+153)</div>
                 </td>
-                <td><div class="pills-wrap"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/cle.png" alt="騎士">騎士 <b>4-3</b> <span class="pos-txt">(+11分 / +$110)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/hou.png" alt="火箭">火箭 <b>7-1</b> <span class="pos-txt">(+103分 / +$1030)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/tor.png" alt="暴龍">暴龍 <b>4-3</b> <span class="pos-txt">(+1分 / +$10)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/wsh.png" alt="巫師">巫師 <b>4-3</b> <span class="pos-txt">(+30分 / +$300)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/chi.png" alt="公牛">公牛 <b>1-6</b> <span class="neg-txt">(-67分 / $-670)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/bkn.png" alt="籃網">籃網 <b>1-6</b> <span class="neg-txt">(-56分 / $-560)</span></span></div></td>
+                <td><div class="pills-wrap standings-pills"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/cle.png" alt="騎士">騎士 <b>4-3</b> <span class="pos-txt">(+11分/+$110)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/hou.png" alt="火箭">火箭 <b>7-1</b> <span class="pos-txt">(+103分/+$1030)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/tor.png" alt="暴龍">暴龍 <b>4-3</b> <span class="pos-txt">(+1分/+$10)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/wsh.png" alt="巫師">巫師 <b>4-3</b> <span class="pos-txt">(+30分/+$300)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/chi.png" alt="公牛">公牛 <b>1-6</b> <span class="neg-txt">(-67分/$-670)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/bkn.png" alt="籃網">籃網 <b>1-6</b> <span class="neg-txt">(-56分/$-560)</span></span></div></td>
             </tr>
             
             <tr data-total="-12080" data-reg="-1210" data-sb="-10870">
@@ -1379,7 +1394,7 @@
                     <div class="sc-money-lg neg-txt">NT$ -12,080</div>
                     <div class="sc-formula">季賽(-121) + 外插(-1087)</div>
                 </td>
-                <td><div class="pills-wrap"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/ny.png" alt="尼克">尼克 <b>3-4</b> <span class="pos-txt">(+13分 / +$130)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/bos.png" alt="塞爾提克">塞爾提克 <b>5-2</b> <span class="pos-txt">(+37分 / +$370)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/mia.png" alt="熱火">熱火 <b>2-5</b> <span class="neg-txt">(-35分 / $-350)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/phx.png" alt="太陽">太陽 <b>1-4</b> <span class="neg-txt">(-53分 / $-530)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/cha.png" alt="黃蜂">黃蜂 <b>3-5</b> <span class="neg-txt">(-95分 / $-950)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/no.png" alt="鵜鶘">鵜鶘 <b>3-4</b> <span class="pos-txt">(+12分 / +$120)</span></span></div></td>
+                <td><div class="pills-wrap standings-pills"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/ny.png" alt="尼克">尼克 <b>3-4</b> <span class="pos-txt">(+13分/+$130)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/bos.png" alt="塞爾提克">塞爾提克 <b>5-2</b> <span class="pos-txt">(+37分/+$370)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/mia.png" alt="熱火">熱火 <b>2-5</b> <span class="neg-txt">(-35分/$-350)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/phx.png" alt="太陽">太陽 <b>1-4</b> <span class="neg-txt">(-53分/$-530)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/cha.png" alt="黃蜂">黃蜂 <b>3-5</b> <span class="neg-txt">(-95分/$-950)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/no.png" alt="鵜鶘">鵜鶘 <b>3-4</b> <span class="pos-txt">(+12分/+$120)</span></span></div></td>
             </tr>
             
             <tr data-total="-12670" data-reg="-620" data-sb="-12050">
@@ -1414,7 +1429,7 @@
                     <div class="sc-money-lg neg-txt">NT$ -12,670</div>
                     <div class="sc-formula">季賽(-62) + 外插(-1205)</div>
                 </td>
-                <td><div class="pills-wrap"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/okc.png" alt="雷霆">雷霆 <b>5-2</b> <span class="pos-txt">(+19分 / +$190)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/det.png" alt="活塞">活塞 <b>6-1</b> <span class="pos-txt">(+81分 / +$810)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/ind.png" alt="溜馬">溜馬 <b>2-6</b> <span class="neg-txt">(-15分 / $-150)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/orl.png" alt="魔術">魔術 <b>2-5</b> <span class="neg-txt">(-63分 / $-630)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/dal.png" alt="獨行俠">獨行俠 <b>4-3</b> <span class="neg-txt">(-40分 / $-400)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/lac.png" alt="快艇">快艇 <b>1-6</b> <span class="neg-txt">(-44分 / $-440)</span></span></div></td>
+                <td><div class="pills-wrap standings-pills"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/okc.png" alt="雷霆">雷霆 <b>5-2</b> <span class="pos-txt">(+19分/+$190)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/det.png" alt="活塞">活塞 <b>6-1</b> <span class="pos-txt">(+81分/+$810)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/ind.png" alt="溜馬">溜馬 <b>2-6</b> <span class="neg-txt">(-15分/$-150)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/orl.png" alt="魔術">魔術 <b>2-5</b> <span class="neg-txt">(-63分/$-630)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/dal.png" alt="獨行俠">獨行俠 <b>4-3</b> <span class="neg-txt">(-40分/$-400)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/lac.png" alt="快艇">快艇 <b>1-6</b> <span class="neg-txt">(-44分/$-440)</span></span></div></td>
             </tr>
             
                             </tbody>
