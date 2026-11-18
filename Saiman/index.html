@@ -914,7 +914,7 @@
             <header class="topbar">
                 <div class="topbar-title">
                     <h1>Analytics · NBA 2026-27 季賽 & 外插合併獎金儀表板</h1>
-                    <p>統計期間：2026-10-21（開季）至 2026-11-18 ｜ 最後更新：2026-11-18 12:00:17</p>
+                    <p>統計期間：2026-10-21（開季）至 2026-11-18 ｜ 最後更新：2026-11-18 14:00:18</p>
                 </div>
                 <div class="topbar-actions">
                     <div class="search-box">
@@ -931,8 +931,8 @@
                         <div class="kpi-icon blue">👑</div>
                         <div class="kpi-body">
                             <div class="kpi-label">合併總賞金領先王 (季賽+外插)</div>
-                            <div class="kpi-val">Fat (+$26,650)</div>
-                            <div class="kpi-trend">↑ 合併 +2665分（季賽 +107分 + 外插 +2558分）</div>
+                            <div class="kpi-val">Fat (+$29,150)</div>
+                            <div class="kpi-trend">↑ 合併 +2915分（季賽 +132分 + 外插 +2783分）</div>
                         </div>
                         <div class="kpi-dots">⋮</div>
                     </div>
@@ -951,8 +951,8 @@
                         <div class="kpi-icon purple">🎲</div>
                         <div class="kpi-body">
                             <div class="kpi-label">目前外插領先王 (Side Bets Leader)</div>
-                            <div class="kpi-val">Fat (+$25,580)</div>
-                            <div class="kpi-trend">↑ 外插總分 +2558分（43贏 15輸 0平）</div>
+                            <div class="kpi-val">Fat (+$27,830)</div>
+                            <div class="kpi-trend">↑ 外插總分 +2783分（44贏 14輸 0平）</div>
                         </div>
                         <div class="kpi-dots">⋮</div>
                     </div>
@@ -960,7 +960,7 @@
                     <div class="kpi-card">
                         <div class="kpi-icon amber">⚡</div>
                         <div class="kpi-body">
-                            <div class="kpi-label">單場最高賞金 (累計 208 場完賽)</div>
+                            <div class="kpi-label">單場最高賞金 (累計 209 場完賽)</div>
                             <div class="kpi-val">NT$ 510</div>
                             <div class="kpi-trend">↑ 最大分差 51分 (勇士 勝 鵜鶘)</div>
                         </div>
@@ -977,7 +977,7 @@
                                 <div class="card-subtitle">可切換檢視「合併總損益走勢 (季賽+外插)」、「僅季賽走勢」或單一玩家</div>
                             </div>
                             <select class="card-select" id="linePlayerSelect" onchange="updateLineChart(this.value)">
-                                <option value="ALL_TOTAL">全部玩家 · 合併總損益走勢 (季賽+外插)</option><option value="ALL_REG">全部玩家 · 僅季賽損益走勢</option><option value="F">Fat (F) 單獨走勢</option><option value="S">Saiman (S) 單獨走勢</option><option value="6">Sixers (6) 單獨走勢</option><option value="Z">志旭 (Z) 單獨走勢</option><option value="M">茂哥 (M) 單獨走勢</option>
+                                <option value="ALL_TOTAL">全部玩家 · 合併總損益走勢 (季賽+外插)</option><option value="ALL_REG">全部玩家 · 僅季賽損益走勢</option><option value="F">Fat (F) 單獨走勢</option><option value="S">Saiman (S) 單獨走勢</option><option value="6">Sixers (6) 單獨走勢</option><option value="M">茂哥 (M) 單獨走勢</option><option value="Z">志旭 (Z) 單獨走勢</option>
                             </select>
                         </div>
                         <div class="chart-box">
@@ -997,7 +997,7 @@
                                 <canvas id="winsDonutChart"></canvas>
                                 <div class="donut-center">
                                     <small>總完賽</small>
-                                    <b>208 場</b>
+                                    <b>209 場</b>
                                 </div>
                             </div>
                             <div class="donut-legend">
@@ -1005,11 +1005,11 @@
             <div class="legend-item">
                 <div class="legend-left">
                     <span class="legend-dot" style="background:#10b981"></span>
-                    <span class="legend-name">Fat (42勝)</span>
+                    <span class="legend-name">Fat (43勝)</span>
                 </div>
                 <div class="legend-right">
-                    <b>20%</b>
-                    <small class="pos-txt">(總計 +$26,650)</small>
+                    <b>21%</b>
+                    <small class="pos-txt">(總計 +$29,150)</small>
                 </div>
             </div>
             
@@ -1020,7 +1020,7 @@
                 </div>
                 <div class="legend-right">
                     <b>20%</b>
-                    <small class="pos-txt">(總計 +$1,270)</small>
+                    <small class="pos-txt">(總計 +$770)</small>
                 </div>
             </div>
             
@@ -1031,18 +1031,7 @@
                 </div>
                 <div class="legend-right">
                     <b>24%</b>
-                    <small class="neg-txt">(總計 $-1,000)</small>
-                </div>
-            </div>
-            
-            <div class="legend-item">
-                <div class="legend-left">
-                    <span class="legend-dot" style="background:#2563eb"></span>
-                    <span class="legend-name">志旭 (40勝)</span>
-                </div>
-                <div class="legend-right">
-                    <b>19%</b>
-                    <small class="neg-txt">(總計 $-12,840)</small>
+                    <small class="neg-txt">(總計 $-1,500)</small>
                 </div>
             </div>
             
@@ -1053,7 +1042,18 @@
                 </div>
                 <div class="legend-right">
                     <b>16%</b>
-                    <small class="neg-txt">(總計 $-14,080)</small>
+                    <small class="neg-txt">(總計 $-13,580)</small>
+                </div>
+            </div>
+            
+            <div class="legend-item">
+                <div class="legend-left">
+                    <span class="legend-dot" style="background:#2563eb"></span>
+                    <span class="legend-name">志旭 (40勝)</span>
+                </div>
+                <div class="legend-right">
+                    <b>19%</b>
+                    <small class="neg-txt">(總計 $-14,840)</small>
                 </div>
             </div>
             
@@ -1078,37 +1078,37 @@
                             
             <div class="np-item">
                 <div class="np-name">Fat</div>
-                <div class="np-total pos-txt">+$26,650</div>
-                <div class="np-sub">季賽 +$1,070</div>
-                <div class="np-sub">外插 +$25,580</div>
+                <div class="np-total pos-txt">+$29,150</div>
+                <div class="np-sub">季賽 +$1,320</div>
+                <div class="np-sub">外插 +$27,830</div>
             </div>
             
             <div class="np-item">
                 <div class="np-name">Saiman</div>
-                <div class="np-total pos-txt">+$1,270</div>
+                <div class="np-total pos-txt">+$770</div>
                 <div class="np-sub">季賽 $-400</div>
-                <div class="np-sub">外插 +$1,670</div>
+                <div class="np-sub">外插 +$1,170</div>
             </div>
             
             <div class="np-item">
                 <div class="np-name">Sixers</div>
-                <div class="np-total neg-txt">$-1,000</div>
+                <div class="np-total neg-txt">$-1,500</div>
                 <div class="np-sub">季賽 +$1,380</div>
-                <div class="np-sub">外插 $-2,380</div>
-            </div>
-            
-            <div class="np-item">
-                <div class="np-name">志旭</div>
-                <div class="np-total neg-txt">$-12,840</div>
-                <div class="np-sub">季賽 $-140</div>
-                <div class="np-sub">外插 $-12,700</div>
+                <div class="np-sub">外插 $-2,880</div>
             </div>
             
             <div class="np-item">
                 <div class="np-name">茂哥</div>
-                <div class="np-total neg-txt">$-14,080</div>
+                <div class="np-total neg-txt">$-13,580</div>
                 <div class="np-sub">季賽 $-1,910</div>
-                <div class="np-sub">外插 $-12,170</div>
+                <div class="np-sub">外插 $-11,670</div>
+            </div>
+            
+            <div class="np-item">
+                <div class="np-name">志旭</div>
+                <div class="np-total neg-txt">$-14,840</div>
+                <div class="np-sub">季賽 $-390</div>
+                <div class="np-sub">外插 $-14,450</div>
             </div>
             
                         </div>
@@ -1150,27 +1150,27 @@
             </div>
             
             <div class="device-row">
-                <div class="device-icon" style="background:#2563eb15;color:#2563eb">Z</div>
+                <div class="device-icon" style="background:#10b98115;color:#10b981">F</div>
                 <div class="device-body">
                     <div class="device-top">
-                        <span class="device-name">志旭 <small>(40勝 40敗)</small></span>
+                        <span class="device-name">Fat <small>(43勝 43敗)</small></span>
                         <span class="device-pct">50.0%</span>
                     </div>
                     <div class="device-track">
-                        <div class="device-fill" style="width:50.0%;background:#2563eb"></div>
+                        <div class="device-fill" style="width:50.0%;background:#10b981"></div>
                     </div>
                 </div>
             </div>
             
             <div class="device-row">
-                <div class="device-icon" style="background:#10b98115;color:#10b981">F</div>
+                <div class="device-icon" style="background:#2563eb15;color:#2563eb">Z</div>
                 <div class="device-body">
                     <div class="device-top">
-                        <span class="device-name">Fat <small>(42勝 43敗)</small></span>
+                        <span class="device-name">志旭 <small>(40勝 41敗)</small></span>
                         <span class="device-pct">49.4%</span>
                     </div>
                     <div class="device-track">
-                        <div class="device-fill" style="width:49.4%;background:#10b981"></div>
+                        <div class="device-fill" style="width:49.4%;background:#2563eb"></div>
                     </div>
                 </div>
             </div>
@@ -1325,7 +1325,7 @@
                             </thead>
                             <tbody id="standingsTbody">
                                 
-            <tr data-total="26650" data-reg="1070" data-sb="25580">
+            <tr data-total="29150" data-reg="1320" data-sb="27830">
                 <td class="rk-col">🥇</td>
                 <td>
                     <div class="p-info">
@@ -1337,30 +1337,30 @@
                     </div>
                 </td>
                 <td>
-                    <div><b>42</b>勝 <b>43</b>敗</div>
+                    <div><b>43</b>勝 <b>43</b>敗</div>
                     <div class="mini-pct" style="margin-top:3px">
-                        <span style="color:#64748b">49.4%</span>
-                        <div class="mini-bar"><div style="width:49.4%;background:#10b981"></div></div>
+                        <span style="color:#64748b">50.0%</span>
+                        <div class="mini-bar"><div style="width:50.0%;background:#10b981"></div></div>
                     </div>
                 </td>
                 <td class="score-cell">
-                    <div class="sc-pts pos-txt">+107 分</div>
-                    <div class="sc-money pos-txt">+NT$ 1,070</div>
+                    <div class="sc-pts pos-txt">+132 分</div>
+                    <div class="sc-money pos-txt">+NT$ 1,320</div>
                 </td>
                 <td class="score-cell sb-col">
-                    <div class="sc-pts pos-txt">+2558 分</div>
-                    <div class="sc-money pos-txt">+NT$ 25,580</div>
-                    <div class="sc-sub">43贏 · 15輸 · 0平</div>
+                    <div class="sc-pts pos-txt">+2783 分</div>
+                    <div class="sc-money pos-txt">+NT$ 27,830</div>
+                    <div class="sc-sub">44贏 · 14輸 · 0平</div>
                 </td>
                 <td class="score-cell total-col">
-                    <div class="sc-pts-lg pos-txt">+2665 分</div>
-                    <div class="sc-money-lg pos-txt">+NT$ 26,650</div>
-                    <div class="sc-formula">季賽(+107) + 外插(+2558)</div>
+                    <div class="sc-pts-lg pos-txt">+2915 分</div>
+                    <div class="sc-money-lg pos-txt">+NT$ 29,150</div>
+                    <div class="sc-formula">季賽(+132) + 外插(+2783)</div>
                 </td>
-                <td><div class="pills-wrap standings-pills"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/sa.png" alt="馬刺">馬刺 <b>12-3</b> <span class="pos-txt">(+168分/+$580)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/min.png" alt="灰狼">灰狼 <b>11-4</b> <span class="pos-txt">(+159分/+$1450)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/atl.png" alt="老鷹">老鷹 <b>8-6</b> <span class="pos-txt">(+24分/+$240)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/por.png" alt="拓荒者">拓荒者 <b>9-5</b> <span class="pos-txt">(+84分/+$720)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/utah.png" alt="爵士">爵士 <b>1-13</b> <span class="neg-txt">(-153分/$-800)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/sac.png" alt="國王">國王 <b>1-12</b> <span class="neg-txt">(-175分/$-1120)</span></span></div></td>
+                <td><div class="pills-wrap standings-pills"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/sa.png" alt="馬刺">馬刺 <b>12-3</b> <span class="pos-txt">(+168分/+$580)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/min.png" alt="灰狼">灰狼 <b>11-4</b> <span class="pos-txt">(+159分/+$1450)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/atl.png" alt="老鷹">老鷹 <b>8-6</b> <span class="pos-txt">(+24分/+$240)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/por.png" alt="拓荒者">拓荒者 <b>9-5</b> <span class="pos-txt">(+84分/+$720)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/utah.png" alt="爵士">爵士 <b>2-13</b> <span class="neg-txt">(-128分/$-550)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/sac.png" alt="國王">國王 <b>1-12</b> <span class="neg-txt">(-175分/$-1120)</span></span></div></td>
             </tr>
             
-            <tr data-total="1270" data-reg="-400" data-sb="1670">
+            <tr data-total="770" data-reg="-400" data-sb="1170">
                 <td class="rk-col">🥈</td>
                 <td>
                     <div class="p-info">
@@ -1383,19 +1383,19 @@
                     <div class="sc-money neg-txt">NT$ -400</div>
                 </td>
                 <td class="score-cell sb-col">
-                    <div class="sc-pts pos-txt">+167 分</div>
-                    <div class="sc-money pos-txt">+NT$ 1,670</div>
-                    <div class="sc-sub">22贏 · 22輸 · 0平</div>
+                    <div class="sc-pts pos-txt">+117 分</div>
+                    <div class="sc-money pos-txt">+NT$ 1,170</div>
+                    <div class="sc-sub">21贏 · 23輸 · 0平</div>
                 </td>
                 <td class="score-cell total-col">
-                    <div class="sc-pts-lg pos-txt">+127 分</div>
-                    <div class="sc-money-lg pos-txt">+NT$ 1,270</div>
-                    <div class="sc-formula">季賽(-40) + 外插(+167)</div>
+                    <div class="sc-pts-lg pos-txt">+77 分</div>
+                    <div class="sc-money-lg pos-txt">+NT$ 770</div>
+                    <div class="sc-formula">季賽(-40) + 外插(+117)</div>
                 </td>
                 <td><div class="pills-wrap standings-pills"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/ny.png" alt="尼克">尼克 <b>8-6</b> <span class="pos-txt">(+86分/+$900)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/bos.png" alt="塞爾提克">塞爾提克 <b>11-3</b> <span class="pos-txt">(+161分/+$1180)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/mia.png" alt="熱火">熱火 <b>8-6</b> <span class="pos-txt">(+3分/+$80)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/phx.png" alt="太陽">太陽 <b>6-7</b> <span class="neg-txt">(-44分/$-490)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/cha.png" alt="黃蜂">黃蜂 <b>4-9</b> <span class="neg-txt">(-140分/$-1010)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/no.png" alt="鵜鶘">鵜鶘 <b>5-10</b> <span class="neg-txt">(-106分/$-1060)</span></span></div></td>
             </tr>
             
-            <tr data-total="-1000" data-reg="1380" data-sb="-2380">
+            <tr data-total="-1500" data-reg="1380" data-sb="-2880">
                 <td class="rk-col">🥉</td>
                 <td>
                     <div class="p-info">
@@ -1418,55 +1418,20 @@
                     <div class="sc-money pos-txt">+NT$ 1,380</div>
                 </td>
                 <td class="score-cell sb-col">
-                    <div class="sc-pts neg-txt">-238 分</div>
-                    <div class="sc-money neg-txt">NT$ -2,380</div>
+                    <div class="sc-pts neg-txt">-288 分</div>
+                    <div class="sc-money neg-txt">NT$ -2,880</div>
                     <div class="sc-sub">26贏 · 30輸 · 0平</div>
                 </td>
                 <td class="score-cell total-col">
-                    <div class="sc-pts-lg neg-txt">-100 分</div>
-                    <div class="sc-money-lg neg-txt">NT$ -1,000</div>
-                    <div class="sc-formula">季賽(+138) + 外插(-238)</div>
+                    <div class="sc-pts-lg neg-txt">-150 分</div>
+                    <div class="sc-money-lg neg-txt">NT$ -1,500</div>
+                    <div class="sc-formula">季賽(+138) + 外插(-288)</div>
                 </td>
                 <td><div class="pills-wrap standings-pills"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/den.png" alt="金塊">金塊 <b>7-5</b> <span class="pos-txt">(+8分/+$230)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/phi.png" alt="76人">76人 <b>12-3</b> <span class="pos-txt">(+42分/+$310)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/lal.png" alt="湖人">湖人 <b>12-2</b> <span class="pos-txt">(+111分/+$950)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/gs.png" alt="勇士">勇士 <b>8-6</b> <span class="pos-txt">(+35分/+$230)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/mil.png" alt="公鹿">公鹿 <b>1-13</b> <span class="neg-txt">(-190分/$-1680)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/mem.png" alt="灰熊">灰熊 <b>10-4</b> <span class="pos-txt">(+132分/+$1340)</span></span></div></td>
             </tr>
             
-            <tr data-total="-12840" data-reg="-140" data-sb="-12700">
+            <tr data-total="-13580" data-reg="-1910" data-sb="-11670">
                 <td class="rk-col">#4</td>
-                <td>
-                    <div class="p-info">
-                        <span class="p-avatar" style="background:#2563eb">Z</span>
-                        <div>
-                            <div class="p-title">志旭</div>
-                            <div class="p-sub">內戰 5 場 · 外插 44 筆</div>
-                        </div>
-                    </div>
-                </td>
-                <td>
-                    <div><b>40</b>勝 <b>40</b>敗</div>
-                    <div class="mini-pct" style="margin-top:3px">
-                        <span style="color:#64748b">50.0%</span>
-                        <div class="mini-bar"><div style="width:50.0%;background:#2563eb"></div></div>
-                    </div>
-                </td>
-                <td class="score-cell">
-                    <div class="sc-pts neg-txt">-14 分</div>
-                    <div class="sc-money neg-txt">NT$ -140</div>
-                </td>
-                <td class="score-cell sb-col">
-                    <div class="sc-pts neg-txt">-1270 分</div>
-                    <div class="sc-money neg-txt">NT$ -12,700</div>
-                    <div class="sc-sub">16贏 · 28輸 · 0平</div>
-                </td>
-                <td class="score-cell total-col">
-                    <div class="sc-pts-lg neg-txt">-1284 分</div>
-                    <div class="sc-money-lg neg-txt">NT$ -12,840</div>
-                    <div class="sc-formula">季賽(-14) + 外插(-1270)</div>
-                </td>
-                <td><div class="pills-wrap standings-pills"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/okc.png" alt="雷霆">雷霆 <b>9-5</b> <span class="pos-txt">(+71分/+$890)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/det.png" alt="活塞">活塞 <b>9-4</b> <span class="pos-txt">(+77分/+$770)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/ind.png" alt="溜馬">溜馬 <b>5-9</b> <span class="neg-txt">(-34分/$-150)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/orl.png" alt="魔術">魔術 <b>6-7</b> <span class="neg-txt">(-43分/$-430)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/dal.png" alt="獨行俠">獨行俠 <b>7-7</b> <span class="neg-txt">(-35分/$-780)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/lac.png" alt="快艇">快艇 <b>4-8</b> <span class="neg-txt">(-50分/$-440)</span></span></div></td>
-            </tr>
-            
-            <tr data-total="-14080" data-reg="-1910" data-sb="-12170">
-                <td class="rk-col">#5</td>
                 <td>
                     <div class="p-info">
                         <span class="p-avatar" style="background:#f59e0b">M</span>
@@ -1488,16 +1453,51 @@
                     <div class="sc-money neg-txt">NT$ -1,910</div>
                 </td>
                 <td class="score-cell sb-col">
-                    <div class="sc-pts neg-txt">-1217 分</div>
-                    <div class="sc-money neg-txt">NT$ -12,170</div>
+                    <div class="sc-pts neg-txt">-1167 分</div>
+                    <div class="sc-money neg-txt">NT$ -11,670</div>
                     <div class="sc-sub">17贏 · 29輸 · 0平</div>
                 </td>
                 <td class="score-cell total-col">
-                    <div class="sc-pts-lg neg-txt">-1408 分</div>
-                    <div class="sc-money-lg neg-txt">NT$ -14,080</div>
-                    <div class="sc-formula">季賽(-191) + 外插(-1217)</div>
+                    <div class="sc-pts-lg neg-txt">-1358 分</div>
+                    <div class="sc-money-lg neg-txt">NT$ -13,580</div>
+                    <div class="sc-formula">季賽(-191) + 外插(-1167)</div>
                 </td>
                 <td><div class="pills-wrap standings-pills"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/cle.png" alt="騎士">騎士 <b>8-7</b> <span class="pos-txt">(+34分/+$90)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/hou.png" alt="火箭">火箭 <b>11-4</b> <span class="pos-txt">(+124分/+$960)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/tor.png" alt="暴龍">暴龍 <b>5-9</b> <span class="neg-txt">(+4分/$-490)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/wsh.png" alt="巫師">巫師 <b>4-11</b> <span class="neg-txt">(-119分/$-750)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/chi.png" alt="公牛">公牛 <b>3-10</b> <span class="neg-txt">(-147分/$-890)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/bkn.png" alt="籃網">籃網 <b>3-10</b> <span class="neg-txt">(-87分/$-830)</span></span></div></td>
+            </tr>
+            
+            <tr data-total="-14840" data-reg="-390" data-sb="-14450">
+                <td class="rk-col">#5</td>
+                <td>
+                    <div class="p-info">
+                        <span class="p-avatar" style="background:#2563eb">Z</span>
+                        <div>
+                            <div class="p-title">志旭</div>
+                            <div class="p-sub">內戰 5 場 · 外插 44 筆</div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div><b>40</b>勝 <b>41</b>敗</div>
+                    <div class="mini-pct" style="margin-top:3px">
+                        <span style="color:#64748b">49.4%</span>
+                        <div class="mini-bar"><div style="width:49.4%;background:#2563eb"></div></div>
+                    </div>
+                </td>
+                <td class="score-cell">
+                    <div class="sc-pts neg-txt">-39 分</div>
+                    <div class="sc-money neg-txt">NT$ -390</div>
+                </td>
+                <td class="score-cell sb-col">
+                    <div class="sc-pts neg-txt">-1445 分</div>
+                    <div class="sc-money neg-txt">NT$ -14,450</div>
+                    <div class="sc-sub">16贏 · 28輸 · 0平</div>
+                </td>
+                <td class="score-cell total-col">
+                    <div class="sc-pts-lg neg-txt">-1484 分</div>
+                    <div class="sc-money-lg neg-txt">NT$ -14,840</div>
+                    <div class="sc-formula">季賽(-39) + 外插(-1445)</div>
+                </td>
+                <td><div class="pills-wrap standings-pills"><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/okc.png" alt="雷霆">雷霆 <b>9-5</b> <span class="pos-txt">(+71分/+$890)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/det.png" alt="活塞">活塞 <b>9-4</b> <span class="pos-txt">(+77分/+$770)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/ind.png" alt="溜馬">溜馬 <b>5-9</b> <span class="neg-txt">(-34分/$-150)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/orl.png" alt="魔術">魔術 <b>6-7</b> <span class="neg-txt">(-43分/$-430)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/dal.png" alt="獨行俠">獨行俠 <b>7-7</b> <span class="neg-txt">(-35分/$-780)</span></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/lac.png" alt="快艇">快艇 <b>4-9</b> <span class="neg-txt">(-75分/$-690)</span></span></div></td>
             </tr>
             
                             </tbody>
@@ -1522,7 +1522,7 @@
                             📌 30 支球隊目前「勝負分」即時速查（依勝負分由高至低排列，供核對下方外插表）：
                         </div>
                         <div class="pills-wrap">
-                            <span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/sa.png" alt="馬刺"><b>Spurs</b> (馬刺) <b class="pos-txt">+168分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/bos.png" alt="塞爾提克"><b>Celtics</b> (塞爾提克) <b class="pos-txt">+161分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/min.png" alt="灰狼"><b>Timberwolves</b> (灰狼) <b class="pos-txt">+159分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/mem.png" alt="灰熊"><b>Grizzlies</b> (灰熊) <b class="pos-txt">+132分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/hou.png" alt="火箭"><b>Rockets</b> (火箭) <b class="pos-txt">+124分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/lal.png" alt="湖人"><b>Lakers</b> (湖人) <b class="pos-txt">+111分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/ny.png" alt="尼克"><b>Knicks</b> (尼克) <b class="pos-txt">+86分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/por.png" alt="拓荒者"><b>Trail Blazers</b> (拓荒者) <b class="pos-txt">+84分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/det.png" alt="活塞"><b>Pistons</b> (活塞) <b class="pos-txt">+77分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/okc.png" alt="雷霆"><b>Thunder</b> (雷霆) <b class="pos-txt">+71分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/phi.png" alt="76人"><b>76ers</b> (76人) <b class="pos-txt">+42分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/gs.png" alt="勇士"><b>Warriors</b> (勇士) <b class="pos-txt">+35分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/cle.png" alt="騎士"><b>Cavaliers</b> (騎士) <b class="pos-txt">+34分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/atl.png" alt="老鷹"><b>Hawks</b> (老鷹) <b class="pos-txt">+24分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/den.png" alt="金塊"><b>Nuggets</b> (金塊) <b class="pos-txt">+8分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/tor.png" alt="暴龍"><b>Raptors</b> (暴龍) <b class="pos-txt">+4分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/mia.png" alt="熱火"><b>Heat</b> (熱火) <b class="pos-txt">+3分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/ind.png" alt="溜馬"><b>Pacers</b> (溜馬) <b class="neg-txt">-34分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/dal.png" alt="獨行俠"><b>Mavericks</b> (獨行俠) <b class="neg-txt">-35分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/orl.png" alt="魔術"><b>Magic</b> (魔術) <b class="neg-txt">-43分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/phx.png" alt="太陽"><b>Suns</b> (太陽) <b class="neg-txt">-44分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/lac.png" alt="快艇"><b>Clippers</b> (快艇) <b class="neg-txt">-50分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/bkn.png" alt="籃網"><b>Nets</b> (籃網) <b class="neg-txt">-87分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/no.png" alt="鵜鶘"><b>Pelicans</b> (鵜鶘) <b class="neg-txt">-106分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/wsh.png" alt="巫師"><b>Wizards</b> (巫師) <b class="neg-txt">-119分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/cha.png" alt="黃蜂"><b>Hornets</b> (黃蜂) <b class="neg-txt">-140分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/chi.png" alt="公牛"><b>Bulls</b> (公牛) <b class="neg-txt">-147分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/utah.png" alt="爵士"><b>Jazz</b> (爵士) <b class="neg-txt">-153分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/sac.png" alt="國王"><b>Kings</b> (國王) <b class="neg-txt">-175分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/mil.png" alt="公鹿"><b>Bucks</b> (公鹿) <b class="neg-txt">-190分</b></span>
+                            <span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/sa.png" alt="馬刺"><b>Spurs</b> (馬刺) <b class="pos-txt">+168分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/bos.png" alt="塞爾提克"><b>Celtics</b> (塞爾提克) <b class="pos-txt">+161分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/min.png" alt="灰狼"><b>Timberwolves</b> (灰狼) <b class="pos-txt">+159分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/mem.png" alt="灰熊"><b>Grizzlies</b> (灰熊) <b class="pos-txt">+132分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/hou.png" alt="火箭"><b>Rockets</b> (火箭) <b class="pos-txt">+124分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/lal.png" alt="湖人"><b>Lakers</b> (湖人) <b class="pos-txt">+111分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/ny.png" alt="尼克"><b>Knicks</b> (尼克) <b class="pos-txt">+86分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/por.png" alt="拓荒者"><b>Trail Blazers</b> (拓荒者) <b class="pos-txt">+84分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/det.png" alt="活塞"><b>Pistons</b> (活塞) <b class="pos-txt">+77分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/okc.png" alt="雷霆"><b>Thunder</b> (雷霆) <b class="pos-txt">+71分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/phi.png" alt="76人"><b>76ers</b> (76人) <b class="pos-txt">+42分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/gs.png" alt="勇士"><b>Warriors</b> (勇士) <b class="pos-txt">+35分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/cle.png" alt="騎士"><b>Cavaliers</b> (騎士) <b class="pos-txt">+34分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/atl.png" alt="老鷹"><b>Hawks</b> (老鷹) <b class="pos-txt">+24分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/den.png" alt="金塊"><b>Nuggets</b> (金塊) <b class="pos-txt">+8分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/tor.png" alt="暴龍"><b>Raptors</b> (暴龍) <b class="pos-txt">+4分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/mia.png" alt="熱火"><b>Heat</b> (熱火) <b class="pos-txt">+3分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/ind.png" alt="溜馬"><b>Pacers</b> (溜馬) <b class="neg-txt">-34分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/dal.png" alt="獨行俠"><b>Mavericks</b> (獨行俠) <b class="neg-txt">-35分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/orl.png" alt="魔術"><b>Magic</b> (魔術) <b class="neg-txt">-43分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/phx.png" alt="太陽"><b>Suns</b> (太陽) <b class="neg-txt">-44分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/lac.png" alt="快艇"><b>Clippers</b> (快艇) <b class="neg-txt">-75分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/bkn.png" alt="籃網"><b>Nets</b> (籃網) <b class="neg-txt">-87分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/no.png" alt="鵜鶘"><b>Pelicans</b> (鵜鶘) <b class="neg-txt">-106分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/wsh.png" alt="巫師"><b>Wizards</b> (巫師) <b class="neg-txt">-119分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/utah.png" alt="爵士"><b>Jazz</b> (爵士) <b class="neg-txt">-128分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/cha.png" alt="黃蜂"><b>Hornets</b> (黃蜂) <b class="neg-txt">-140分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/chi.png" alt="公牛"><b>Bulls</b> (公牛) <b class="neg-txt">-147分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/sac.png" alt="國王"><b>Kings</b> (國王) <b class="neg-txt">-175分</b></span><span class="team-pill"><img src="https://a.espncdn.com/i/teamlogos/nba/500/mil.png" alt="公鹿"><b>Bucks</b> (公鹿) <b class="neg-txt">-190分</b></span>
                         </div>
                     </div>
 
@@ -1536,13 +1536,13 @@
                         <div class="p-title" style="font-size:0.9rem">Fat</div>
                     </div>
                     <div class="sb-pcard-right">
-                        <div class="sc-pts pos-txt" style="font-size:0.76rem;font-weight:800">外插 +2558 分</div>
-                        <div class="sc-money pos-txt" style="font-size:0.86rem;font-weight:800">+NT$ 25,580</div>
+                        <div class="sc-pts pos-txt" style="font-size:0.76rem;font-weight:800">外插 +2783 分</div>
+                        <div class="sc-money pos-txt" style="font-size:0.86rem;font-weight:800">+NT$ 27,830</div>
                     </div>
                 </div>
                 <div class="sb-pcard-sub">
                     <span>共 58 筆</span>
-                    <span>43贏 / 15輸 / 0平</span>
+                    <span>44贏 / 14輸 / 0平</span>
                 </div>
             </div>
             
@@ -1553,13 +1553,13 @@
                         <div class="p-title" style="font-size:0.9rem">Saiman</div>
                     </div>
                     <div class="sb-pcard-right">
-                        <div class="sc-pts pos-txt" style="font-size:0.76rem;font-weight:800">外插 +167 分</div>
-                        <div class="sc-money pos-txt" style="font-size:0.86rem;font-weight:800">+NT$ 1,670</div>
+                        <div class="sc-pts pos-txt" style="font-size:0.76rem;font-weight:800">外插 +117 分</div>
+                        <div class="sc-money pos-txt" style="font-size:0.86rem;font-weight:800">+NT$ 1,170</div>
                     </div>
                 </div>
                 <div class="sb-pcard-sub">
                     <span>共 44 筆</span>
-                    <span>22贏 / 22輸 / 0平</span>
+                    <span>21贏 / 23輸 / 0平</span>
                 </div>
             </div>
             
@@ -1570,8 +1570,8 @@
                         <div class="p-title" style="font-size:0.9rem">Sixers</div>
                     </div>
                     <div class="sb-pcard-right">
-                        <div class="sc-pts neg-txt" style="font-size:0.76rem;font-weight:800">外插 -238 分</div>
-                        <div class="sc-money neg-txt" style="font-size:0.86rem;font-weight:800">NT$ -2,380</div>
+                        <div class="sc-pts neg-txt" style="font-size:0.76rem;font-weight:800">外插 -288 分</div>
+                        <div class="sc-money neg-txt" style="font-size:0.86rem;font-weight:800">NT$ -2,880</div>
                     </div>
                 </div>
                 <div class="sb-pcard-sub">
@@ -1587,8 +1587,8 @@
                         <div class="p-title" style="font-size:0.9rem">茂哥</div>
                     </div>
                     <div class="sb-pcard-right">
-                        <div class="sc-pts neg-txt" style="font-size:0.76rem;font-weight:800">外插 -1217 分</div>
-                        <div class="sc-money neg-txt" style="font-size:0.86rem;font-weight:800">NT$ -12,170</div>
+                        <div class="sc-pts neg-txt" style="font-size:0.76rem;font-weight:800">外插 -1167 分</div>
+                        <div class="sc-money neg-txt" style="font-size:0.86rem;font-weight:800">NT$ -11,670</div>
                     </div>
                 </div>
                 <div class="sb-pcard-sub">
@@ -1604,8 +1604,8 @@
                         <div class="p-title" style="font-size:0.9rem">志旭</div>
                     </div>
                     <div class="sb-pcard-right">
-                        <div class="sc-pts neg-txt" style="font-size:0.76rem;font-weight:800">外插 -1270 分</div>
-                        <div class="sc-money neg-txt" style="font-size:0.86rem;font-weight:800">NT$ -12,700</div>
+                        <div class="sc-pts neg-txt" style="font-size:0.76rem;font-weight:800">外插 -1445 分</div>
+                        <div class="sc-money neg-txt" style="font-size:0.86rem;font-weight:800">NT$ -14,450</div>
                     </div>
                 </div>
                 <div class="sb-pcard-sub">
@@ -1618,7 +1618,7 @@
 
                     <!-- 外插篩選按鈕 -->
                     <div class="tabs-bar">
-                        <button class="tab-btn sb-tab-btn active" onclick="filterSideBets('ALL', this)">全部外插 (124筆)</button><button class="tab-btn sb-tab-btn" onclick="filterSideBets('Fat', this)">Fat 參與 (58筆)</button><button class="tab-btn sb-tab-btn" onclick="filterSideBets('Saiman', this)">Saiman 參與 (44筆)</button><button class="tab-btn sb-tab-btn" onclick="filterSideBets('Sixers', this)">Sixers 參與 (56筆)</button><button class="tab-btn sb-tab-btn" onclick="filterSideBets('志旭', this)">志旭 參與 (44筆)</button><button class="tab-btn sb-tab-btn" onclick="filterSideBets('茂哥', this)">茂哥 參與 (46筆)</button>
+                        <button class="tab-btn sb-tab-btn active" onclick="filterSideBets('ALL', this)">全部外插 (124筆)</button><button class="tab-btn sb-tab-btn" onclick="filterSideBets('Fat', this)">Fat 參與 (58筆)</button><button class="tab-btn sb-tab-btn" onclick="filterSideBets('Saiman', this)">Saiman 參與 (44筆)</button><button class="tab-btn sb-tab-btn" onclick="filterSideBets('Sixers', this)">Sixers 參與 (56筆)</button><button class="tab-btn sb-tab-btn" onclick="filterSideBets('茂哥', this)">茂哥 參與 (46筆)</button><button class="tab-btn sb-tab-btn" onclick="filterSideBets('志旭', this)">志旭 參與 (44筆)</button>
                     </div>
 
                     <div class="table-scroll" style="max-height:680px;overflow-y:auto;border:1px solid var(--border);border-radius:12px">
@@ -2282,14 +2282,14 @@
                         <img src="https://a.espncdn.com/i/teamlogos/nba/500/utah.png" alt="爵士">
                         <div>
                             <div class="sb-t-en">Jazz <small>(爵士)</small></div>
-                            <div class="sb-t-pts neg-txt">目前勝負分：<b>-153</b> 分</div>
+                            <div class="sb-t-pts neg-txt">目前勝負分：<b>-128</b> 分</div>
                         </div>
                     </div>
                 </td>
                 <td style="text-align:center;font-weight:700;white-space:nowrap;font-size:0.82rem" class="sb-amt-pos">
-                    +188 分
+                    +163 分
                 </td>
-                <td class="sb-amt-cell sb-amt-pos">1,880</td>
+                <td class="sb-amt-cell sb-amt-pos">1,630</td>
                 <td style="white-space:nowrap">
                     <span class="m-owner" style="background:#ec489915;color:#ec4899;font-size:0.75rem;padding:2px 8px;display:inline-block;white-space:nowrap">
                         6 · Sixers
@@ -2300,7 +2300,7 @@
                         F · Fat
                     </span>
                 </td>
-                <td><div class="sb-settle-wrap"><span class="sb-badge-pos">🏆 Sixers +188分 (+$1,880)</span><span class="sb-badge-neg">Fat -188分 (-$1,880)</span></div></td>
+                <td><div class="sb-settle-wrap"><span class="sb-badge-pos">🏆 Sixers +163分 (+$1,630)</span><span class="sb-badge-neg">Fat -163分 (-$1,630)</span></div></td>
             </tr>
             
             <tr class="sb-row" data-p1="志旭" data-p2="Fat" data-search="#19 pacers 溜馬 hawks 老鷹 志旭 fat">
@@ -3198,7 +3198,7 @@
                         <img src="https://a.espncdn.com/i/teamlogos/nba/500/utah.png" alt="爵士">
                         <div>
                             <div class="sb-t-en">Jazz <small>(爵士)</small></div>
-                            <div class="sb-t-pts neg-txt">目前勝負分：<b>-153</b> 分</div>
+                            <div class="sb-t-pts neg-txt">目前勝負分：<b>-128</b> 分</div>
                         </div>
                     </div>
                 </td>
@@ -3212,9 +3212,9 @@
                     </div>
                 </td>
                 <td style="text-align:center;font-weight:700;white-space:nowrap;font-size:0.82rem" class="sb-amt-neg">
-                    -118 分
+                    -93 分
                 </td>
-                <td class="sb-amt-cell sb-amt-neg">(1,180)</td>
+                <td class="sb-amt-cell sb-amt-neg">(930)</td>
                 <td style="white-space:nowrap">
                     <span class="m-owner" style="background:#10b98115;color:#10b981;font-size:0.75rem;padding:2px 8px;display:inline-block;white-space:nowrap">
                         F · Fat
@@ -3225,7 +3225,7 @@
                         6 · Sixers
                     </span>
                 </td>
-                <td><div class="sb-settle-wrap"><span class="sb-badge-pos">🏆 Sixers +118分 (+$1,180)</span><span class="sb-badge-neg">Fat -118分 (-$1,180)</span></div></td>
+                <td><div class="sb-settle-wrap"><span class="sb-badge-pos">🏆 Sixers +93分 (+$930)</span><span class="sb-badge-neg">Fat -93分 (-$930)</span></div></td>
             </tr>
             
             <tr class="sb-row" data-p1="Fat" data-p2="Saiman" data-search="#44 jazz 爵士 mavericks 獨行俠 fat saiman">
@@ -3235,7 +3235,7 @@
                         <img src="https://a.espncdn.com/i/teamlogos/nba/500/utah.png" alt="爵士">
                         <div>
                             <div class="sb-t-en">Jazz <small>(爵士)</small></div>
-                            <div class="sb-t-pts neg-txt">目前勝負分：<b>-153</b> 分</div>
+                            <div class="sb-t-pts neg-txt">目前勝負分：<b>-128</b> 分</div>
                         </div>
                     </div>
                 </td>
@@ -3249,9 +3249,9 @@
                     </div>
                 </td>
                 <td style="text-align:center;font-weight:700;white-space:nowrap;font-size:0.82rem" class="sb-amt-neg">
-                    -118 分
+                    -93 分
                 </td>
-                <td class="sb-amt-cell sb-amt-neg">(1,180)</td>
+                <td class="sb-amt-cell sb-amt-neg">(930)</td>
                 <td style="white-space:nowrap">
                     <span class="m-owner" style="background:#10b98115;color:#10b981;font-size:0.75rem;padding:2px 8px;display:inline-block;white-space:nowrap">
                         F · Fat
@@ -3262,7 +3262,7 @@
                         S · Saiman
                     </span>
                 </td>
-                <td><div class="sb-settle-wrap"><span class="sb-badge-pos">🏆 Saiman +118分 (+$1,180)</span><span class="sb-badge-neg">Fat -118分 (-$1,180)</span></div></td>
+                <td><div class="sb-settle-wrap"><span class="sb-badge-pos">🏆 Saiman +93分 (+$930)</span><span class="sb-badge-neg">Fat -93分 (-$930)</span></div></td>
             </tr>
             
             <tr class="sb-row" data-p1="Fat" data-p2="志旭" data-search="#45 jazz 爵士 mavericks 獨行俠 fat 志旭">
@@ -3272,7 +3272,7 @@
                         <img src="https://a.espncdn.com/i/teamlogos/nba/500/utah.png" alt="爵士">
                         <div>
                             <div class="sb-t-en">Jazz <small>(爵士)</small></div>
-                            <div class="sb-t-pts neg-txt">目前勝負分：<b>-153</b> 分</div>
+                            <div class="sb-t-pts neg-txt">目前勝負分：<b>-128</b> 分</div>
                         </div>
                     </div>
                 </td>
@@ -3286,9 +3286,9 @@
                     </div>
                 </td>
                 <td style="text-align:center;font-weight:700;white-space:nowrap;font-size:0.82rem" class="sb-amt-neg">
-                    -118 分
+                    -93 分
                 </td>
-                <td class="sb-amt-cell sb-amt-neg">(1,180)</td>
+                <td class="sb-amt-cell sb-amt-neg">(930)</td>
                 <td style="white-space:nowrap">
                     <span class="m-owner" style="background:#10b98115;color:#10b981;font-size:0.75rem;padding:2px 8px;display:inline-block;white-space:nowrap">
                         F · Fat
@@ -3299,7 +3299,7 @@
                         Z · 志旭
                     </span>
                 </td>
-                <td><div class="sb-settle-wrap"><span class="sb-badge-pos">🏆 志旭 +118分 (+$1,180)</span><span class="sb-badge-neg">Fat -118分 (-$1,180)</span></div></td>
+                <td><div class="sb-settle-wrap"><span class="sb-badge-pos">🏆 志旭 +93分 (+$930)</span><span class="sb-badge-neg">Fat -93分 (-$930)</span></div></td>
             </tr>
             
             <tr class="sb-row" data-p1="茂哥" data-p2="Sixers" data-search="#46 jazz 爵士 mavericks 獨行俠 茂哥 sixers">
@@ -3309,7 +3309,7 @@
                         <img src="https://a.espncdn.com/i/teamlogos/nba/500/utah.png" alt="爵士">
                         <div>
                             <div class="sb-t-en">Jazz <small>(爵士)</small></div>
-                            <div class="sb-t-pts neg-txt">目前勝負分：<b>-153</b> 分</div>
+                            <div class="sb-t-pts neg-txt">目前勝負分：<b>-128</b> 分</div>
                         </div>
                     </div>
                 </td>
@@ -3323,9 +3323,9 @@
                     </div>
                 </td>
                 <td style="text-align:center;font-weight:700;white-space:nowrap;font-size:0.82rem" class="sb-amt-neg">
-                    -118 分
+                    -93 分
                 </td>
-                <td class="sb-amt-cell sb-amt-neg">(1,180)</td>
+                <td class="sb-amt-cell sb-amt-neg">(930)</td>
                 <td style="white-space:nowrap">
                     <span class="m-owner" style="background:#f59e0b15;color:#f59e0b;font-size:0.75rem;padding:2px 8px;display:inline-block;white-space:nowrap">
                         M · 茂哥
@@ -3336,7 +3336,7 @@
                         6 · Sixers
                     </span>
                 </td>
-                <td><div class="sb-settle-wrap"><span class="sb-badge-pos">🏆 Sixers +118分 (+$1,180)</span><span class="sb-badge-neg">茂哥 -118分 (-$1,180)</span></div></td>
+                <td><div class="sb-settle-wrap"><span class="sb-badge-pos">🏆 Sixers +93分 (+$930)</span><span class="sb-badge-neg">茂哥 -93分 (-$930)</span></div></td>
             </tr>
             
             <tr class="sb-row" data-p1="茂哥" data-p2="Saiman" data-search="#47 jazz 爵士 mavericks 獨行俠 茂哥 saiman">
@@ -3346,7 +3346,7 @@
                         <img src="https://a.espncdn.com/i/teamlogos/nba/500/utah.png" alt="爵士">
                         <div>
                             <div class="sb-t-en">Jazz <small>(爵士)</small></div>
-                            <div class="sb-t-pts neg-txt">目前勝負分：<b>-153</b> 分</div>
+                            <div class="sb-t-pts neg-txt">目前勝負分：<b>-128</b> 分</div>
                         </div>
                     </div>
                 </td>
@@ -3360,9 +3360,9 @@
                     </div>
                 </td>
                 <td style="text-align:center;font-weight:700;white-space:nowrap;font-size:0.82rem" class="sb-amt-neg">
-                    -118 分
+                    -93 分
                 </td>
-                <td class="sb-amt-cell sb-amt-neg">(1,180)</td>
+                <td class="sb-amt-cell sb-amt-neg">(930)</td>
                 <td style="white-space:nowrap">
                     <span class="m-owner" style="background:#f59e0b15;color:#f59e0b;font-size:0.75rem;padding:2px 8px;display:inline-block;white-space:nowrap">
                         M · 茂哥
@@ -3373,7 +3373,7 @@
                         S · Saiman
                     </span>
                 </td>
-                <td><div class="sb-settle-wrap"><span class="sb-badge-pos">🏆 Saiman +118分 (+$1,180)</span><span class="sb-badge-neg">茂哥 -118分 (-$1,180)</span></div></td>
+                <td><div class="sb-settle-wrap"><span class="sb-badge-pos">🏆 Saiman +93分 (+$930)</span><span class="sb-badge-neg">茂哥 -93分 (-$930)</span></div></td>
             </tr>
             
             <tr class="sb-row" data-p1="茂哥" data-p2="志旭" data-search="#48 jazz 爵士 mavericks 獨行俠 茂哥 志旭">
@@ -3383,7 +3383,7 @@
                         <img src="https://a.espncdn.com/i/teamlogos/nba/500/utah.png" alt="爵士">
                         <div>
                             <div class="sb-t-en">Jazz <small>(爵士)</small></div>
-                            <div class="sb-t-pts neg-txt">目前勝負分：<b>-153</b> 分</div>
+                            <div class="sb-t-pts neg-txt">目前勝負分：<b>-128</b> 分</div>
                         </div>
                     </div>
                 </td>
@@ -3397,9 +3397,9 @@
                     </div>
                 </td>
                 <td style="text-align:center;font-weight:700;white-space:nowrap;font-size:0.82rem" class="sb-amt-neg">
-                    -118 分
+                    -93 分
                 </td>
-                <td class="sb-amt-cell sb-amt-neg">(1,180)</td>
+                <td class="sb-amt-cell sb-amt-neg">(930)</td>
                 <td style="white-space:nowrap">
                     <span class="m-owner" style="background:#f59e0b15;color:#f59e0b;font-size:0.75rem;padding:2px 8px;display:inline-block;white-space:nowrap">
                         M · 茂哥
@@ -3410,7 +3410,7 @@
                         Z · 志旭
                     </span>
                 </td>
-                <td><div class="sb-settle-wrap"><span class="sb-badge-pos">🏆 志旭 +118分 (+$1,180)</span><span class="sb-badge-neg">茂哥 -118分 (-$1,180)</span></div></td>
+                <td><div class="sb-settle-wrap"><span class="sb-badge-pos">🏆 志旭 +93分 (+$930)</span><span class="sb-badge-neg">茂哥 -93分 (-$930)</span></div></td>
             </tr>
             
             <tr class="sb-row" data-p1="Sixers" data-p2="Saiman" data-search="#49 nuggets 金塊 celtics 塞爾提克 sixers saiman">
@@ -3716,7 +3716,7 @@
                         <img src="https://a.espncdn.com/i/teamlogos/nba/500/lac.png" alt="快艇">
                         <div>
                             <div class="sb-t-en">Clippers <small>(快艇)</small></div>
-                            <div class="sb-t-pts neg-txt">目前勝負分：<b>-50</b> 分</div>
+                            <div class="sb-t-pts neg-txt">目前勝負分：<b>-75</b> 分</div>
                         </div>
                     </div>
                 </td>
@@ -3730,9 +3730,9 @@
                     </div>
                 </td>
                 <td style="text-align:center;font-weight:700;white-space:nowrap;font-size:0.82rem" class="sb-amt-pos">
-                    +125 分
+                    +100 分
                 </td>
-                <td class="sb-amt-cell sb-amt-pos">1,250</td>
+                <td class="sb-amt-cell sb-amt-pos">1,000</td>
                 <td style="white-space:nowrap">
                     <span class="m-owner" style="background:#2563eb15;color:#2563eb;font-size:0.75rem;padding:2px 8px;display:inline-block;white-space:nowrap">
                         Z · 志旭
@@ -3743,7 +3743,7 @@
                         F · Fat
                     </span>
                 </td>
-                <td><div class="sb-settle-wrap"><span class="sb-badge-pos">🏆 志旭 +125分 (+$1,250)</span><span class="sb-badge-neg">Fat -125分 (-$1,250)</span></div></td>
+                <td><div class="sb-settle-wrap"><span class="sb-badge-pos">🏆 志旭 +100分 (+$1,000)</span><span class="sb-badge-neg">Fat -100分 (-$1,000)</span></div></td>
             </tr>
             
             <tr class="sb-row" data-p1="Saiman" data-p2="Fat" data-search="#58 pelicans 鵜鶘 kings 國王 saiman fat">
@@ -4650,14 +4650,14 @@
                         <img src="https://a.espncdn.com/i/teamlogos/nba/500/utah.png" alt="爵士">
                         <div>
                             <div class="sb-t-en">Jazz <small>(爵士)</small></div>
-                            <div class="sb-t-pts neg-txt">目前勝負分：<b>-153</b> 分</div>
+                            <div class="sb-t-pts neg-txt">目前勝負分：<b>-128</b> 分</div>
                         </div>
                     </div>
                 </td>
-                <td style="text-align:center;font-weight:700;white-space:nowrap;font-size:0.82rem" class="sb-amt-pos">
-                    +13 分
+                <td style="text-align:center;font-weight:700;white-space:nowrap;font-size:0.82rem" class="sb-amt-neg">
+                    -12 分
                 </td>
-                <td class="sb-amt-cell sb-amt-pos">130</td>
+                <td class="sb-amt-cell sb-amt-neg">(120)</td>
                 <td style="white-space:nowrap">
                     <span class="m-owner" style="background:#8b5cf615;color:#8b5cf6;font-size:0.75rem;padding:2px 8px;display:inline-block;white-space:nowrap">
                         S · Saiman
@@ -4668,7 +4668,7 @@
                         F · Fat
                     </span>
                 </td>
-                <td><div class="sb-settle-wrap"><span class="sb-badge-pos">🏆 Saiman +13分 (+$130)</span><span class="sb-badge-neg">Fat -13分 (-$130)</span></div></td>
+                <td><div class="sb-settle-wrap"><span class="sb-badge-pos">🏆 Fat +12分 (+$120)</span><span class="sb-badge-neg">Saiman -12分 (-$120)</span></div></td>
             </tr>
             
             <tr class="sb-row" data-p1="茂哥" data-p2="志旭" data-search="#83 raptors 暴龍 pistons 活塞 茂哥 志旭">
@@ -5455,7 +5455,7 @@
                         <img src="https://a.espncdn.com/i/teamlogos/nba/500/lac.png" alt="快艇">
                         <div>
                             <div class="sb-t-en">Clippers <small>(快艇)</small></div>
-                            <div class="sb-t-pts neg-txt">目前勝負分：<b>-50</b> 分</div>
+                            <div class="sb-t-pts neg-txt">目前勝負分：<b>-75</b> 分</div>
                         </div>
                     </div>
                 </td>
@@ -5469,9 +5469,9 @@
                     </div>
                 </td>
                 <td style="text-align:center;font-weight:700;white-space:nowrap;font-size:0.82rem" class="sb-amt-neg">
-                    -182 分
+                    -207 分
                 </td>
-                <td class="sb-amt-cell sb-amt-neg">(1,820)</td>
+                <td class="sb-amt-cell sb-amt-neg">(2,070)</td>
                 <td style="white-space:nowrap">
                     <span class="m-owner" style="background:#2563eb15;color:#2563eb;font-size:0.75rem;padding:2px 8px;display:inline-block;white-space:nowrap">
                         Z · 志旭
@@ -5482,7 +5482,7 @@
                         F · Fat
                     </span>
                 </td>
-                <td><div class="sb-settle-wrap"><span class="sb-badge-pos">🏆 Fat +182分 (+$1,820)</span><span class="sb-badge-neg">志旭 -182分 (-$1,820)</span></div></td>
+                <td><div class="sb-settle-wrap"><span class="sb-badge-pos">🏆 Fat +207分 (+$2,070)</span><span class="sb-badge-neg">志旭 -207分 (-$2,070)</span></div></td>
             </tr>
             
             <tr class="sb-row" data-p1="志旭" data-p2="Saiman" data-search="#105 clippers 快艇 grizzlies 灰熊 志旭 saiman">
@@ -5492,7 +5492,7 @@
                         <img src="https://a.espncdn.com/i/teamlogos/nba/500/lac.png" alt="快艇">
                         <div>
                             <div class="sb-t-en">Clippers <small>(快艇)</small></div>
-                            <div class="sb-t-pts neg-txt">目前勝負分：<b>-50</b> 分</div>
+                            <div class="sb-t-pts neg-txt">目前勝負分：<b>-75</b> 分</div>
                         </div>
                     </div>
                 </td>
@@ -5506,9 +5506,9 @@
                     </div>
                 </td>
                 <td style="text-align:center;font-weight:700;white-space:nowrap;font-size:0.82rem" class="sb-amt-neg">
-                    -182 分
+                    -207 分
                 </td>
-                <td class="sb-amt-cell sb-amt-neg">(1,820)</td>
+                <td class="sb-amt-cell sb-amt-neg">(2,070)</td>
                 <td style="white-space:nowrap">
                     <span class="m-owner" style="background:#2563eb15;color:#2563eb;font-size:0.75rem;padding:2px 8px;display:inline-block;white-space:nowrap">
                         Z · 志旭
@@ -5519,7 +5519,7 @@
                         S · Saiman
                     </span>
                 </td>
-                <td><div class="sb-settle-wrap"><span class="sb-badge-pos">🏆 Saiman +182分 (+$1,820)</span><span class="sb-badge-neg">志旭 -182分 (-$1,820)</span></div></td>
+                <td><div class="sb-settle-wrap"><span class="sb-badge-pos">🏆 Saiman +207分 (+$2,070)</span><span class="sb-badge-neg">志旭 -207分 (-$2,070)</span></div></td>
             </tr>
             
             <tr class="sb-row" data-p1="志旭" data-p2="Sixers" data-search="#106 clippers 快艇 grizzlies 灰熊 志旭 sixers">
@@ -5529,7 +5529,7 @@
                         <img src="https://a.espncdn.com/i/teamlogos/nba/500/lac.png" alt="快艇">
                         <div>
                             <div class="sb-t-en">Clippers <small>(快艇)</small></div>
-                            <div class="sb-t-pts neg-txt">目前勝負分：<b>-50</b> 分</div>
+                            <div class="sb-t-pts neg-txt">目前勝負分：<b>-75</b> 分</div>
                         </div>
                     </div>
                 </td>
@@ -5543,9 +5543,9 @@
                     </div>
                 </td>
                 <td style="text-align:center;font-weight:700;white-space:nowrap;font-size:0.82rem" class="sb-amt-neg">
-                    -182 分
+                    -207 分
                 </td>
-                <td class="sb-amt-cell sb-amt-neg">(1,820)</td>
+                <td class="sb-amt-cell sb-amt-neg">(2,070)</td>
                 <td style="white-space:nowrap">
                     <span class="m-owner" style="background:#2563eb15;color:#2563eb;font-size:0.75rem;padding:2px 8px;display:inline-block;white-space:nowrap">
                         Z · 志旭
@@ -5556,7 +5556,7 @@
                         6 · Sixers
                     </span>
                 </td>
-                <td><div class="sb-settle-wrap"><span class="sb-badge-pos">🏆 Sixers +182分 (+$1,820)</span><span class="sb-badge-neg">志旭 -182分 (-$1,820)</span></div></td>
+                <td><div class="sb-settle-wrap"><span class="sb-badge-pos">🏆 Sixers +207分 (+$2,070)</span><span class="sb-badge-neg">志旭 -207分 (-$2,070)</span></div></td>
             </tr>
             
             <tr class="sb-row" data-p1="Saiman" data-p2="Sixers" data-search="#107 nets 籃網 bucks 公鹿 saiman sixers">
@@ -5649,14 +5649,14 @@
                         <img src="https://a.espncdn.com/i/teamlogos/nba/500/lac.png" alt="快艇">
                         <div>
                             <div class="sb-t-en">Clippers <small>(快艇)</small></div>
-                            <div class="sb-t-pts neg-txt">目前勝負分：<b>-50</b> 分</div>
+                            <div class="sb-t-pts neg-txt">目前勝負分：<b>-75</b> 分</div>
                         </div>
                     </div>
                 </td>
                 <td style="text-align:center;font-weight:700;white-space:nowrap;font-size:0.82rem" class="sb-amt-neg">
-                    -125 分
+                    -100 分
                 </td>
-                <td class="sb-amt-cell sb-amt-neg">(1,250)</td>
+                <td class="sb-amt-cell sb-amt-neg">(1,000)</td>
                 <td style="white-space:nowrap">
                     <span class="m-owner" style="background:#8b5cf615;color:#8b5cf6;font-size:0.75rem;padding:2px 8px;display:inline-block;white-space:nowrap">
                         S · Saiman
@@ -5667,7 +5667,7 @@
                         Z · 志旭
                     </span>
                 </td>
-                <td><div class="sb-settle-wrap"><span class="sb-badge-pos">🏆 志旭 +125分 (+$1,250)</span><span class="sb-badge-neg">Saiman -125分 (-$1,250)</span></div></td>
+                <td><div class="sb-settle-wrap"><span class="sb-badge-pos">🏆 志旭 +100分 (+$1,000)</span><span class="sb-badge-neg">Saiman -100分 (-$1,000)</span></div></td>
             </tr>
             
             <tr class="sb-row" data-p1="Saiman" data-p2="Fat" data-search="#110 magic 魔術 raptors 暴龍 saiman fat">
@@ -5908,14 +5908,14 @@
                         <img src="https://a.espncdn.com/i/teamlogos/nba/500/utah.png" alt="爵士">
                         <div>
                             <div class="sb-t-en">Jazz <small>(爵士)</small></div>
-                            <div class="sb-t-pts neg-txt">目前勝負分：<b>-153</b> 分</div>
+                            <div class="sb-t-pts neg-txt">目前勝負分：<b>-128</b> 分</div>
                         </div>
                     </div>
                 </td>
                 <td style="text-align:center;font-weight:700;white-space:nowrap;font-size:0.82rem" class="sb-amt-pos">
-                    +34 分
+                    +9 分
                 </td>
-                <td class="sb-amt-cell sb-amt-pos">340</td>
+                <td class="sb-amt-cell sb-amt-pos">90</td>
                 <td style="white-space:nowrap">
                     <span class="m-owner" style="background:#f59e0b15;color:#f59e0b;font-size:0.75rem;padding:2px 8px;display:inline-block;white-space:nowrap">
                         M · 茂哥
@@ -5926,7 +5926,7 @@
                         F · Fat
                     </span>
                 </td>
-                <td><div class="sb-settle-wrap"><span class="sb-badge-pos">🏆 茂哥 +34分 (+$340)</span><span class="sb-badge-neg">Fat -34分 (-$340)</span></div></td>
+                <td><div class="sb-settle-wrap"><span class="sb-badge-pos">🏆 茂哥 +9分 (+$90)</span><span class="sb-badge-neg">Fat -9分 (-$90)</span></div></td>
             </tr>
             
             <tr class="sb-row" data-p1="Saiman" data-p2="Fat" data-search="#117 wizards 巫師 jazz 爵士 saiman fat">
@@ -5945,14 +5945,14 @@
                         <img src="https://a.espncdn.com/i/teamlogos/nba/500/utah.png" alt="爵士">
                         <div>
                             <div class="sb-t-en">Jazz <small>(爵士)</small></div>
-                            <div class="sb-t-pts neg-txt">目前勝負分：<b>-153</b> 分</div>
+                            <div class="sb-t-pts neg-txt">目前勝負分：<b>-128</b> 分</div>
                         </div>
                     </div>
                 </td>
                 <td style="text-align:center;font-weight:700;white-space:nowrap;font-size:0.82rem" class="sb-amt-pos">
-                    +34 分
+                    +9 分
                 </td>
-                <td class="sb-amt-cell sb-amt-pos">340</td>
+                <td class="sb-amt-cell sb-amt-pos">90</td>
                 <td style="white-space:nowrap">
                     <span class="m-owner" style="background:#8b5cf615;color:#8b5cf6;font-size:0.75rem;padding:2px 8px;display:inline-block;white-space:nowrap">
                         S · Saiman
@@ -5963,7 +5963,7 @@
                         F · Fat
                     </span>
                 </td>
-                <td><div class="sb-settle-wrap"><span class="sb-badge-pos">🏆 Saiman +34分 (+$340)</span><span class="sb-badge-neg">Fat -34分 (-$340)</span></div></td>
+                <td><div class="sb-settle-wrap"><span class="sb-badge-pos">🏆 Saiman +9分 (+$90)</span><span class="sb-badge-neg">Fat -9分 (-$90)</span></div></td>
             </tr>
             
             <tr class="sb-row" data-p1="茂哥" data-p2="志旭" data-search="#118 wizards 巫師 mavericks 獨行俠 茂哥 志旭">
@@ -6239,10 +6239,37 @@
                         </div>
                     </div>
                     <div class="tabs-bar">
-                        <button class="tab-btn match-tab-btn active" onclick="filterGames('2026-11-18', this)">🔥 最新 · 2026-11-18 (3場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-17', this)">2026-11-17 (8場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-16', this)">2026-11-16 (9場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-15', this)">2026-11-15 (5場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-14', this)">2026-11-14 (9場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-13', this)">2026-11-13 (4場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-12', this)">2026-11-12 (10場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-11', this)">2026-11-11 (6場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-10', this)">2026-11-10 (8場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-09', this)">2026-11-09 (7場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-08', this)">2026-11-08 (7場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-07', this)">2026-11-07 (9場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-06', this)">2026-11-06 (2場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-05', this)">2026-11-05 (14場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-03', this)">2026-11-03 (15場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-02', this)">2026-11-02 (4場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-01', this)">2026-11-01 (7場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-10-31', this)">2026-10-31 (10場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-10-30', this)">2026-10-30 (3場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-10-29', this)">2026-10-29 (12場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-10-28', this)">2026-10-28 (4場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-10-27', this)">2026-10-27 (9場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-10-26', this)">2026-10-26 (7場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-10-25', this)">2026-10-25 (8場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-10-24', this)">2026-10-24 (12場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-10-23', this)">2026-10-23 (2場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-10-22', this)">2026-10-22 (11場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-10-21', this)">2026-10-21 (3場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('ALL', this)">全部歷史日期 (208場)</button>
+                        <button class="tab-btn match-tab-btn active" onclick="filterGames('2026-11-18', this)">🔥 最新 · 2026-11-18 (4場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-17', this)">2026-11-17 (8場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-16', this)">2026-11-16 (9場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-15', this)">2026-11-15 (5場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-14', this)">2026-11-14 (9場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-13', this)">2026-11-13 (4場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-12', this)">2026-11-12 (10場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-11', this)">2026-11-11 (6場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-10', this)">2026-11-10 (8場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-09', this)">2026-11-09 (7場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-08', this)">2026-11-08 (7場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-07', this)">2026-11-07 (9場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-06', this)">2026-11-06 (2場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-05', this)">2026-11-05 (14場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-03', this)">2026-11-03 (15場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-02', this)">2026-11-02 (4場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-11-01', this)">2026-11-01 (7場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-10-31', this)">2026-10-31 (10場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-10-30', this)">2026-10-30 (3場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-10-29', this)">2026-10-29 (12場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-10-28', this)">2026-10-28 (4場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-10-27', this)">2026-10-27 (9場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-10-26', this)">2026-10-26 (7場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-10-25', this)">2026-10-25 (8場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-10-24', this)">2026-10-24 (12場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-10-23', this)">2026-10-23 (2場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-10-22', this)">2026-10-22 (11場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('2026-10-21', this)">2026-10-21 (3場)</button><button class="tab-btn match-tab-btn" onclick="filterGames('ALL', this)">全部歷史日期 (209場)</button>
                     </div>
                     <div class="matches-grid" id="matchesGrid">
                         
+            <div class="match-card" style="display:flex" data-date="2026-11-18" data-search="2026-11-18 爵士 jazz fat 快艇 clippers 志旭">
+                <div class="m-head">
+                    <span>📅 台灣 2026-11-18（美東 2026-11-17）</span>
+                    <span>分差 25 分 × $10</span>
+                </div>
+                <div class="m-body">
+                    <div class="m-team win">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/utah.png" alt="爵士">
+                        <div class="m-meta">
+                            <div class="m-tname">爵士 <small>Jazz</small></div>
+                            <span class="m-owner" style="background:#10b98115;color:#10b981">F · Fat</span>
+                        </div>
+                        <div class="m-score">132</div>
+                    </div>
+                    <div class="m-vs">VS</div>
+                    <div class="m-team right ">
+                        <div class="m-score">107</div>
+                        <div class="m-meta right">
+                            <div class="m-tname"><small>Clippers</small> 快艇</div>
+                            <span class="m-owner" style="background:#2563eb15;color:#2563eb">Z · 志旭</span>
+                        </div>
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/lac.png" alt="快艇">
+                    </div>
+                </div>
+                <div class="g-foot"><span>🏆 <b>Fat</b> (爵士) 贏 <b>25</b> 分</span><div class="g-badges"><span class="badge-pos">Fat +$250</span><span class="badge-neg">志旭 -$250</span></div></div>
+            </div>
+            
             <div class="match-card" style="display:flex" data-date="2026-11-18" data-search="2026-11-18 活塞 pistons 志旭 馬刺 spurs fat">
                 <div class="m-head">
                     <span>📅 台灣 2026-11-18（美東 2026-11-17）</span>
@@ -11875,11 +11902,11 @@
                             <thead>
                                 <tr>
                                     <th>玩家 \ 對手</th>
-                                    <th><span class="p-avatar xs" style="background:#10b981">F</span> Fat</th><th><span class="p-avatar xs" style="background:#8b5cf6">S</span> Saiman</th><th><span class="p-avatar xs" style="background:#ec4899">6</span> Sixers</th><th><span class="p-avatar xs" style="background:#2563eb">Z</span> 志旭</th><th><span class="p-avatar xs" style="background:#f59e0b">M</span> 茂哥</th>
+                                    <th><span class="p-avatar xs" style="background:#10b981">F</span> Fat</th><th><span class="p-avatar xs" style="background:#8b5cf6">S</span> Saiman</th><th><span class="p-avatar xs" style="background:#ec4899">6</span> Sixers</th><th><span class="p-avatar xs" style="background:#f59e0b">M</span> 茂哥</th><th><span class="p-avatar xs" style="background:#2563eb">Z</span> 志旭</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr><td class="mx-head"><span class="p-avatar xs" style="background:#10b981">F</span> <b>Fat</b></td><td class="mx-self">—</td><td class="mx-pos"><div class="mx-v">+$5,520</div><div class="mx-s">季賽 +$940 (7勝6敗)</div><div class="mx-s">外插 +$4,580</div></td><td class="mx-pos"><div class="mx-v">+$7,820</div><div class="mx-s">季賽 $-590 (5勝10敗)</div><div class="mx-s">外插 +$8,410</div></td><td class="mx-pos"><div class="mx-v">+$9,770</div><div class="mx-s">季賽 +$550 (10勝7敗)</div><div class="mx-s">外插 +$9,220</div></td><td class="mx-pos"><div class="mx-v">+$3,540</div><div class="mx-s">季賽 +$170 (7勝7敗)</div><div class="mx-s">外插 +$3,370</div></td></tr><tr><td class="mx-head"><span class="p-avatar xs" style="background:#8b5cf6">S</span> <b>Saiman</b></td><td class="mx-neg"><div class="mx-v">$-5,520</div><div class="mx-s">季賽 $-940 (6勝7敗)</div><div class="mx-s">外插 $-4,580</div></td><td class="mx-self">—</td><td class="mx-pos"><div class="mx-v">+$440</div><div class="mx-s">季賽 $-600 (8勝13敗)</div><div class="mx-s">外插 +$1,040</div></td><td class="mx-pos"><div class="mx-v">+$1,640</div><div class="mx-s">季賽 +$100 (8勝12敗)</div><div class="mx-s">外插 +$1,540</div></td><td class="mx-pos"><div class="mx-v">+$4,710</div><div class="mx-s">季賽 +$1,040 (16勝5敗)</div><div class="mx-s">外插 +$3,670</div></td></tr><tr><td class="mx-head"><span class="p-avatar xs" style="background:#ec4899">6</span> <b>Sixers</b></td><td class="mx-neg"><div class="mx-v">$-7,820</div><div class="mx-s">季賽 +$590 (10勝5敗)</div><div class="mx-s">外插 $-8,410</div></td><td class="mx-neg"><div class="mx-v">$-440</div><div class="mx-s">季賽 +$600 (13勝8敗)</div><div class="mx-s">外插 $-1,040</div></td><td class="mx-self">—</td><td class="mx-pos"><div class="mx-v">+$5,760</div><div class="mx-s">季賽 +$180 (10勝5敗)</div><div class="mx-s">外插 +$5,580</div></td><td class="mx-pos"><div class="mx-v">+$1,500</div><div class="mx-s">季賽 +$10 (10勝8敗)</div><div class="mx-s">外插 +$1,490</div></td></tr><tr><td class="mx-head"><span class="p-avatar xs" style="background:#2563eb">Z</span> <b>志旭</b></td><td class="mx-neg"><div class="mx-v">$-9,770</div><div class="mx-s">季賽 $-550 (7勝10敗)</div><div class="mx-s">外插 $-9,220</div></td><td class="mx-neg"><div class="mx-v">$-1,640</div><div class="mx-s">季賽 $-100 (12勝8敗)</div><div class="mx-s">外插 $-1,540</div></td><td class="mx-neg"><div class="mx-v">$-5,760</div><div class="mx-s">季賽 $-180 (5勝10敗)</div><div class="mx-s">外插 $-5,580</div></td><td class="mx-self">—</td><td class="mx-pos"><div class="mx-v">+$4,330</div><div class="mx-s">季賽 +$690 (11勝7敗)</div><div class="mx-s">外插 +$3,640</div></td></tr><tr><td class="mx-head"><span class="p-avatar xs" style="background:#f59e0b">M</span> <b>茂哥</b></td><td class="mx-neg"><div class="mx-v">$-3,540</div><div class="mx-s">季賽 $-170 (7勝7敗)</div><div class="mx-s">外插 $-3,370</div></td><td class="mx-neg"><div class="mx-v">$-4,710</div><div class="mx-s">季賽 $-1,040 (5勝16敗)</div><div class="mx-s">外插 $-3,670</div></td><td class="mx-neg"><div class="mx-v">$-1,500</div><div class="mx-s">季賽 $-10 (8勝10敗)</div><div class="mx-s">外插 $-1,490</div></td><td class="mx-neg"><div class="mx-v">$-4,330</div><div class="mx-s">季賽 $-690 (7勝11敗)</div><div class="mx-s">外插 $-3,640</div></td><td class="mx-self">—</td></tr>
+                                <tr><td class="mx-head"><span class="p-avatar xs" style="background:#10b981">F</span> <b>Fat</b></td><td class="mx-self">—</td><td class="mx-pos"><div class="mx-v">+$6,270</div><div class="mx-s">季賽 +$940 (7勝6敗)</div><div class="mx-s">外插 +$5,330</div></td><td class="mx-pos"><div class="mx-v">+$8,320</div><div class="mx-s">季賽 $-590 (5勝10敗)</div><div class="mx-s">外插 +$8,910</div></td><td class="mx-pos"><div class="mx-v">+$3,790</div><div class="mx-s">季賽 +$170 (7勝7敗)</div><div class="mx-s">外插 +$3,620</div></td><td class="mx-pos"><div class="mx-v">+$10,770</div><div class="mx-s">季賽 +$800 (11勝7敗)</div><div class="mx-s">外插 +$9,970</div></td></tr><tr><td class="mx-head"><span class="p-avatar xs" style="background:#8b5cf6">S</span> <b>Saiman</b></td><td class="mx-neg"><div class="mx-v">$-6,270</div><div class="mx-s">季賽 $-940 (6勝7敗)</div><div class="mx-s">外插 $-5,330</div></td><td class="mx-self">—</td><td class="mx-pos"><div class="mx-v">+$440</div><div class="mx-s">季賽 $-600 (8勝13敗)</div><div class="mx-s">外插 +$1,040</div></td><td class="mx-pos"><div class="mx-v">+$4,460</div><div class="mx-s">季賽 +$1,040 (16勝5敗)</div><div class="mx-s">外插 +$3,420</div></td><td class="mx-pos"><div class="mx-v">+$2,140</div><div class="mx-s">季賽 +$100 (8勝12敗)</div><div class="mx-s">外插 +$2,040</div></td></tr><tr><td class="mx-head"><span class="p-avatar xs" style="background:#ec4899">6</span> <b>Sixers</b></td><td class="mx-neg"><div class="mx-v">$-8,320</div><div class="mx-s">季賽 +$590 (10勝5敗)</div><div class="mx-s">外插 $-8,910</div></td><td class="mx-neg"><div class="mx-v">$-440</div><div class="mx-s">季賽 +$600 (13勝8敗)</div><div class="mx-s">外插 $-1,040</div></td><td class="mx-self">—</td><td class="mx-pos"><div class="mx-v">+$1,250</div><div class="mx-s">季賽 +$10 (10勝8敗)</div><div class="mx-s">外插 +$1,240</div></td><td class="mx-pos"><div class="mx-v">+$6,010</div><div class="mx-s">季賽 +$180 (10勝5敗)</div><div class="mx-s">外插 +$5,830</div></td></tr><tr><td class="mx-head"><span class="p-avatar xs" style="background:#f59e0b">M</span> <b>茂哥</b></td><td class="mx-neg"><div class="mx-v">$-3,790</div><div class="mx-s">季賽 $-170 (7勝7敗)</div><div class="mx-s">外插 $-3,620</div></td><td class="mx-neg"><div class="mx-v">$-4,460</div><div class="mx-s">季賽 $-1,040 (5勝16敗)</div><div class="mx-s">外插 $-3,420</div></td><td class="mx-neg"><div class="mx-v">$-1,250</div><div class="mx-s">季賽 $-10 (8勝10敗)</div><div class="mx-s">外插 $-1,240</div></td><td class="mx-self">—</td><td class="mx-neg"><div class="mx-v">$-4,080</div><div class="mx-s">季賽 $-690 (7勝11敗)</div><div class="mx-s">外插 $-3,390</div></td></tr><tr><td class="mx-head"><span class="p-avatar xs" style="background:#2563eb">Z</span> <b>志旭</b></td><td class="mx-neg"><div class="mx-v">$-10,770</div><div class="mx-s">季賽 $-800 (7勝11敗)</div><div class="mx-s">外插 $-9,970</div></td><td class="mx-neg"><div class="mx-v">$-2,140</div><div class="mx-s">季賽 $-100 (12勝8敗)</div><div class="mx-s">外插 $-2,040</div></td><td class="mx-neg"><div class="mx-v">$-6,010</div><div class="mx-s">季賽 $-180 (5勝10敗)</div><div class="mx-s">外插 $-5,830</div></td><td class="mx-pos"><div class="mx-v">+$4,080</div><div class="mx-s">季賽 +$690 (11勝7敗)</div><div class="mx-s">外插 +$3,390</div></td><td class="mx-self">—</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -11901,12 +11928,12 @@
                         <span class="p-avatar" style="background:#10b981">F</span>
                         <div>
                             <div class="p-title">Fat</div>
-                            <div class="p-sub">季賽 +$1,070 ｜ 外插 +$25,580</div>
+                            <div class="p-sub">季賽 +$1,320 ｜ 外插 +$27,830</div>
                         </div>
                     </div>
                     <div style="text-align:right">
                         <div style="font-size:0.72rem;color:#64748b;font-weight:700">合併總損益</div>
-                        <div class="r-total pos-txt">+NT$ 26,650</div>
+                        <div class="r-total pos-txt">+NT$ 29,150</div>
                     </div>
                 </div>
                 <div class="r-list">
@@ -11975,8 +12002,8 @@
                         </div>
                     </div>
                     <div class="r-right">
-                        <div class="r-wl">1勝 13敗 · <span class="neg-txt">-153分</span></div>
-                        <div class="r-money neg-txt">NT$ -800</div>
+                        <div class="r-wl">2勝 13敗 · <span class="neg-txt">-128分</span></div>
+                        <div class="r-money neg-txt">NT$ -550</div>
                     </div>
                 </div>
                 
@@ -12002,12 +12029,12 @@
                         <span class="p-avatar" style="background:#8b5cf6">S</span>
                         <div>
                             <div class="p-title">Saiman</div>
-                            <div class="p-sub">季賽 $-400 ｜ 外插 +$1,670</div>
+                            <div class="p-sub">季賽 $-400 ｜ 外插 +$1,170</div>
                         </div>
                     </div>
                     <div style="text-align:right">
                         <div style="font-size:0.72rem;color:#64748b;font-weight:700">合併總損益</div>
-                        <div class="r-total pos-txt">+NT$ 1,270</div>
+                        <div class="r-total pos-txt">+NT$ 770</div>
                     </div>
                 </div>
                 <div class="r-list">
@@ -12103,12 +12130,12 @@
                         <span class="p-avatar" style="background:#ec4899">6</span>
                         <div>
                             <div class="p-title">Sixers</div>
-                            <div class="p-sub">季賽 +$1,380 ｜ 外插 $-2,380</div>
+                            <div class="p-sub">季賽 +$1,380 ｜ 外插 $-2,880</div>
                         </div>
                     </div>
                     <div style="text-align:right">
                         <div style="font-size:0.72rem;color:#64748b;font-weight:700">合併總損益</div>
-                        <div class="r-total neg-txt">NT$ -1,000</div>
+                        <div class="r-total neg-txt">NT$ -1,500</div>
                     </div>
                 </div>
                 <div class="r-list">
@@ -12201,116 +12228,15 @@
             <div class="r-card">
                 <div class="r-head">
                     <div class="p-info">
-                        <span class="p-avatar" style="background:#2563eb">Z</span>
-                        <div>
-                            <div class="p-title">志旭</div>
-                            <div class="p-sub">季賽 $-140 ｜ 外插 $-12,700</div>
-                        </div>
-                    </div>
-                    <div style="text-align:right">
-                        <div style="font-size:0.72rem;color:#64748b;font-weight:700">合併總損益</div>
-                        <div class="r-total neg-txt">NT$ -12,840</div>
-                    </div>
-                </div>
-                <div class="r-list">
-                <div class="r-item">
-                    <div class="r-left">
-                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/okc.png" alt="雷霆">
-                        <div>
-                            <div class="r-tname">雷霆 <small>Thunder</small></div>
-                            <span class="r-conf west">西區</span>
-                        </div>
-                    </div>
-                    <div class="r-right">
-                        <div class="r-wl">9勝 5敗 · <span class="pos-txt">+71分</span></div>
-                        <div class="r-money pos-txt">+NT$ 890</div>
-                    </div>
-                </div>
-                
-                <div class="r-item">
-                    <div class="r-left">
-                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/det.png" alt="活塞">
-                        <div>
-                            <div class="r-tname">活塞 <small>Pistons</small></div>
-                            <span class="r-conf east">東區</span>
-                        </div>
-                    </div>
-                    <div class="r-right">
-                        <div class="r-wl">9勝 4敗 · <span class="pos-txt">+77分</span></div>
-                        <div class="r-money pos-txt">+NT$ 770</div>
-                    </div>
-                </div>
-                
-                <div class="r-item">
-                    <div class="r-left">
-                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/ind.png" alt="溜馬">
-                        <div>
-                            <div class="r-tname">溜馬 <small>Pacers</small></div>
-                            <span class="r-conf east">東區</span>
-                        </div>
-                    </div>
-                    <div class="r-right">
-                        <div class="r-wl">5勝 9敗 · <span class="neg-txt">-34分</span></div>
-                        <div class="r-money neg-txt">NT$ -150</div>
-                    </div>
-                </div>
-                
-                <div class="r-item">
-                    <div class="r-left">
-                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/orl.png" alt="魔術">
-                        <div>
-                            <div class="r-tname">魔術 <small>Magic</small></div>
-                            <span class="r-conf east">東區</span>
-                        </div>
-                    </div>
-                    <div class="r-right">
-                        <div class="r-wl">6勝 7敗 · <span class="neg-txt">-43分</span></div>
-                        <div class="r-money neg-txt">NT$ -430</div>
-                    </div>
-                </div>
-                
-                <div class="r-item">
-                    <div class="r-left">
-                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/dal.png" alt="獨行俠">
-                        <div>
-                            <div class="r-tname">獨行俠 <small>Mavericks</small></div>
-                            <span class="r-conf west">西區</span>
-                        </div>
-                    </div>
-                    <div class="r-right">
-                        <div class="r-wl">7勝 7敗 · <span class="neg-txt">-35分</span></div>
-                        <div class="r-money neg-txt">NT$ -780</div>
-                    </div>
-                </div>
-                
-                <div class="r-item">
-                    <div class="r-left">
-                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/lac.png" alt="快艇">
-                        <div>
-                            <div class="r-tname">快艇 <small>Clippers</small></div>
-                            <span class="r-conf west">西區</span>
-                        </div>
-                    </div>
-                    <div class="r-right">
-                        <div class="r-wl">4勝 8敗 · <span class="neg-txt">-50分</span></div>
-                        <div class="r-money neg-txt">NT$ -440</div>
-                    </div>
-                </div>
-                </div>
-            </div>
-            
-            <div class="r-card">
-                <div class="r-head">
-                    <div class="p-info">
                         <span class="p-avatar" style="background:#f59e0b">M</span>
                         <div>
                             <div class="p-title">茂哥</div>
-                            <div class="p-sub">季賽 $-1,910 ｜ 外插 $-12,170</div>
+                            <div class="p-sub">季賽 $-1,910 ｜ 外插 $-11,670</div>
                         </div>
                     </div>
                     <div style="text-align:right">
                         <div style="font-size:0.72rem;color:#64748b;font-weight:700">合併總損益</div>
-                        <div class="r-total neg-txt">NT$ -14,080</div>
+                        <div class="r-total neg-txt">NT$ -13,580</div>
                     </div>
                 </div>
                 <div class="r-list">
@@ -12400,6 +12326,107 @@
                 </div>
             </div>
             
+            <div class="r-card">
+                <div class="r-head">
+                    <div class="p-info">
+                        <span class="p-avatar" style="background:#2563eb">Z</span>
+                        <div>
+                            <div class="p-title">志旭</div>
+                            <div class="p-sub">季賽 $-390 ｜ 外插 $-14,450</div>
+                        </div>
+                    </div>
+                    <div style="text-align:right">
+                        <div style="font-size:0.72rem;color:#64748b;font-weight:700">合併總損益</div>
+                        <div class="r-total neg-txt">NT$ -14,840</div>
+                    </div>
+                </div>
+                <div class="r-list">
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/okc.png" alt="雷霆">
+                        <div>
+                            <div class="r-tname">雷霆 <small>Thunder</small></div>
+                            <span class="r-conf west">西區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">9勝 5敗 · <span class="pos-txt">+71分</span></div>
+                        <div class="r-money pos-txt">+NT$ 890</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/det.png" alt="活塞">
+                        <div>
+                            <div class="r-tname">活塞 <small>Pistons</small></div>
+                            <span class="r-conf east">東區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">9勝 4敗 · <span class="pos-txt">+77分</span></div>
+                        <div class="r-money pos-txt">+NT$ 770</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/ind.png" alt="溜馬">
+                        <div>
+                            <div class="r-tname">溜馬 <small>Pacers</small></div>
+                            <span class="r-conf east">東區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">5勝 9敗 · <span class="neg-txt">-34分</span></div>
+                        <div class="r-money neg-txt">NT$ -150</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/orl.png" alt="魔術">
+                        <div>
+                            <div class="r-tname">魔術 <small>Magic</small></div>
+                            <span class="r-conf east">東區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">6勝 7敗 · <span class="neg-txt">-43分</span></div>
+                        <div class="r-money neg-txt">NT$ -430</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/dal.png" alt="獨行俠">
+                        <div>
+                            <div class="r-tname">獨行俠 <small>Mavericks</small></div>
+                            <span class="r-conf west">西區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">7勝 7敗 · <span class="neg-txt">-35分</span></div>
+                        <div class="r-money neg-txt">NT$ -780</div>
+                    </div>
+                </div>
+                
+                <div class="r-item">
+                    <div class="r-left">
+                        <img src="https://a.espncdn.com/i/teamlogos/nba/500/lac.png" alt="快艇">
+                        <div>
+                            <div class="r-tname">快艇 <small>Clippers</small></div>
+                            <span class="r-conf west">西區</span>
+                        </div>
+                    </div>
+                    <div class="r-right">
+                        <div class="r-wl">4勝 9敗 · <span class="neg-txt">-75分</span></div>
+                        <div class="r-money neg-txt">NT$ -690</div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            
                     </div>
                 </div>
             </main>
@@ -12408,14 +12435,14 @@
 
     <script>
         const chartDates = ["10-21", "10-22", "10-23", "10-24", "10-25", "10-26", "10-27", "10-28", "10-29", "10-30", "10-31", "11-01", "11-02", "11-03", "11-05", "11-06", "11-07", "11-08", "11-09", "11-10", "11-11", "11-12", "11-13", "11-14", "11-15", "11-16", "11-17", "11-18"];
-        const allDatasets = [{"code": "F", "label": "Fat (F)", "data": [-1740, 7570, 7250, 16960, 17040, 16830, 18290, 19610, 20320, 18190, 17690, 17080, 17850, 22280, 20930, 22120, 24950, 22600, 19190, 20750, 24810, 24600, 27030, 29250, 27350, 30440, 27450, 26650], "regData": [-120, 160, 160, 820, 910, 940, 770, 840, 670, 370, 630, 100, 100, 490, 680, 680, 630, 660, 600, 760, 830, 830, 1220, 1450, 1340, 1190, 1190, 1070], "borderColor": "#10b981", "backgroundColor": "#10b98120"}, {"code": "S", "label": "Saiman (S)", "data": [-840, -9190, -9550, -14610, -14710, -13020, -12660, -12150, -13290, -12210, -8360, -7480, -7270, -11090, -8440, -10630, -11730, -10680, -7640, -8320, -4470, -3130, -4030, -1190, -1040, -2810, 520, 1270], "regData": [-140, -760, -760, -1410, -1380, -1470, -1200, -1050, -1080, -960, -900, -730, -620, -1210, -990, -1060, -1120, -970, -870, -1520, -690, -1060, -1060, -1270, -1150, -900, -490, -400], "borderColor": "#8b5cf6", "backgroundColor": "#8b5cf620"}, {"code": "6", "label": "Sixers (6)", "data": [1740, -180, 340, 2970, 2730, 310, -1630, -2260, -810, -390, -220, -1610, 380, 2900, 8680, 11660, 4080, 7970, 8990, 12530, 5880, 3700, 3850, -1500, 770, -280, -1080, -1000], "regData": [60, 140, 100, 110, 80, 150, 280, 210, 280, 490, 610, 720, 900, 1120, 1390, 1590, 960, 1150, 1060, 1730, 1190, 1120, 1230, 1080, 1350, 1430, 1380, 1380], "borderColor": "#ec4899", "backgroundColor": "#ec489920"}, {"code": "Z", "label": "志旭 (Z)", "data": [1940, -3180, -2420, -7380, -9190, -3660, -2910, -5040, -10140, -9810, -10980, -13770, -15870, -19090, -17740, -19320, -15560, -12900, -9700, -10500, -12300, -10630, -12650, -13450, -15940, -16570, -14880, -12840], "regData": [200, 230, 350, 220, 60, 550, 620, 480, 50, 50, -130, -340, -650, -620, -580, -710, -280, -80, 400, 510, 150, 330, -20, 80, -220, -360, -260, -140], "borderColor": "#2563eb", "backgroundColor": "#2563eb20"}, {"code": "M", "label": "茂哥 (M)", "data": [-1100, 4980, 4380, 2060, 4130, -460, -1090, -160, 3920, 4220, 1870, 5780, 4910, 5000, -3430, -3830, -1740, -6990, -10840, -14460, -13920, -14540, -14200, -13110, -11140, -10780, -12010, -14080], "regData": [0, 230, 150, 260, 330, -170, -470, -480, 80, 50, -210, 250, 270, 220, -500, -500, -190, -760, -1190, -1480, -1480, -1220, -1370, -1340, -1320, -1360, -1820, -1910], "borderColor": "#f59e0b", "backgroundColor": "#f59e0b20"}];
-        const barLabels = ["Fat", "Saiman", "Sixers", "志旭", "茂哥"];
-        const barRegValues = [1070, -400, 1380, -140, -1910];
-        const barSbValues = [25580, 1670, -2380, -12700, -12170];
-        const barTotValues = [26650, 1270, -1000, -12840, -14080];
-        const donutLabels = ["Fat", "Saiman", "Sixers", "志旭", "茂哥"];
-        const donutValues = [42, 42, 50, 40, 34];
-        const donutColors = ["#10b981", "#8b5cf6", "#ec4899", "#2563eb", "#f59e0b"];
+        const allDatasets = [{"code": "F", "label": "Fat (F)", "data": [-1740, 7570, 7250, 16960, 17040, 16830, 18290, 19610, 20320, 18190, 17690, 17080, 17850, 22280, 20930, 22120, 24950, 22600, 19190, 20750, 24810, 24600, 27030, 29250, 27350, 30440, 27450, 29150], "regData": [-120, 160, 160, 820, 910, 940, 770, 840, 670, 370, 630, 100, 100, 490, 680, 680, 630, 660, 600, 760, 830, 830, 1220, 1450, 1340, 1190, 1190, 1320], "borderColor": "#10b981", "backgroundColor": "#10b98120"}, {"code": "S", "label": "Saiman (S)", "data": [-840, -9190, -9550, -14610, -14710, -13020, -12660, -12150, -13290, -12210, -8360, -7480, -7270, -11090, -8440, -10630, -11730, -10680, -7640, -8320, -4470, -3130, -4030, -1190, -1040, -2810, 520, 770], "regData": [-140, -760, -760, -1410, -1380, -1470, -1200, -1050, -1080, -960, -900, -730, -620, -1210, -990, -1060, -1120, -970, -870, -1520, -690, -1060, -1060, -1270, -1150, -900, -490, -400], "borderColor": "#8b5cf6", "backgroundColor": "#8b5cf620"}, {"code": "6", "label": "Sixers (6)", "data": [1740, -180, 340, 2970, 2730, 310, -1630, -2260, -810, -390, -220, -1610, 380, 2900, 8680, 11660, 4080, 7970, 8990, 12530, 5880, 3700, 3850, -1500, 770, -280, -1080, -1500], "regData": [60, 140, 100, 110, 80, 150, 280, 210, 280, 490, 610, 720, 900, 1120, 1390, 1590, 960, 1150, 1060, 1730, 1190, 1120, 1230, 1080, 1350, 1430, 1380, 1380], "borderColor": "#ec4899", "backgroundColor": "#ec489920"}, {"code": "M", "label": "茂哥 (M)", "data": [-1100, 4980, 4380, 2060, 4130, -460, -1090, -160, 3920, 4220, 1870, 5780, 4910, 5000, -3430, -3830, -1740, -6990, -10840, -14460, -13920, -14540, -14200, -13110, -11140, -10780, -12010, -13580], "regData": [0, 230, 150, 260, 330, -170, -470, -480, 80, 50, -210, 250, 270, 220, -500, -500, -190, -760, -1190, -1480, -1480, -1220, -1370, -1340, -1320, -1360, -1820, -1910], "borderColor": "#f59e0b", "backgroundColor": "#f59e0b20"}, {"code": "Z", "label": "志旭 (Z)", "data": [1940, -3180, -2420, -7380, -9190, -3660, -2910, -5040, -10140, -9810, -10980, -13770, -15870, -19090, -17740, -19320, -15560, -12900, -9700, -10500, -12300, -10630, -12650, -13450, -15940, -16570, -14880, -14840], "regData": [200, 230, 350, 220, 60, 550, 620, 480, 50, 50, -130, -340, -650, -620, -580, -710, -280, -80, 400, 510, 150, 330, -20, 80, -220, -360, -260, -390], "borderColor": "#2563eb", "backgroundColor": "#2563eb20"}];
+        const barLabels = ["Fat", "Saiman", "Sixers", "茂哥", "志旭"];
+        const barRegValues = [1320, -400, 1380, -1910, -390];
+        const barSbValues = [27830, 1170, -2880, -11670, -14450];
+        const barTotValues = [29150, 770, -1500, -13580, -14840];
+        const donutLabels = ["Fat", "Saiman", "Sixers", "茂哥", "志旭"];
+        const donutValues = [43, 42, 50, 34, 40];
+        const donutColors = ["#10b981", "#8b5cf6", "#ec4899", "#f59e0b", "#2563eb"];
 
         const lineCtx = document.getElementById('trendLineChart').getContext('2d');
         let lineChart = new Chart(lineCtx, {
